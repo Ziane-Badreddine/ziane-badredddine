@@ -70,7 +70,8 @@ export default function Hero() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 1 }}
-                href="/path-to-cv.pdf"
+                href="/cv.pdf"
+                target="_blank"
                 download
               >
                 <Button

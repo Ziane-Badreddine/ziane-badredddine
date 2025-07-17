@@ -29,15 +29,11 @@ import {
   SiNodedotjs,
 } from "react-icons/si";
 import { motion } from "motion/react";
-import {
-  FaUserAlt,
-  FaLightbulb,
-  FaUsers,
-  FaLanguage,
-} from "react-icons/fa";
+import { FaUserAlt, FaLightbulb, FaUsers, FaLanguage } from "react-icons/fa";
 import { FaStripe, FaJava, FaXTwitter } from "react-icons/fa6";
 import { FaFigma, FaGitAlt, FaGithub } from "react-icons/fa";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
+import { Plus } from "lucide-react";
 
 export const services = [
   {
@@ -167,8 +163,12 @@ export const education = [
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="border-l-2 border-primary p-5 relative isolate border-dashed shadow-xs bg-background text-card-foreground rounded-xl py-6 overflow-hidden"
+        className="border border-black/[0.2] flex flex-col group/canvas-card shadow-md dark:border-white/[0.2]   w-full mx-auto p-4 relative  overflow-hidden"
       >
+        <Plus className="absolute h-6 w-6 -top-3 -left-3 " />
+        <Plus className="absolute h-6 w-6 -bottom-3 -left-3 " />
+        <Plus className="absolute h-6 w-6 -top-3 -right-3 " />
+        <Plus className="absolute h-6 w-6 -bottom-3 -right-3 " />
         <p className={paragraphStyle}>
           Diploma in Mathematics, Physics and Computer Science at the Faculty of
           Sciences and Technology with Honors.
@@ -205,8 +205,12 @@ export const education = [
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="border-l-2 border-primary p-5 relative isolate border-dashed shadow-xs bg-background text-card-foreground rounded-xl py-6 overflow-hidden"
+        className="border border-black/[0.2] flex flex-col group/canvas-card shadow-md dark:border-white/[0.2]   w-full mx-auto p-4 relative  overflow-hidden"
       >
+        <Plus className="absolute h-6 w-6 -top-3 -left-3 " />
+        <Plus className="absolute h-6 w-6 -bottom-3 -left-3 " />
+        <Plus className="absolute h-6 w-6 -top-3 -right-3 " />
+        <Plus className="absolute h-6 w-6 -bottom-3 -right-3 " />
         <p className={paragraphStyle}>
           Specialization in Front-End Development.
         </p>
@@ -214,7 +218,7 @@ export const education = [
           Technologies mastered: HTML, CSS, JavaScript, React, Next.js and
           Tailwind CSS.
         </p>
-        <h2 className="text-primary text-sm md:text-base font-semibold mb-4">
+        <h2 className="text-primary text-base md:text-lg  font-normal tracking-tight   mb-4">
           Skills acquired:
         </h2>
         <ul className={listStyle}>
@@ -245,15 +249,19 @@ export const education = [
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="border-l-2 border-primary p-5 relative isolate border-dashed shadow-xs bg-background text-card-foreground rounded-xl py-6 overflow-hidden"
+        className="border border-black/[0.2] flex flex-col group/canvas-card shadow-md dark:border-white/[0.2]   w-full mx-auto p-4 relative  overflow-hidden"
       >
+        <Plus className="absolute h-6 w-6 -top-3 -left-3 " />
+        <Plus className="absolute h-6 w-6 -bottom-3 -left-3 " />
+        <Plus className="absolute h-6 w-6 -top-3 -right-3 " />
+        <Plus className="absolute h-6 w-6 -bottom-3 -right-3 " />
         <p className={paragraphStyle}>
           Specialization in Back-End Development.
         </p>
         <p className={paragraphStyle}>
           Technologies and tools studied: Java, Node.js, Prisma, MongoDB.
         </p>
-        <h2 className="text-primary text-base md:text-lg font-semibold mb-4">
+        <h2 className="text-primary text-base md:text-lg  font-normal tracking-tight   mb-4">
           Skills in developing robust and performant systems:
         </h2>
         <ul className={listStyle}>
