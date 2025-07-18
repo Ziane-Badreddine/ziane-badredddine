@@ -7,17 +7,17 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Cover } from "@/components/ui/cover";
-import { TextGenerateEffect } from "./TextGenerateEffect";
 import { socialLinks } from "@/data/data";
 import { Spotlight } from "./Spotlight";
+import { SplitTextReveal } from "./SplitTextReveal";
 
 export default function Hero() {
   return (
     <section className="relative isolate container mx-auto w-full py-10 md:py-32 ">
-        <Spotlight
-          className="-top-40 left-0 md:-top-20 md:left-60"
-          fill="var(--primary)"
-        />
+      <Spotlight
+        className="-top-40 left-0 md:-top-20 md:left-60"
+        fill="var(--primary)"
+      />
       <div className=" relative z-10 px-4 md:px-6">
         <div className=" grid grid-cols-1 items-center gap-12 lg:grid-cols-2  ">
           <motion.div
@@ -42,12 +42,8 @@ export default function Hero() {
                 <Cover>Ziane Badreddine</Cover>
               </span>
             </h1>
-            <TextGenerateEffect
-              words="Fullstack software engineer passionate about building modern web apps with Next.js and Tailwind on the frontend, and scalable APIs using Node.js or Java Spring Boot on the backend."
-              className="text-muted-foreground mb-8 text-lg leading-relaxed md:text-xl"
-              filter={true}
-              duration={0.01}
-            />
+
+            <SplitTextReveal text="Fullstack software engineer passionate about building modern web apps with Next.js and Tailwind on the frontend, and scalable APIs using Node.js or Java Spring Boot on the backend." />
 
             <div className="flex flex-col gap-4 md:flex-row">
               <motion.a
@@ -100,7 +96,8 @@ export default function Hero() {
                       delay: i * 0.2,
                       duration: 0.4,
                       ease: "easeOut",
-                      type: "spring", stiffness: 300 
+                      type: "spring",
+                      stiffness: 300,
                     },
                   }}
                   whileHover={{ scale: 1.1 }}
@@ -154,7 +151,7 @@ export default function Hero() {
                   cx={"253"}
                   cy={"253"}
                   r="250"
-                  stroke={"oklch(0.5854 0.2041 277.1173)"}
+                  stroke={"var(--primary)"}
                   strokeWidth={4}
                   strokeLinecap={"round"}
                   strokeLinejoin={"round"}

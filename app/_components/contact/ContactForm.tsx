@@ -103,7 +103,7 @@ export default function ContactForm() {
               form.formState.isValid ||
                 form.formState.submitCount === 0 ||
                 !form.formState.errors
-                ? "bg-primary"
+                ? "bg-green-600"
                 : "bg-destructive"
             )}
           >
@@ -113,7 +113,7 @@ export default function ContactForm() {
                 form.formState.isValid ||
                   form.formState.submitCount === 0 ||
                   !form.formState.errors
-                  ? "bg-primary/50"
+                  ? "bg-green-600/50"
                   : "bg-destructive/50"
               )}
               style={{
