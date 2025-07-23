@@ -129,7 +129,6 @@ export default function Projects() {
         <div className="relative isolate">
           <div className="relative z-10 container mx-auto w-full px-4 md:px-6">
             <div className="relative grid items-center gap-4 md:gap-6 lg:gap-12  xl:grid-cols-3">
-              {/* Left Column - Text Content */}
               <div className="mx-auto max-w-2xl lg:mx-0 xl:order-none order-2 col-span-1">
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -139,7 +138,7 @@ export default function Projects() {
                     animate="animate"
                     exit="exit"
                     transition={{ duration: 0.3 }}
-                    className="space-y-6 flex flex-col items-start md:justify-center lg:justify-end min-h-[280px] sm:min-h-[250px] md:min-h-[400px] lg:min-h-[450px]"
+                    className="space-y-6 flex flex-col items-start md:justify-center xl:justify-end"
                   >
                     <div className="justify-left relative flex flex-col items-start gap-2">
                       <FrameHighlight className="text-6xl md:text-8xl leading-none font-mono">
@@ -243,7 +242,6 @@ export default function Projects() {
                 </AnimatePresence>
               </div>
 
-              {/* Right Column - Image Carousel */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -251,10 +249,9 @@ export default function Projects() {
                 transition={{ duration: 0.5 }}
                 className="relative flex xl:col-span-2 max-h-[500px] flex-col items-center justify-center space-y-4 lg:flex lg:order-none order-1"
               >
-                <div className="relative w-full overflow-hidden rounded-lg border-2 border-border mask-b-from-85% backdrop-blur-xs transition-all delay-150 duration-300">
+                <div className="relative w-full overflow-hidden border-2 border-border mask-b-from-85% backdrop-blur-xs transition-all delay-150 duration-300">
                   <NoiseEffect />
 
-                  {/* Carousel */}
                   <Carousel
                     opts={{ align: "start", loop: true }}
                     plugins={[
@@ -268,12 +265,9 @@ export default function Projects() {
                     <CarouselContent>
                       {projects.map((project, index) => (
                         <CarouselItem key={index}>
-                          <div className="relative w-full aspect-[16/9] sm:aspect-auto sm:h-[320px] md:h-[360px] lg:h-[450px] xl:h-[480px] overflow-hidden rounded-lg">
-                            {/* Badge overlay */}
-
-                            {/* Image */}
+                          <div className="relative w-full aspect-[16/9] sm:aspect-auto sm:h-[320px] md:h-[360px] lg:h-[450px] xl:h-[480px] overflow-hidden ">
                             <Image
-                              src={project.img || "/placeholder.svg"}
+                              src={project.img}
                               alt={project.title ?? ""}
                               fill
                               className="object-cover hover:scale-105 transition-transform duration-300"
@@ -286,7 +280,6 @@ export default function Projects() {
                       ))}
                     </CarouselContent>
 
-                    {/* Mobile Navigation Buttons */}
                     <div className="absolute inset-0 z-10 flex items-center justify-between sm:hidden w-full px-4">
                       <Button
                         onClick={() => api?.scrollPrev()}
@@ -308,7 +301,6 @@ export default function Projects() {
                   </Carousel>
                 </div>
 
-                {/* Desktop Navigation */}
                 <div className="items-center justify-between w-full hidden sm:flex">
                   <div className="z-10 w-full items-center gap-2 flex">
                     <Button
@@ -331,7 +323,6 @@ export default function Projects() {
                     </Button>
                   </div>
 
-                  {/* Pagination Dots */}
                   <div className="flex gap-2">
                     {projects.map((_, index) => (
                       <button
@@ -351,7 +342,6 @@ export default function Projects() {
             </div>
           </div>
 
-          {/* Background Effects */}
           <div
             className={cn(
               "-skew-12 mask-b-from-60% mask-l-from-40% mask-l-to-75%",
