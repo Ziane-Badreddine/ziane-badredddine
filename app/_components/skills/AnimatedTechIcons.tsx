@@ -34,11 +34,14 @@ export default function TechIconsScroller() {
     const duplicated = Array(duplicationFactor).fill(row).flat();
     const totalWidth = row.length * (buttonWidthPx + gapPx);
     const duration = row.length * baseDurationPerItem;
+    const isReverse = rowIndex % 2 === 1;
 
     return {
       key: `tech-row-${rowIndex}`,
       items: duplicated,
-      animate: { x: [0, -totalWidth] },
+       animate: isReverse
+      ? { x: [-totalWidth, 0] } 
+      : { x: [0, -totalWidth] }, 
       transition: {
         duration,
         ease: "linear" as const,
@@ -76,7 +79,7 @@ export default function TechIconsScroller() {
                   key={`${tech.name}-${i}`}
                   whileHover={{ scale: 1.1, y: -4, zIndex: 20 }}
                   transition={{ duration: 0.2 }}
-                  className="flex-shrink-0 w-[120px] h-[120px] bg-muted/50 shadow-sm flex items-center justify-center group rounded-full"
+                  className=" bg-card text-card-foreground flex-shrink-0 md:w-[120px] md:h-[120px] w-[100px] h-[100px] shadow-sm flex items-center justify-center group rounded-full border-border/40 from-card to-card/50 hover:border-primary/20 group focus-within:ring-primary  border bg-gradient-to-b backdrop-blur transition-all focus-within:ring-2 focus-within:ring-offset-2 hover:shadow-lg"
                 >
                   <Tooltip>
                     <TooltipTrigger asChild>

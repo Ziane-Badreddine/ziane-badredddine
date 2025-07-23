@@ -44,7 +44,7 @@ export const SplitTextReveal = ({
 
   return (
     <motion.h1
-      className={`flex flex-wrap gap-x-1 mb-8 ${className}`}
+      className={`flex flex-wrap gap-x-1  ${className}`}
       variants={container}
       initial="hidden"
       animate="show"

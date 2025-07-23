@@ -84,7 +84,7 @@ export default function ContactInfo() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 3*0.3 }}
+        transition={{ delay: 3*0.3 }}
       >
         <Card className="p-6 gap-2 bg-primary/5 border-primary/20">
           <h3 className="font-semibold text-lg">Response Time</h3>

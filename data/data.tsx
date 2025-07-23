@@ -28,12 +28,13 @@ import {
   SiAuth0,
   SiNodedotjs,
 } from "react-icons/si";
-import { motion } from "motion/react";
+
 import { FaUserAlt, FaLightbulb, FaUsers, FaLanguage } from "react-icons/fa";
 import { FaStripe, FaJava, FaXTwitter } from "react-icons/fa6";
 import { FaFigma, FaGitAlt, FaGithub } from "react-icons/fa";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
-import { Plus } from "lucide-react";
+
+import { FrameHighlight } from "@/app/_components/education/FrameHighlight";
 
 export const services = [
   {
@@ -86,16 +87,17 @@ export const services = [
 
 export const projects = [
   {
-    id: 1,
+    id: "01",
     title: "E-commerce Application",
     des: "A modern e-commerce platform with product listing, shopping cart, and payment system.",
     img: "/images/E-commerce.png",
     iconLists: [SiNextdotjs, SiReact, SiTailwindcss, SiTypescript, SiShadcnui],
     link: "https://store-phi-self.vercel.app",
+    github: "https://github.com/Ziane-Badreddine/store",
     status: "completed",
   },
   {
-    id: 2,
+    id:  "02",
     title: "StoryCareer | Share your stories.",
     des: "A creative platform where users can share and explore inspiring personal stories within a supportive community.",
     img: "/images/StoryCareer.png",
@@ -110,10 +112,11 @@ export const projects = [
       SiShadcnui,
     ],
     link: "https://story-career.vercel.app",
+    github: "https://github.com/Ziane-Badreddine/store",
     status: "completed",
   },
   {
-    id: 3,
+    id:  "03",
     title: "XO Game – Multiplayer Experience",
     des: "A real-time Tic-Tac-Toe game built with Convex, Next.js and Shadcn UI, featuring multiplayer logic and in-game chat.",
     img: "/images/xo.png",
@@ -130,7 +133,7 @@ export const projects = [
     status: "coming soon",
   },
   {
-    id: 4,
+    id:  "04",
     title: "Chat Application",
     des: "A real-time messaging app with group chats, file sharing, and notifications support.",
     img: "/images/chat.svg",
@@ -158,17 +161,8 @@ export const education = [
   {
     title: "2022–2024",
     content: (
-      <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="border border-black/[0.2] flex flex-col group/canvas-card shadow-md dark:border-white/[0.2]   w-full mx-auto p-4 relative  overflow-hidden"
-      >
-        <Plus className="absolute h-6 w-6 -top-3 -left-3 " />
-        <Plus className="absolute h-6 w-6 -bottom-3 -left-3 " />
-        <Plus className="absolute h-6 w-6 -top-3 -right-3 " />
-        <Plus className="absolute h-6 w-6 -bottom-3 -right-3 " />
+      <FrameHighlight>
+
         <p className={paragraphStyle}>
           Diploma in Mathematics, Physics and Computer Science at the Faculty of
           Sciences and Technology with Honors.
@@ -194,23 +188,14 @@ export const education = [
         <div className="absolute top-1/3 left-1/3 w-20 h-20 bg-gradient-to-r from-cyan-500/25 via-transparent to-primary/15 rounded-full blur-xl animate-pulse delay-1500"></div>
 
         <div className="absolute inset-0 bg-gradient-to-tl from-transparent via-blue-500/3 to-purple-500/3 pointer-events-none"></div>
-      </motion.div>
+      </FrameHighlight>
     ),
   },
   {
     title: "2024–2025",
     content: (
-      <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="border border-black/[0.2] flex flex-col group/canvas-card shadow-md dark:border-white/[0.2]   w-full mx-auto p-4 relative  overflow-hidden"
-      >
-        <Plus className="absolute h-6 w-6 -top-3 -left-3 " />
-        <Plus className="absolute h-6 w-6 -bottom-3 -left-3 " />
-        <Plus className="absolute h-6 w-6 -top-3 -right-3 " />
-        <Plus className="absolute h-6 w-6 -bottom-3 -right-3 " />
+       <FrameHighlight>
+
         <p className={paragraphStyle}>
           Specialization in Front-End Development.
         </p>
@@ -238,23 +223,14 @@ export const education = [
         <div className="absolute top-1/3 left-1/3 w-20 h-20 bg-gradient-to-r from-cyan-500/25 via-transparent to-primary/15 rounded-full blur-xl animate-pulse delay-1500"></div>
 
         <div className="absolute inset-0 bg-gradient-to-tl from-transparent via-blue-500/3 to-purple-500/3 pointer-events-none"></div>
-      </motion.div>
+       </FrameHighlight>
     ),
   },
   {
     title: "2025–2026",
     content: (
-      <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="border border-black/[0.2] flex flex-col group/canvas-card shadow-md dark:border-white/[0.2]   w-full mx-auto p-4 relative  overflow-hidden"
-      >
-        <Plus className="absolute h-6 w-6 -top-3 -left-3 " />
-        <Plus className="absolute h-6 w-6 -bottom-3 -left-3 " />
-        <Plus className="absolute h-6 w-6 -top-3 -right-3 " />
-        <Plus className="absolute h-6 w-6 -bottom-3 -right-3 " />
+      <FrameHighlight>
+
         <p className={paragraphStyle}>
           Specialization in Back-End Development.
         </p>
@@ -280,7 +256,7 @@ export const education = [
 
         <div className="absolute inset-0 bg-gradient-to-br from-transparent via-blue-500/3 to-purple-500/3 pointer-events-none"></div>
         <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/2 via-transparent to-blue-500/3 pointer-events-none"></div>
-      </motion.div>
+      </FrameHighlight>
     ),
   },
 ];

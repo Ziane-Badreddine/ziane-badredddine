@@ -45,7 +45,7 @@ export default function Hero() {
 
             <SplitTextReveal text="Fullstack software engineer passionate about building modern web apps with Next.js and Tailwind on the frontend, and scalable APIs using Node.js or Java Spring Boot on the backend." />
 
-            <div className="flex flex-col gap-4 md:flex-row">
+            <div className="flex flex-col gap-4 md:flex-row mt-8">
               <motion.a
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}

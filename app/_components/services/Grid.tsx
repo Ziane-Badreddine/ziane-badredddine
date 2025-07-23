@@ -50,6 +50,7 @@ export function ServicesGrid() {
                 alt=""
                 quality={100}
                 fill
+                sizes="(min-width: 1040px) 556px, (min-width: 540px) 463px, 89.55vw"
                 className=" object-contain "
               />
             </div>
