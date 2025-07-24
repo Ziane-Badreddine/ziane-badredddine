@@ -37,7 +37,7 @@ export default function Hero() {
             </div>
             <h1 className="from-foreground via-foreground/90 to-foreground/70 mb-6 bg-gradient-to-r bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-5xl lg:text-6xl ">
               Hi there,{" "}
-              <span className="font-serif font-light italic">I&apos;m </span>
+              <span className="font-serif font-light italic">I&apos;m </span><br />
               <span className="text-primary inline-flex items-baseline gap-1  ">
                 <Cover>Ziane Badreddine</Cover>
               </span>
@@ -129,10 +129,10 @@ export default function Hero() {
                   opacity: 1,
                   transition: { delay: 0.9, duration: 0.4, ease: "easeInOut" },
                 }}
-                className="w-[298px] h-[298px] lg:w-[498px] lg:h-[498px] mix-blend-lighten absolute"
+                className="w-[298px] h-[298px] md:w-[398px] md:h-[398px] lg:w-[498px] lg:h-[498px] mix-blend-lighten absolute"
               >
                 <Image
-                  src={"/avatar2.svg"}
+                  src={"/avatar3.svg"}
                   priority
                   alt=""
                   quality={100}
@@ -142,7 +142,7 @@ export default function Hero() {
               </motion.div>
 
               <motion.svg
-                className="w-[300px] h-[300px] lg:w-[506px] lg:h-[506px]  "
+                className="w-[300px] h-[300px] md:w-[406px] md:h-[406px] lg:w-[506px] lg:h-[506px]  "
                 fill="transparent"
                 viewBox={"0 0 506 506"}
                 xmlns={"http://www.w3.org/2000/svg"}
