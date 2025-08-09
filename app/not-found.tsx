@@ -7,14 +7,14 @@ import { motion } from "framer-motion";
 
 export default function NotFound() {
   return (
-    <section className="min-h-screen overflow-hidden flex items-center justify-center">
+    <section className="mt-20 overflow-hidden flex items-center justify-center">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
         className="container mx-auto w-full flex flex-col items-center justify-center text-center space-y-6"
       >
-        {/* Image 404 animée */}
+
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -22,7 +22,7 @@ export default function NotFound() {
           className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px]"
         >
           <Image
-            src="/not-found.svg" // Remplace par le chemin de ton image
+            src="/not-found.svg" 
             alt="404 Not Found"
             fill
             className="object-contain"

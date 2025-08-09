@@ -6,16 +6,21 @@ import { ArrowRight, Download } from "lucide-react";
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Cover } from "@/components/ui/cover";
 import { socialLinks } from "@/data/data";
 import { Spotlight } from "./Spotlight";
 import { SplitTextReveal } from "./SplitTextReveal";
-import {  playwriteMxGuides } from "@/lib/fonts";
-
+import { playwriteMxGuides, roboto } from "@/lib/fonts";
+import {
+  Cursor,
+  CursorBody,
+  CursorName,
+  CursorPointer,
+} from "@/components/ui/kibo-ui/cursor";
+import { cn } from "@/lib/utils";
 
 export default function Hero() {
   return (
-    <section className="relative isolate container mx-auto w-full py-10 md:py-32 ">
+    <section className="relative isolate container mx-auto w-full py-10 md:py-32">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -27,8 +32,9 @@ export default function Hero() {
           fill="white"
         />
       </motion.div>
-      <div className=" relative z-10 px-4 md:px-6">
-        <div className=" grid grid-cols-1 items-center gap-12 lg:grid-cols-2  ">
+
+      <div className="relative z-10 px-4 md:px-6">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -38,18 +44,28 @@ export default function Hero() {
           >
             <div>
               <Badge
-                className="mb-4 rounded-full px-4 py-1.5 text-sm font-medium shadow-sm transition-none"
+                className="mb-6 rounded-full px-4 py-1.5 text-sm font-medium shadow-sm transition-none"
                 variant="secondary"
               >
                 <span className="text-primary mr-1">✦</span> Software Engineer
               </Badge>
             </div>
-            <h1 className=" pt-2 from-foreground via-foreground/90  to-foreground/70 mb-6 bg-gradient-to-r bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-5xl lg:text-6xl ">
-              <span className={`${playwriteMxGuides.className}`}>Hi there </span>,{" "}
-              <span className="font-serif font-light italic">I&apos;m </span>
+
+            <h1 className="pt-2 from-foreground via-foreground/90 to-foreground/70 mb-5 bg-gradient-to-r bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-5xl lg:text-6xl">
+              <span className={`${playwriteMxGuides.className}`}>
+                Hi there{" "}
+              </span>
+              , <span className="font-serif font-light italic">I&apos;m </span>
               <br />
-              <span className="text-primary inline-flex items-baseline gap-1  ">
-                <Cover>Ziane Badreddine</Cover>
+              <span className="text-primary inline-flex items-baseline gap-1">
+                {/* remplacer <h1> imbriqué par <span> */}
+                <span
+                  className={cn(
+                    "bg-gradient-to-b from-foreground via-foreground/50 to-muted-foreground bg-clip-text text-transparent font-semibold"
+                  )}
+                >
+                  Ziane Badreddine
+                </span>
               </span>
             </h1>
 
@@ -71,6 +87,7 @@ export default function Hero() {
                   <ArrowRight className="size-4 ml-2" />
                 </Button>
               </motion.a>
+
               <motion.a
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -125,13 +142,31 @@ export default function Hero() {
               ))}
             </div>
           </motion.div>
-          <div className=" w-full h-full relative order-1 lg:order-none mx-auto  flex items-center justify-center">
+          <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:2,duration:2}} className=" hidden lg:block absolute right-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[460px] h-full border-2 border-foreground rounded-full border-b-transparent border-l-transparent"></motion.div>
+
+          <div className="w-full h-full relative order-1 lg:order-none mx-auto flex items-center justify-center">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{
                 delay: 0.6,
-                duration: 0.6, // un peu plus long pour lisser
+                duration: 0.6,
+              }}
+            >
+              <Cursor className="absolute top-1/2 left-[60%]">
+                <CursorPointer />
+                <CursorBody>
+                  <CursorName className={`${roboto.className}`}>s1t</CursorName>
+                </CursorBody>
+              </Cursor>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                delay: 0.6,
+                duration: 0.6,
               }}
               className="w-[298px] h-[298px] md:w-[398px] md:h-[398px] lg:w-[498px] lg:h-[498px] mix-blend-lighten"
             >
@@ -147,16 +182,18 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{
           delay: 1,
-          duration: 1, // un peu plus long pour lisser
+          duration: 1,
         }}
         className="absolute inset-0 bg-[radial-gradient(ellipse_at_90%_30%,var(--chart-3),transparent_25%)] blur-3xl"
-      ></motion.div>
-      <motion.div className="absolute inset-0 bg-[radial-gradient(ellipse_at_10%_70%,var(--chart-3),transparent_10%)] blur-3xl"></motion.div>
+      />
+
+      <motion.div className="absolute inset-0 bg-[radial-gradient(ellipse_at_10%_70%,var(--chart-3),transparent_10%)] blur-3xl" />
     </section>
   );
 }

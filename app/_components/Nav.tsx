@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { ModeToggle } from "@/components/ui/mode-toggle";
 //import { useGithubStars } from "@/hooks/use-github-stars";
 import { formatCompactNumber } from "@/utils/format";
 
@@ -18,8 +19,6 @@ import {
 } from "lucide-react";
 import { useGithubProfileStars } from "@/hooks/useGithubProfileStars";
 import { FaGithub } from "react-icons/fa";
-import { ThemeSwitcher } from "@/components/ui/kibo-ui/theme-switcher";
-import { useTheme } from "next-themes";
 
 export const navLinks = [
   {
@@ -53,7 +52,6 @@ export default function Nav() {
   //const { stargazersCount } = useGithubStars("jnsahaj", "tweakcn");
   const { totalStars } = useGithubProfileStars("Ziane-Badreddine");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
   const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const targetId = e.currentTarget.getAttribute("href")?.slice(1);
@@ -107,14 +105,17 @@ export default function Nav() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.3, delay: 0.4 }}
         >
-          <ThemeSwitcher
-            defaultValue={"dark"}
-            onChange={setTheme}
-            value={theme ?? "dark"}
-          />
+          <ModeToggle />
         </motion.div>
       </motion.div>
       <div className="flex items-center gap-4 md:hidden">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.3, delay: 0.4 }}
+        >
+          <ModeToggle />
+        </motion.div>
         <Button
           variant="ghost"
           size="icon"
@@ -164,29 +165,22 @@ export default function Nav() {
               transition={{ duration: 0.3, delay: 0.3 }}
               className="pt-2 mt-2 "
             >
-              <div className="flex items-center justify-between">
-                <Link
-                  href="https://github.com/Ziane-Badreddine"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <div className="w-full flex items-center justify-center gap-2 text-md rounded-full p-0 ">
-                    <FaGithub className="size-6 animate-pulse" />
-                    Star on GitHub
-                    {totalStars > 0 && (
-                      <span className=" text-muted-foreground ml-[0.5px]">
-                        ( {formatCompactNumber(totalStars)} )
-                      </span>
-                    )}
-                  </div>
-                </Link>
-                <ThemeSwitcher
-                  defaultValue={"dark"}
-                  onChange={setTheme}
-                  value={theme ?? "dark"}
-                />
-              </div>
+              <Link
+                href="https://github.com/Ziane-Badreddine"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <Button className="w-full justify-center gap-2 rounded-full ">
+                  <FaGithub className="size-4 animate-pulse" />
+                  Star on GitHub
+                  {totalStars > 0 && (
+                    <span className="text-sm text-accent ml-1">
+                      ({formatCompactNumber(totalStars)})
+                    </span>
+                  )}
+                </Button>
+              </Link>
             </motion.div>
           </div>
         </motion.div>
