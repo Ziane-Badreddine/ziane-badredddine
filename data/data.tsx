@@ -42,7 +42,7 @@ export const services = [
     title: "Website Development",
     description:
       "Modern, responsive websites tailored to your needs—whether it's a portfolio, blog, or e-commerce platform—with custom design and optimized performance.",
-    image: "/images/Daco_4177657.png",
+    image: "/images/website.svg",
   },
   {
     id: 1,

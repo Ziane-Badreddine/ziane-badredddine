@@ -10,14 +10,23 @@ import { Cover } from "@/components/ui/cover";
 import { socialLinks } from "@/data/data";
 import { Spotlight } from "./Spotlight";
 import { SplitTextReveal } from "./SplitTextReveal";
+import {  playwriteMxGuides } from "@/lib/fonts";
+
 
 export default function Hero() {
   return (
     <section className="relative isolate container mx-auto w-full py-10 md:py-32 ">
-      <Spotlight
-        className="-top-40 left-0 md:-top-20 md:left-60"
-        fill="var(--primary)"
-      />
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+      >
+        <Spotlight
+          className="top-0 left-0 -translate-x-1/3 -translate-y-1/3 opacity-50"
+          fill="white"
+        />
+      </motion.div>
       <div className=" relative z-10 px-4 md:px-6">
         <div className=" grid grid-cols-1 items-center gap-12 lg:grid-cols-2  ">
           <motion.div
@@ -35,9 +44,10 @@ export default function Hero() {
                 <span className="text-primary mr-1">✦</span> Software Engineer
               </Badge>
             </div>
-            <h1 className="from-foreground via-foreground/90 to-foreground/70 mb-6 bg-gradient-to-r bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-5xl lg:text-6xl ">
-              Hi there,{" "}
-              <span className="font-serif font-light italic">I&apos;m </span><br />
+            <h1 className=" pt-2 from-foreground via-foreground/90  to-foreground/70 mb-6 bg-gradient-to-r bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-5xl lg:text-6xl ">
+              <span className={`${playwriteMxGuides.className}`}>Hi there </span>,{" "}
+              <span className="font-serif font-light italic">I&apos;m </span>
+              <br />
               <span className="text-primary inline-flex items-baseline gap-1  ">
                 <Cover>Ziane Badreddine</Cover>
               </span>
@@ -118,65 +128,35 @@ export default function Hero() {
           <div className=" w-full h-full relative order-1 lg:order-none mx-auto  flex items-center justify-center">
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{
-                opacity: 1,
-                transition: { delay: 0.5, duration: 0.4, ease: "easeInOut" },
+              animate={{ opacity: 1 }}
+              transition={{
+                delay: 0.6,
+                duration: 0.6, // un peu plus long pour lisser
               }}
+              className="w-[298px] h-[298px] md:w-[398px] md:h-[398px] lg:w-[498px] lg:h-[498px] mix-blend-lighten"
             >
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{
-                  opacity: 1,
-                  transition: { delay: 0.9, duration: 0.4, ease: "easeInOut" },
-                }}
-                className="w-[298px] h-[298px] md:w-[398px] md:h-[398px] lg:w-[498px] lg:h-[498px] mix-blend-lighten absolute"
-              >
-                <Image
-                  src={"/avatar3.svg"}
-                  priority
-                  alt=""
-                  quality={100}
-                  fill
-                  className=" object-contain rounded-full"
-                />
-              </motion.div>
-
-              <motion.svg
-                className="w-[300px] h-[300px] md:w-[406px] md:h-[406px] lg:w-[506px] lg:h-[506px]  "
-                fill="transparent"
-                viewBox={"0 0 506 506"}
-                xmlns={"http://www.w3.org/2000/svg"}
-              >
-                <motion.circle
-                  cx={"253"}
-                  cy={"253"}
-                  r="250"
-                  stroke={"var(--primary)"}
-                  strokeWidth={4}
-                  strokeLinecap={"round"}
-                  strokeLinejoin={"round"}
-                  initial={{ strokeDasharray: "24 10 0 0" }}
-                  animate={{
-                    strokeDasharray: [
-                      "15 120 25 25",
-                      "16 25 92 72",
-                      "4 250 22 22",
-                    ],
-                    rotate: [120, 360],
-                  }}
-                  transition={{
-                    duration: 20,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                  }}
-                />
-              </motion.svg>
+              <Image
+                src={"/avatar4.svg"}
+                priority
+                alt=""
+                quality={100}
+                fill
+                className="object-contain"
+              />
             </motion.div>
           </div>
         </div>
       </div>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_90%_30%,var(--muted),transparent_35%)] blur-3xl"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_10%_70%,var(--muted),transparent_10%)] blur-3xl"></div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          delay: 1,
+          duration: 1, // un peu plus long pour lisser
+        }}
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_90%_30%,var(--chart-3),transparent_25%)] blur-3xl"
+      ></motion.div>
+      <motion.div className="absolute inset-0 bg-[radial-gradient(ellipse_at_10%_70%,var(--chart-3),transparent_10%)] blur-3xl"></motion.div>
     </section>
   );
 }

@@ -24,7 +24,7 @@ export const Cover = ({
       setContainerWidth(ref.current?.clientWidth ?? 0);
 
       const height = ref.current?.clientHeight ?? 0;
-      const numberOfBeams = Math.floor(height / 10); 
+      const numberOfBeams = Math.floor(height / 10);
       const positions = Array.from(
         { length: numberOfBeams },
         (_, i) => (i + 1) * (height / (numberOfBeams + 1))
@@ -131,7 +131,9 @@ export const Cover = ({
           },
         }}
         className={cn(
-          "text-primary inline-block relative z-20 group-hover/cover:text-primary/50 transition duration-200",
+          "inline-block relative z-20 transition duration-200",
+          "text-neutral-900 dark:text-primary", // black in light mode, primary in dark mode
+          "group-hover/cover:text-neutral-700 dark:group-hover/cover:text-primary/50",
           className
         )}
       >

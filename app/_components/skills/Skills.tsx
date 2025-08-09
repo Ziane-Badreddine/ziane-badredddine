@@ -6,15 +6,13 @@ import { Badge } from "@/components/ui/badge";
 import AnimatedTechIcons from "./AnimatedTechIcons";
 import { skills } from "@/data/data";
 
-
-
 export default function Skills() {
   return (
     <section
       id="skills"
       className="w-full py-20 md:py-32 bg-muted/30 relative overflow-hidden isolate"
     >
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle,rgba(from_var(--muted-foreground)_r_g_b_/_0.05)_2px,_transparent_0)] bg-[size:2rem_2rem] dark:bg-[radial-gradient(circle,rgba(from_var(--muted-foreground)_r_g_b_/_0.05)_2px,_transparent_0)]"></div>
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle,rgba(0,0,0,0.05)_2px,transparent_0)] bg-[size:2rem_2rem] dark:bg-[radial-gradient(circle,rgba(255,255,255,0.05)_2px,transparent_0)]"></div>
 
       <div className="container mx-auto px-4 md:px-6 relative">
         <motion.div

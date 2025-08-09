@@ -84,7 +84,7 @@ export default function Footer() {
                 />
               </>
               <span>
-                <span className="text-foreground">Badr</span>eddine
+                Badreddine
               </span>
             </Link>
             <p className="text-sm">

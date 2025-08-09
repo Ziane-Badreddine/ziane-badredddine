@@ -79,7 +79,7 @@ export default function TechIconsScroller() {
                   key={`${tech.name}-${i}`}
                   whileHover={{ scale: 1.1, y: -4, zIndex: 20 }}
                   transition={{ duration: 0.2 }}
-                  className=" bg-card text-card-foreground flex-shrink-0 md:w-[120px] md:h-[120px] w-[100px] h-[100px] shadow-sm flex items-center justify-center group rounded-full border-border/40 from-card to-card/50 hover:border-primary/20 group focus-within:ring-primary  border bg-gradient-to-b backdrop-blur transition-all focus-within:ring-2 focus-within:ring-offset-2 hover:shadow-lg"
+                  className="  text-card-foreground flex-shrink-0 md:w-[120px] md:h-[120px] w-[100px] h-[100px] shadow-sm flex items-center justify-center group rounded-full  from-card to-card/50 hover:border-primary/20 group focus-within:ring-primary  bg-primary/15 bg-gradient-to-b backdrop-blur transition-all border-primary/60! border border-dashed focus-within:ring-2 focus-within:ring-offset-2 hover:shadow-lg"
                 >
                   <Tooltip>
                     <TooltipTrigger asChild>
