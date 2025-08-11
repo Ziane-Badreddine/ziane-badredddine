@@ -16,6 +16,7 @@ import {
   BriefcaseBusiness,
   BrainCircuit,
   SendHorizonal,
+  MoveUpRight,
 } from "lucide-react";
 import { useGithubProfileStars } from "@/hooks/useGithubProfileStars";
 import { FaGithub } from "react-icons/fa";
@@ -138,7 +139,6 @@ export default function Nav() {
         >
           <div className="container mx-auto py-4 flex flex-col gap-4 px-4 capitalize">
             {navLinks.map((item, i) => {
-              const Icon = item.icon;
               return (
                 <motion.a
                   key={i}
@@ -152,7 +152,7 @@ export default function Nav() {
                   }}
                   className="py-2 text-sm font-medium flex items-center gap-2 relative overflow-hidden group border-b box-border/30 pb-5"
                 >
-                  <Icon className="size-4 text-muted-foreground" />
+                  
                   <span className="relative z-10">{item.name}</span>
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                 </motion.a>
@@ -179,6 +179,7 @@ export default function Nav() {
                       ({formatCompactNumber(totalStars)})
                     </span>
                   )}
+                  <MoveUpRight className=" animate-pulse " />
                 </Button>
               </Link>
             </motion.div>

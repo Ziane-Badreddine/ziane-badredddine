@@ -1,9 +1,3 @@
-import {
-  IconWorld,
-  IconPalette,
-  IconDatabase,
-  IconMessage2Plus,
-} from "@tabler/icons-react";
 import { SiConvex } from "@/components/icons/SiConvex";
 import {
   SiNextdotjs,
@@ -36,6 +30,14 @@ import { FiGithub, FiLinkedin } from "react-icons/fi";
 
 import { FrameHighlight } from "@/app/_components/education/FrameHighlight";
 
+import {
+  IconWorld,
+  IconPalette,
+  IconDatabase,
+  IconDeviceDesktopCode,
+  IconPuzzle,
+} from "@tabler/icons-react";
+
 export const services = [
   {
     id: 0,
@@ -43,20 +45,21 @@ export const services = [
     description:
       "Modern, responsive websites tailored to your needs—whether it's a portfolio, blog, or e-commerce platform—with custom design and optimized performance.",
     image: "/images/website.svg",
+    icon: <IconDeviceDesktopCode className="size-5" />,
   },
   {
     id: 1,
     title: "Flexible Communication",
     description:
-      "I'm highly adaptable and available across different time zones to ensure smooth and consistent collaboration.",
-    image: "",
+      "Adaptable across time zones to ensure smooth and consistent collaboration with clients worldwide.",
+    image: "/services/edge-functions-dark.svg",
     icon: <IconWorld className="size-5" />,
   },
   {
     id: 2,
     title: "Graphic Design",
     description:
-      "Creation of visually appealing assets aligned with your brand identity to enhance user experience.",
+      "Designing creative visuals that match your brand identity and enhance user experience.",
     image: "",
     icon: <IconPalette className="size-5" />,
   },
@@ -64,7 +67,7 @@ export const services = [
     id: 3,
     title: "SQL/NoSQL Databases",
     description:
-      "Design and management of robust and secure databases with efficient structure and high performance, tailored for your backend needs.",
+      "Building and managing secure, high-performance databases tailored to your application needs.",
     image: "",
     icon: <IconDatabase className="size-5" />,
   },
@@ -72,17 +75,16 @@ export const services = [
     id: 4,
     title: "Java Development",
     description:
-      "Development of scalable and maintainable Java applications for backend systems, desktop software, or enterprise solutions.",
-    image: "/images/java.svg",
+      "Creating scalable and maintainable Java applications for backend, desktop, or enterprise solutions.",
+    icon: <FaJava className="size-5" />,
   },
   {
     id: 5,
-    title: "Let's Start a Project Together!",
+    title: "Problem Solving ",
     description:
-      "Got an idea in mind? I’d love to hear more and help bring it to life.",
-    image: "",
-    icon: <IconMessage2Plus className="size-5" />,
-  },
+      "Solving complex algorithmic challenges with clean, optimized, and efficient code.",
+    icon: <IconPuzzle className="size-5" />,
+  }
 ];
 
 export const projects = [
@@ -97,7 +99,7 @@ export const projects = [
     status: "completed",
   },
   {
-    id:  "02",
+    id: "02",
     title: "StoryCareer | Share your stories.",
     des: "A creative platform where users can share and explore inspiring personal stories within a supportive community.",
     img: "/images/StoryCareer.png",
@@ -116,7 +118,7 @@ export const projects = [
     status: "completed",
   },
   {
-    id:  "03",
+    id: "03",
     title: "XO Game – Multiplayer Experience",
     des: "A real-time Tic-Tac-Toe game built with Convex, Next.js and Shadcn UI, featuring multiplayer logic and in-game chat.",
     img: "/images/xo.png",
@@ -133,7 +135,7 @@ export const projects = [
     status: "coming soon",
   },
   {
-    id:  "04",
+    id: "04",
     title: "Chat Application",
     des: "A real-time messaging app with group chats, file sharing, and notifications support.",
     img: "/images/chat.svg",
@@ -162,7 +164,6 @@ export const education = [
     title: "2022–2024",
     content: (
       <FrameHighlight>
-
         <p className={paragraphStyle}>
           Diploma in Mathematics, Physics and Computer Science at the Faculty of
           Sciences and Technology with Honors.
@@ -194,8 +195,7 @@ export const education = [
   {
     title: "2024–2025",
     content: (
-       <FrameHighlight>
-
+      <FrameHighlight>
         <p className={paragraphStyle}>
           Specialization in Front-End Development.
         </p>
@@ -223,14 +223,13 @@ export const education = [
         <div className="absolute top-1/3 left-1/3 w-20 h-20 bg-gradient-to-r from-cyan-500/25 via-transparent to-primary/15 rounded-full blur-xl animate-pulse delay-1500"></div>
 
         <div className="absolute inset-0 bg-gradient-to-tl from-transparent via-blue-500/3 to-purple-500/3 pointer-events-none"></div>
-       </FrameHighlight>
+      </FrameHighlight>
     ),
   },
   {
     title: "2025–2026",
     content: (
       <FrameHighlight>
-
         <p className={paragraphStyle}>
           Specialization in Back-End Development.
         </p>

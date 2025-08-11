@@ -21,6 +21,7 @@ import { cn } from "@/lib/utils";
 export default function Hero() {
   return (
     <section className="relative isolate container mx-auto w-full py-10 md:py-32">
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(from_var(--muted-foreground)_r_g_b_/_0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(from_var(--muted-foreground)_r_g_b_/_0.05)_1px,transparent_1px)] bg-[size:3rem_3rem]"></div>
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -57,11 +58,10 @@ export default function Hero() {
               </span>
               , <span className="font-serif font-light italic">I&apos;m </span>
               <br />
-              <span className="text-primary inline-flex items-baseline gap-1">
-                {/* remplacer <h1> imbriqué par <span> */}
+              <span className="text-primary underline-highlight inline-flex items-baseline gap-1">
                 <span
                   className={cn(
-                    "bg-gradient-to-b from-foreground via-foreground/50 to-muted-foreground bg-clip-text text-transparent font-semibold"
+                    " bg-gradient-to-b  from-foreground via-foreground/90 to-muted-foreground bg-clip-text text-transparent "
                   )}
                 >
                   Ziane Badreddine
@@ -142,7 +142,7 @@ export default function Hero() {
               ))}
             </div>
           </motion.div>
-          <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:2,duration:2}} className=" hidden lg:block absolute right-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[460px] h-full border-2 border-foreground rounded-full border-b-transparent border-l-transparent"></motion.div>
+        
 
           <div className="w-full h-full relative order-1 lg:order-none mx-auto flex items-center justify-center">
             <motion.div

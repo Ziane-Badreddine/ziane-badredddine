@@ -11,7 +11,7 @@ export default function Services() {
       id="services"
       className=" w-full py-20 md:py-32 bg-muted/30 overflow-hidden relative isolate"
     >
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(from_var(--muted-foreground)_r_g_b_/_0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(from_var(--muted-foreground)_r_g_b_/_0.05)_1px,transparent_1px)] bg-[size:3rem_3rem]"></div>
+
       <div className=" container px-4 md:px-6 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
