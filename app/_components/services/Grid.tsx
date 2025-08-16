@@ -42,7 +42,7 @@ export function ServicesGrid() {
             service.id === 0
               ? " md:col-span-2 grid grid-cols-1 md:grid-cols-2 bg-card text-card-foreground border rounded-xl shadow-sm overflow-hidden group relative "
               : "bg-card text-card-foreground flex flex-col   col-span-1   relative  rounded-xl border shadow-sm overflow-hidden group md:min-h-[400px]  ",
-              " hover:border-foreground transition-all duration-300"
+            " hover:border-foreground transition-all duration-300"
           )}
         >
           <div className="p-6 flex flex-col  justify-between gap-3  ">
@@ -73,7 +73,7 @@ export function ServicesGrid() {
             )}
           </div>
           {service.image?.startsWith("/images/") && (
-            <div className="hidden md:block w-full h-[298px] lg:h-[400px]  relative bg-background">
+            <div className="hidden md:block w-full h-[298px] lg:h-[400px]  relative bg-muted-foreground/10">
               <Image
                 src={service.image}
                 priority
@@ -226,52 +226,33 @@ export function ServicesGrid() {
           {service.id === 4 && (
             <>
               <div className="absolute inset-0 z-10 bg-[linear-gradient(to_right,rgba(from_var(--muted-foreground)_r_g_b_/_0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(from_var(--muted-foreground)_r_g_b_/_0.05)_1px,transparent_1px)] bg-[size:3rem_3rem]"></div>
-              <div
-                className={cn(
-                  "hidden md:block absolute top-20 inset-0 overflow-hidden  md:top-20 md:bottom-0 my-auto"
-                )}
-              >
-                <Image
-                  src={"/images/java.svg"}
-                  alt="Supabase Postgres database"
-                  fill
-                  priority
-                  quality={100}
-                  sizes="100%"
-                  draggable={false}
-                  className="  absolute antialiased inset-0 object-contain  object-center z-0 w-full md:w-auto h-full transition-opacity group-hover:opacity-80"
-                />
-              </div>
+              <Image
+                src="/images/java.svg"
+                alt="Java SVG"
+                width={300}
+                height={300}
+                className="h-auto hidden md:block mx-auto my-auto  max-w-md drop-shadow-lg relative z-10"
+                draggable={false}
+              />
             </>
           )}
 
           {service.id === 5 && (
-            <span className="hidden md:flex  absolute group w-full md:w-auto h-full md:aspect-square  items-end md:items-center justify-center md:justify-end right-0 left-0 md:left-auto xl:-right-12 2xl:right-0 top-12 md:top-20 md:bottom-0 my-auto">
+            <>
+              <div className="absolute inset-0 z-10 bg-[radial-gradient(circle,rgba(0,0,0,0.05)_2px,transparent_0)] bg-[size:2rem_2rem] dark:bg-[radial-gradient(circle,rgba(255,255,255,0.05)_2px,transparent_0)]"></div>
               <Image
-                src="/services/database-dark.png"
-                alt="Supabase Postgres database"
-                fill
-                priority
-                quality={100}
-                sizes="100%"
+                src="/images/problem-solving.svg"
+                alt="Java SVG"
+                width={300}
+                height={300}
+                className="h-auto hidden md:block mx-auto my-auto  max-w-md drop-shadow-lg relative z-10"
                 draggable={false}
-                className="hidden dark:block absolute antialiased inset-0 object-contain object-center z-0 w-full md:w-auto h-full transition-opacity group-hover:opacity-80"
               />
-              <Image
-                src="/services/database-light.png"
-                alt="Supabase Postgres database"
-                fill
-                priority
-                quality={100}
-                draggable={false}
-                sizes="100%"
-                className="dark:hidden absolute antialiased inset-0 object-contain object-center z-0 w-full md:w-auto h-full transition-opacity group-hover:opacity-80"
-              />
-            </span>
+            </>
           )}
         </motion.div>
       ))}
-      <motion.a  variants={item} href="/#contact">
+      <motion.a variants={item} href="/#contact">
         <BackgroundGradientAnimation>
           <div className="absolute border  z-50 inset-0 flex flex-col items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl">
             <h3 className="text-xl md:text-3xl  font-bold  mb-4  bg-gradient-to-b  from-foreground via-foreground/90 to-muted-foreground/90 bg-clip-text text-transparent ">

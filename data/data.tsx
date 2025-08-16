@@ -36,55 +36,49 @@ import {
   IconDeviceDesktopCode,
   IconPuzzle,
 } from "@tabler/icons-react";
-
 export const services = [
   {
     id: 0,
     title: "Website Development",
-    description:
-      "Modern, responsive websites tailored to your needs—whether it's a portfolio, blog, or e-commerce platform—with custom design and optimized performance.",
+    description: "Modern, responsive websites with custom design and optimized performance.",
     image: "/images/website.svg",
     icon: <IconDeviceDesktopCode className="size-5" />,
   },
   {
     id: 1,
     title: "Flexible Communication",
-    description:
-      "Adaptable across time zones to ensure smooth and consistent collaboration with clients worldwide.",
+    description: "Smooth collaboration across time zones with clients worldwide.",
     image: "/services/edge-functions-dark.svg",
     icon: <IconWorld className="size-5" />,
   },
   {
     id: 2,
     title: "Graphic Design",
-    description:
-      "Designing creative visuals that match your brand identity and enhance user experience.",
+    description: "Creative visuals that match your brand and enhance UX.",
     image: "",
     icon: <IconPalette className="size-5" />,
   },
   {
     id: 3,
     title: "SQL/NoSQL Databases",
-    description:
-      "Building and managing secure, high-performance databases tailored to your application needs.",
+    description: "Secure, high-performance databases tailored to your app.",
     image: "",
     icon: <IconDatabase className="size-5" />,
   },
   {
     id: 4,
     title: "Java Development",
-    description:
-      "Creating scalable and maintainable Java applications for backend, desktop, or enterprise solutions.",
+    description: "Scalable and maintainable Java applications for various solutions.",
     icon: <FaJava className="size-5" />,
   },
   {
     id: 5,
-    title: "Problem Solving ",
-    description:
-      "Solving complex algorithmic challenges with clean, optimized, and efficient code.",
+    title: "Problem Solving",
+    description: "Efficiently solving complex algorithmic challenges with clean code.",
     icon: <IconPuzzle className="size-5" />,
   },
 ];
+
 
 export const projects = [
   {
