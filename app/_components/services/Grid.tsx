@@ -38,7 +38,6 @@ export function ServicesGrid() {
         <motion.div
           key={i}
           variants={item}
-          whileHover={{ y: -5, transition: { duration: 0.2 } }}
           className={cn(
             service.id === 0
               ? " md:col-span-2 grid grid-cols-1 md:grid-cols-2 bg-card text-card-foreground border rounded-xl shadow-sm overflow-hidden group relative "
@@ -274,8 +273,8 @@ export function ServicesGrid() {
       ))}
       <motion.a  variants={item} href="/#contact">
         <BackgroundGradientAnimation>
-          <div className="absolute z-50 inset-0 flex flex-col items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl">
-            <h3 className="text-xl md:text-3xl  font-bold  mb-4  bg-gradient-to-b  from-white via-white/90 to-muted-foreground/90 bg-clip-text text-transparent ">
+          <div className="absolute border  z-50 inset-0 flex flex-col items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl">
+            <h3 className="text-xl md:text-3xl  font-bold  mb-4  bg-gradient-to-b  from-foreground via-foreground/90 to-muted-foreground/90 bg-clip-text text-transparent ">
               Do you want to start a project together?
             </h3>
             <Button

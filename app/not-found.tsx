@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { MoveLeft } from "lucide-react";
 
 export default function NotFound() {
   return (
@@ -38,8 +39,8 @@ export default function NotFound() {
         </div>
 
         <Link href="/">
-          <Button variant="secondary" className="text-base px-6 py-2">
-            Go back home
+          <Button  className="text-base px-6 py-2">
+           <MoveLeft /> Go back home
           </Button>
         </Link>
       </motion.div>

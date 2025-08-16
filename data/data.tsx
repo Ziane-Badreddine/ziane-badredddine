@@ -28,7 +28,6 @@ import { FaStripe, FaJava, FaXTwitter } from "react-icons/fa6";
 import { FaFigma, FaGitAlt, FaGithub } from "react-icons/fa";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 
-import { FrameHighlight } from "@/app/_components/education/FrameHighlight";
 
 import {
   IconWorld,
@@ -84,7 +83,7 @@ export const services = [
     description:
       "Solving complex algorithmic challenges with clean, optimized, and efficient code.",
     icon: <IconPuzzle className="size-5" />,
-  }
+  },
 ];
 
 export const projects = [
@@ -154,111 +153,100 @@ export const projects = [
   },
 ];
 
-const paragraphStyle =
-  "from-foreground to-foreground/80 bg-gradient-to-r bg-clip-text text-base md:text-lg  font-bold tracking-tight text-transparent    font-normal mb-6";
-const listStyle =
-  "list-disc pl-4 text-sm md:text-base   font-bold tracking-tight text-muted-foreground     font-normal space-y-2 mb-6";
 
 export const education = [
   {
     title: "2022–2024",
-    content: (
-      <FrameHighlight>
-        <p className={paragraphStyle}>
-          Diploma in Mathematics, Physics and Computer Science at the Faculty of
-          Sciences and Technology with Honors.
+    description: (
+      <div className="space-y-4">
+        <p className="text-base leading-relaxed">
+          <strong>Diploma in Mathematics, Physics and Computer Science</strong>  
+          at the Faculty of Sciences and Technology with <em>Honors</em>.
         </p>
-        <p className={paragraphStyle}>
-          In-depth study of applied mathematics, physics and computer science
-          fundamentals.
+        <p className="text-base leading-relaxed">
+          In-depth study of applied mathematics, physics, and computer science
+          fundamentals, with a strong focus on problem-solving.
         </p>
-        <p className={paragraphStyle}>
-          Development of skills in algorithms and programming.
+        <p className="text-base leading-relaxed">
+          Gained proficiency in <strong>algorithms</strong> and
+          <strong> programming</strong>.
         </p>
-        <p className={paragraphStyle}>
-          Languages studied: C (procedural programming basics) and SQL
-          (relational database management).
+        <p className="text-base leading-relaxed">
+          Languages studied: <code>C</code> (procedural programming) and
+          <code> SQL</code> (relational database management).
         </p>
-        <p className={paragraphStyle}>
-          Completion of academic projects, including the design and management
-          of simple databases.
+        <p className="text-base leading-relaxed">
+          Completed academic projects including design and management of simple
+          databases.
         </p>
-
-        <div className="absolute -top-8 -left-8 w-36 h-36 bg-gradient-to-br from-blue-500/15 via-primary/10 to-transparent rounded-full blur-3xl animate-pulse delay-500"></div>
-        <div className="absolute -bottom-6 -right-6 w-28 h-28 bg-gradient-to-tl from-purple-500/20 via-accent/15 to-transparent rounded-full blur-2xl"></div>
-        <div className="absolute top-1/3 left-1/3 w-20 h-20 bg-gradient-to-r from-cyan-500/25 via-transparent to-primary/15 rounded-full blur-xl animate-pulse delay-1500"></div>
-
-        <div className="absolute inset-0 bg-gradient-to-tl from-transparent via-blue-500/3 to-purple-500/3 pointer-events-none"></div>
-      </FrameHighlight>
+      </div>
     ),
+    badge: "Mathematics · Physics · CS",
+    image:
+      "/education/mathematics.svg",
   },
   {
     title: "2024–2025",
-    content: (
-      <FrameHighlight>
-        <p className={paragraphStyle}>
-          Specialization in Front-End Development.
+    description: (
+      <div className="space-y-4">
+        <p className="text-base leading-relaxed">
+          Specialization in <strong>Front-End Development</strong>.
         </p>
-        <p className={paragraphStyle}>
-          Technologies mastered: HTML, CSS, JavaScript, React, Next.js and
+        <p className="text-base leading-relaxed">
+          Mastered technologies: HTML, CSS, JavaScript, React, Next.js, and
           Tailwind CSS.
         </p>
-        <h2 className="text-primary text-base md:text-lg  font-normal tracking-tight   mb-4">
-          Skills acquired:
-        </h2>
-        <ul className={listStyle}>
-          <li>Creation of modern and responsive user interfaces.</li>
+        <h3 className="text-primary font-semibold text-lg">Skills acquired:</h3>
+        <ul className="list-disc list-inside space-y-1 text-base leading-relaxed">
+          <li>Creation of modern, responsive user interfaces.</li>
           <li>
-            Integration of UI libraries like Shadcn UI and usage of Framer
-            Motion for interactive animations.
+            Integration of UI libraries such as Shadcn UI and use of Framer
+            Motion for animations.
           </li>
           <li>
             Team project management and development of complete web
             applications.
           </li>
         </ul>
-
-        <div className="absolute -top-8 -left-8 w-36 h-36 bg-gradient-to-br from-blue-500/15 via-primary/10 to-transparent rounded-full blur-3xl animate-pulse delay-500"></div>
-        <div className="absolute -bottom-6 -right-6 w-28 h-28 bg-gradient-to-tl from-purple-500/20 via-accent/15 to-transparent rounded-full blur-2xl"></div>
-        <div className="absolute top-1/3 left-1/3 w-20 h-20 bg-gradient-to-r from-cyan-500/25 via-transparent to-primary/15 rounded-full blur-xl animate-pulse delay-1500"></div>
-
-        <div className="absolute inset-0 bg-gradient-to-tl from-transparent via-blue-500/3 to-purple-500/3 pointer-events-none"></div>
-      </FrameHighlight>
+      </div>
     ),
+    badge: "Front-End Development",
+    image:
+      "/education/front-end.svg",
   },
   {
     title: "2025–2026",
-    content: (
-      <FrameHighlight>
-        <p className={paragraphStyle}>
-          Specialization in Back-End Development.
+    description: (
+      <div className="space-y-4 ">
+        <p className="text-base leading-relaxed">
+          Specialization in <strong>Back-End Development</strong>.
         </p>
-        <p className={paragraphStyle}>
-          Technologies and tools studied: Java, Node.js, Prisma, MongoDB.
+        <p className="text-base leading-relaxed">
+          Technologies studied: Java, Node.js, Prisma, and MongoDB.
         </p>
-        <h2 className="text-primary text-base md:text-lg  font-normal tracking-tight   mb-4">
-          Skills in developing robust and performant systems:
-        </h2>
-        <ul className={listStyle}>
+        <h3 className="text-primary font-semibold text-lg">
+          Skills in developing robust systems:
+        </h3>
+        <ul className="list-disc list-inside space-y-1 text-base leading-relaxed">
           <li>Design and management of NoSQL databases.</li>
           <li>
-            Implementation of server architecture and data persistence
-            management.
+            Implementation of server architectures and data persistence
+            strategies.
           </li>
-          <li>Collaboration with Front-End teams for seamless integrations.</li>
+          <li>
+            Collaboration with Front-End teams for seamless integration.
+          </li>
         </ul>
-
-        <div className="absolute -top-12 -right-12 w-40 h-40 bg-gradient-to-bl from-blue-500/15 via-primary/10 to-transparent rounded-full blur-3xl animate-pulse delay-300"></div>
-        <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-gradient-to-tr from-purple-500/20 via-accent/15 to-transparent rounded-full blur-2xl"></div>
-        <div className="absolute top-1/4 right-1/3 w-24 h-24 bg-gradient-to-b from-cyan-500/25 via-transparent to-primary/15 rounded-full blur-xl animate-pulse delay-2000"></div>
-        <div className="absolute bottom-1/3 left-1/4 w-18 h-18 bg-gradient-to-r from-blue-500/20 via-primary/10 to-transparent rounded-full blur-lg"></div>
-
-        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-blue-500/3 to-purple-500/3 pointer-events-none"></div>
-        <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/2 via-transparent to-blue-500/3 pointer-events-none"></div>
-      </FrameHighlight>
+      </div>
     ),
+    badge: "Back-End Development",
+    image:
+      "/education/back-end.svg",
   },
 ];
+
+
+
 
 export const skills = [
   {

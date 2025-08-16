@@ -5,8 +5,8 @@ import { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | tweakcn",
-  description: "Privacy Policy for tweakcn.",
+  title: "Privacy Policy | Ziane Badreddine",
+  description: "Privacy Policy for Ziane Badreddine.",
 };
 
 export default function LegalLayout({ children }: {children: React.ReactNode}) {

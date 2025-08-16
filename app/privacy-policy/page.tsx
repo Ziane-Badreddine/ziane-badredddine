@@ -1,4 +1,4 @@
-// app/privacy-policy/page.tsx
+
 import React from "react";
 
 export default function PrivacyPolicyPage() {
