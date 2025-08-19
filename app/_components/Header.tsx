@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import Nav from "./Nav";
 import { cn } from "@/lib/utils";
 import Logo from "./Logo";
+import { motion } from "motion/react";
+
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,12 +33,17 @@ export default function Header() {
     >
       <div className=" container mx-auto flex items-center justify-between h-16 px-4 md:px-6 ">
         <Link href={"/"}>
-          <div className="flex items-center gap-2 font-bold ">
+          <motion.div
+            className="flex items-center  gap-2 font-bold "
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
             <Logo />
             <span>
               <span className="text-primary">Badr</span>eddine
             </span>
-          </div>
+          </motion.div>
         </Link>
         <Nav />
       </div>

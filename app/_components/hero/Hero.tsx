@@ -9,7 +9,6 @@ import Image from "next/image";
 import { socialLinks } from "@/data/data";
 import { Spotlight } from "./Spotlight";
 import { SplitTextReveal } from "./SplitTextReveal";
-import { playwriteMxGuides } from "@/lib/fonts";
 import {
   Cursor,
   CursorBody,
@@ -18,6 +17,52 @@ import {
 } from "@/components/ui/kibo-ui/cursor";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
+import {
+  SiNextdotjs,
+  SiNodedotjs,
+  SiReact,
+  SiTailwindcss,
+  SiTypescript,
+} from "react-icons/si";
+import { FaJava } from "react-icons/fa";
+import Link from "next/link";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+const icons = [
+  {
+    icon: SiNextdotjs,
+    name: "Next.js",
+    color: "#000000",
+  },
+  {
+    icon: SiReact,
+    name: "React",
+    color: "#61dafb",
+  },
+  {
+    icon: SiTypescript,
+    name: "TypeScript",
+    color: "#3178c6",
+  },
+  {
+    icon: SiTailwindcss,
+    name: "Tailwind CSS",
+    color: "#38bdf8",
+  },
+  {
+    icon: SiNodedotjs,
+    name: "Node.js",
+    color: "#339933",
+  },
+  {
+    icon: FaJava,
+    name: "Java",
+    color: "#f89820",
+  },
+];
 
 export default function Hero() {
   const circle1Ref = useRef<HTMLDivElement>(null);
@@ -30,7 +75,6 @@ export default function Hero() {
     y2: 0,
   });
 
-  // تحديث إحداثيات الخط حسب موقع الدائرتين
   useEffect(() => {
     const updateLine = () => {
       if (circle1Ref.current && circle2Ref.current) {
@@ -52,6 +96,7 @@ export default function Hero() {
   }, []);
 
   const isMobile = useIsMobile();
+
   return (
     <section className="relative isolate container mx-auto w-full py-10 md:py-32 overflow-hidden">
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(from_var(--muted-foreground)_r_g_b_/_0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(from_var(--muted-foreground)_r_g_b_/_0.05)_1px,transparent_1px)] bg-[size:3rem_3rem]"></div>
@@ -105,22 +150,63 @@ export default function Hero() {
               </Badge>
             </div>
 
-            <h1 className="pt-2 from-foreground via-foreground/90 to-foreground/70 mb-5 bg-gradient-to-r bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-5xl lg:text-6xl">
-              <span className={`${playwriteMxGuides.className}`}>
-                Hi there{" "}
-              </span>
-              , <span className="font-serif font-light italic">I&apos;m </span>
-              <br />
-              <span className="text-primary underline-highlight inline-flex items-baseline gap-1">
-                <span
-                  className={cn(
-                    " bg-gradient-to-b  from-foreground via-foreground/90 to-muted-foreground bg-clip-text text-transparent "
-                  )}
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="from-foreground via-foreground/90 to-foreground/70 mb-6 
+             bg-gradient-to-r bg-clip-text text-4xl font-bold 
+             tracking-tight text-transparent md:text-5xl lg:text-6xl max-w-5xl"
+            >
+              Hi, I’m{" "}
+              <span className="font-serif text-primary font-light italic inline-flex items-center gap-2">
+                Ziane
+                <Link
+                  href={socialLinks[0].href}
+                  target="_blank"
+                  className="ml-2 inline-flex items-center justify-center gap-2 align-bottom 
+                     bg-primary/10 rounded-full p-1 bg-gradient-to-br 
+                     from-primary to-primary/10 text-primary-foreground 
+                     text-xl font-bold shadow-lg relative"
                 >
-                  Ziane Badreddine
-                </span>
+                  <Image
+                    alt="Profile"
+                    className="size-8 overflow-hidden rounded-full sm:size-10 md:size-12 lg:size-14"
+                    height={56}
+                    src={`/avatar.jpeg`}
+                    width={56}
+                  />
+                  <div
+                    className="absolute inset-0 rounded-full bg-primary/20 animate-ping opacity-75"
+                    style={{
+                      animationDuration: "3s",
+                      animationDelay: `${1 * 0.5}s`,
+                    }}
+                  ></div>
+                </Link>{" "}
               </span>
-            </h1>
+              — building modern web apps with{" "}
+              <div className="-space-x-2 -translate-y-1.5 md:-translate-y-2.5 inline-flex items-center justify-center">
+                {icons.map((icon, index) => (
+                  <Tooltip key={icon.name}>
+                    <TooltipTrigger asChild>
+                      <div
+                        className="inline-flex size-8 items-center justify-center rounded-full text-white sm:size-10 md:size-12 lg:size-14"
+                        style={{
+                          backgroundColor: icon.color,
+                          maskImage: index
+                            ? "radial-gradient(circle 28px at -17px 50%, transparent 99%, white 100%)"
+                            : "none",
+                        }}
+                      >
+                        <icon.icon className="size-3 sm:size-4 md:size-5 lg:size-6" />
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent>{icon.name}</TooltipContent>
+                  </Tooltip>
+                ))}
+              </div>
+            </motion.h1>
 
             <SplitTextReveal text="Fullstack software engineer passionate about building modern web apps with Next.js and Tailwind on the frontend, and scalable APIs using Node.js or Java Spring Boot on the backend." />
 
@@ -340,7 +426,10 @@ export default function Hero() {
             <motion.svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 200 200"
-              className={cn("absolute    w-32 h-32 -z-10 cursor-grab md:z-500",isMobile ? " bottom-0 -left-[10%] " : " right-0 bottom-0" )}
+              className={cn(
+                "absolute    w-32 h-32 -z-10 cursor-grab md:z-500",
+                isMobile ? " bottom-0 -left-[10%] " : " right-0 bottom-0"
+              )}
               initial={{ opacity: 0, rotate: 0 }}
               animate={{ opacity: 1, rotate: 360 }}
               transition={{

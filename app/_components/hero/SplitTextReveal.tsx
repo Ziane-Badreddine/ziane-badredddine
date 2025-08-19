@@ -33,7 +33,7 @@ const word = {
 
 
 
-const filterWorld = ["Java Spring Boot", "Node.js", "Tailwind", "Next.js"];
+const filterWorld = ["backend.","APIs","Java", "Spring" ,"Boot", "Node.js", "Tailwind", "Next.js","Fullstack","software","engineer","frontend,","modern","web","apps"];
 
 export const SplitTextReveal = ({
   text,
