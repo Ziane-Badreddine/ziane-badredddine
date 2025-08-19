@@ -9,8 +9,9 @@ export default function Services() {
   return (
     <section
       id="services"
-      className=" w-full py-20 md:py-32 bg-muted/30 overflow-hidden relative isolate"
+       className="from-muted/30 relative isolate w-full overflow-hidden bg-linear-180 from-50% to-transparent py-20 md:py-32"
     >
+       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(from_var(--secondary)_r_g_b_/0.05),transparent_50%)]"></div>
 
       <div className=" container px-4 md:px-6 mx-auto">
         <motion.div
