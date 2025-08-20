@@ -65,7 +65,7 @@ export default function Footer() {
           <div className=" max-w-md space-y-4 text-center md:text-left">
             <Link
               href="/"
-              className="flex items-center justify-center md:justify-start gap-2 font-bold text-xl  "
+              className="flex items-center justify-center md:justify-start  font-bold text-xl  "
             >
               <>
                 <Image
@@ -83,9 +83,7 @@ export default function Footer() {
                   className="hidden dark:block"
                 />
               </>
-              <span>
-                Badreddine
-              </span>
+              <span className="text-secondary ml-2">Badr</span>eddine
             </Link>
             <p className="text-sm">
               I built this portfolio using Next.js and Tailwind CSS — inspired

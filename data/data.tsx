@@ -1,4 +1,4 @@
-import { SiConvex } from "@/components/icons/SiConvex";
+
 import {
   SiNextdotjs,
   SiReact,
@@ -36,6 +36,7 @@ import {
   IconDeviceDesktopCode,
   IconPuzzle,
 } from "@tabler/icons-react";
+import { SiConvex } from "@/components/icons/SiConvex";
 export const services = [
   {
     id: 0,
@@ -270,32 +271,32 @@ export const skills = [
 ];
 
 export const technologies = [
-  { name: "React", icon: SiReact },
-  { name: "Next.js", icon: SiNextdotjs },
-  { name: "Tailwind CSS", icon: SiTailwindcss },
-  { name: "TypeScript", icon: SiTypescript },
-  { name: "JavaScript", icon: SiJavascript },
-  { name: "HTML5", icon: SiHtml5 },
-  { name: "CSS3", icon: SiCss3 },
-  { name: "Node.js", icon: SiNodedotjs },
-  { name: "Express", icon: SiExpress },
-  { name: "NestJS", icon: SiNestjs },
-  { name: "Spring Boot", icon: SiSpringboot },
-  { name: "MongoDB", icon: SiMongodb },
-  { name: "PostgreSQL", icon: SiPostgresql },
-  { name: "Prisma", icon: SiPrisma },
-  { name: "Drizzle ORM", icon: SiDrizzle },
-  { name: "Firebase", icon: SiFirebase },
-  { name: "Supabase", icon: SiSupabase },
-  { name: "Framer Motion", icon: SiFramer },
-  { name: "Auth.js", icon: SiAuth0 },
-  { name: "Clerk", icon: SiClerk },
-  { name: "Convex", icon: SiConvex },
-  { name: "Stripe", icon: FaStripe },
-  { name: "Java", icon: FaJava },
-  { name: "Github", icon: FaGithub },
-  { name: "Figma", icon: FaFigma },
-  { name: "Git", icon: FaGitAlt },
+  { name: "React", icon: SiReact, color: "#61DAFB" },
+  { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
+  { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
+  { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+  { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+  { name: "HTML5", icon: SiHtml5, color: "#E34F26" },
+  { name: "CSS3", icon: SiCss3, color: "#1572B6" },
+  { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+  { name: "Express", icon: SiExpress, color: "#000000" },
+  { name: "NestJS", icon: SiNestjs, color: "#E0234E" },
+  { name: "Spring Boot", icon: SiSpringboot, color: "#6DB33F" },
+  { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+  { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+  { name: "Prisma", icon: SiPrisma, color: "#2D3748" },
+  { name: "Drizzle ORM", icon: SiDrizzle, color: "#FFCC33" },
+  { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
+  { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
+  { name: "Framer Motion", icon: SiFramer, color: "#0055FF" },
+  { name: "Auth.js", icon: SiAuth0, color: "#EB5424" },
+  { name: "Clerk", icon: SiClerk, color: "#6C47FF" },
+  { name: "Convex", icon: SiConvex, color: "#FF6F61" }, // pas officiel, placeholder
+  { name: "Stripe", icon: FaStripe, color: "#635BFF" },
+  { name: "Java", icon: FaJava, color: "#007396" },
+  { name: "Github", icon: FaGithub, color: "#181717" },
+  { name: "Figma", icon: FaFigma, color: "#F24E1E" },
+  { name: "Git", icon: FaGitAlt, color: "#F05032" },
 ];
 
 export const socialLinks = [

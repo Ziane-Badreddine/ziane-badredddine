@@ -97,6 +97,21 @@ export default function Hero() {
 
   const isMobile = useIsMobile();
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 },
+  };
+
   return (
     <section className="relative isolate container mx-auto w-full py-10 md:py-32 overflow-hidden">
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(from_var(--muted-foreground)_r_g_b_/_0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(from_var(--muted-foreground)_r_g_b_/_0.05)_1px,transparent_1px)] bg-[size:3rem_3rem]"></div>
@@ -186,11 +201,18 @@ export default function Hero() {
                 </Link>{" "}
               </span>
               — building modern web apps with{" "}
-              <div className="-space-x-2 -translate-y-1.5 md:-translate-y-2.5 inline-flex items-center justify-center">
+              <motion.div
+                variants={container}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                className="-space-x-2 -translate-y-1.5 md:-translate-y-2.5 inline-flex items-center justify-center"
+              >
                 {icons.map((icon, index) => (
                   <Tooltip key={icon.name}>
                     <TooltipTrigger asChild>
-                      <div
+                      <motion.div
+                        variants={item}
                         className="inline-flex size-8 items-center justify-center rounded-full text-white sm:size-10 md:size-12 lg:size-14"
                         style={{
                           backgroundColor: icon.color,
@@ -200,12 +222,12 @@ export default function Hero() {
                         }}
                       >
                         <icon.icon className="size-3 sm:size-4 md:size-5 lg:size-6" />
-                      </div>
+                      </motion.div>
                     </TooltipTrigger>
                     <TooltipContent>{icon.name}</TooltipContent>
                   </Tooltip>
                 ))}
-              </div>
+              </motion.div>
             </motion.h1>
 
             <SplitTextReveal text="Fullstack software engineer passionate about building modern web apps with Next.js and Tailwind on the frontend, and scalable APIs using Node.js or Java Spring Boot on the backend." />

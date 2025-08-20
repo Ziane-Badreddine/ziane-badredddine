@@ -83,7 +83,7 @@ export default function TechIconsScroller() {
                 >
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Icon className="text-5xl text-primary" />
+                     <Icon className="text-5xl" style={{ color: tech.color }} />
                     </TooltipTrigger>
                     <TooltipContent side="top" className="text-xs">
                       {tech.name}
