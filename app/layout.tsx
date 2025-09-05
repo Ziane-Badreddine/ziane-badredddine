@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -70,7 +71,6 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
 };
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -89,6 +89,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <Analytics />
           <Toaster richColors />
         </ThemeProvider>
       </body>
