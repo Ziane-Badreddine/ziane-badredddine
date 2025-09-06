@@ -113,7 +113,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative isolate container mx-auto w-full py-10 md:py-32 overflow-hidden">
+    <section className="relative isolate container mx-auto w-full pt-26 pb-10 md:pb-32 md:pt-48  overflow-hidden">
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(from_var(--muted-foreground)_r_g_b_/_0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(from_var(--muted-foreground)_r_g_b_/_0.05)_1px,transparent_1px)] bg-[size:3rem_3rem]"></div>
 
       <motion.div

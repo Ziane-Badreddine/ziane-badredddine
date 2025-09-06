@@ -42,7 +42,7 @@ export function ServicesGrid() {
             service.id === 0
               ? " md:col-span-2 grid grid-cols-1 md:grid-cols-2 bg-card text-card-foreground border rounded-xl shadow-sm overflow-hidden group relative "
               : "bg-card text-card-foreground flex flex-col   col-span-1   relative  rounded-xl border shadow-sm overflow-hidden group md:min-h-[400px]  ",
-            " hover:border-foreground transition-all duration-300"
+            " hover:border-primary transition-all duration-300"
           )}
         >
           <div className="p-6 flex flex-col  justify-between gap-3  ">

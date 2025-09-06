@@ -10,7 +10,7 @@ import Footer from "./_components/footer";
 
 export default function page() {
   return (
-    <div className="bg-background text-foreground  flex flex-col items-center justify-center">
+    <div className="bg-background text-foreground  flex flex-col items-center justify-center scroll-smooth antialiased">
       <Header />
       
       <main className="w-full h-full flex-1">

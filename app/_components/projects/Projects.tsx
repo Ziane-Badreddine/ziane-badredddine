@@ -27,6 +27,7 @@ import {
 } from "@/components/ui/tooltip";
 import { SplitTextReveal } from "../hero/SplitTextReveal";
 import Autoplay from "embla-carousel-autoplay";
+import { ImageZoom } from "@/components/ui/kibo-ui/image-zoom";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -265,7 +266,13 @@ export default function Projects() {
                     <CarouselContent>
                       {projects.map((project, index) => (
                         <CarouselItem key={index}>
-                          <div className="relative w-full aspect-[16/9] sm:aspect-auto sm:h-[320px] md:h-[360px] lg:h-[450px] xl:h-[480px] overflow-hidden ">
+                          <ImageZoom
+                          zoomMargin={0}
+                            backdropClassName={cn(
+                              '[&_[data-rmiz-modal-overlay="visible"]]:bg-black/80'
+                            )}
+                            className="relative w-full aspect-[16/9] sm:aspect-auto sm:h-[320px] md:h-[360px] lg:h-[450px] xl:h-[480px] overflow-hidden "
+                          >
                             <Image
                               src={project.img}
                               alt={project.title ?? ""}
@@ -275,7 +282,7 @@ export default function Projects() {
                               quality={90}
                               sizes="(min-width: 1280px) 1017px, (min-width: 1040px) 936px, (min-width: 780px) 760px, (min-width: 680px) 676px, calc(110.56vw - 55px)"
                             />
-                          </div>
+                          </ImageZoom>
                         </CarouselItem>
                       ))}
                     </CarouselContent>

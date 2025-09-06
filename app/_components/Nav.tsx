@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ModeToggle } from "@/components/ui/mode-toggle";
 //import { useGithubStars } from "@/hooks/use-github-stars";
@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { useGithubProfileStars } from "@/hooks/useGithubProfileStars";
 import { FaGithub } from "react-icons/fa";
+import { cn } from "@/lib/utils";
 
 export const navLinks = [
   {
@@ -49,10 +50,38 @@ export const navLinks = [
   },
 ];
 
-export default function Nav() {
-  //const { stargazersCount } = useGithubStars("jnsahaj", "tweakcn");
+interface NavProps {
+  hidden: boolean;
+}
+
+export default function Nav({ hidden }: NavProps) {
   const { totalStars } = useGithubProfileStars("Ziane-Badreddine");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+        if (visible.length > 0) {
+          setActiveSection(visible[0].target.id);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    navLinks.forEach((link) => {
+      const el = document.getElementById(
+        link.name.toLowerCase().replace(/\s+/g, "-")
+      );
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const targetId = e.currentTarget.getAttribute("href")?.slice(1);
@@ -63,10 +92,23 @@ export default function Nav() {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY === 0) {
+        setActiveSection("home");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
     <>
       <div className="hidden md:flex items-center  gap-4 lg:gap-8 capitalize">
         {navLinks.map((link, i) => {
+          const sectionId = link.name.toLowerCase().replace(/\s+/g, "-");
+          const isActive = activeSection === sectionId;
+          //console.log(activeSection,sectionId)
           return (
             <motion.a
               key={i}
@@ -75,10 +117,19 @@ export default function Nav() {
               transition={{ duration: 0.3, delay: 0.1 + i * 0.05 }}
               href={`#${link.name.toLowerCase().replace(/\s+/g, "-")}`}
               onClick={handleScrollToSection}
-              className="text-xs lg:text-sm font-medium text-muted-foreground transition-colors hover:text-foreground relative group"
+              className={cn(
+                "text-xs lg:text-sm font-medium text-muted-foreground transition-colors hover:text-foreground relative group",
+                isActive && "text-foreground"
+              )}
             >
               {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+
+              <span
+                className={cn(
+                  "absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full",
+                  isActive && "w-full"
+                )}
+              ></span>
             </motion.a>
           );
         })}
@@ -130,7 +181,7 @@ export default function Nav() {
           <span className="sr-only">Toggle menu</span>
         </Button>
       </div>
-      {mobileMenuOpen && (
+      {mobileMenuOpen && !hidden && (
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -139,6 +190,8 @@ export default function Nav() {
         >
           <div className="container mx-auto py-4 flex flex-col gap-4 px-4 capitalize">
             {navLinks.map((item, i) => {
+              const sectionId = item.name.toLowerCase().replace(/\s+/g, "-");
+              const isActive = activeSection === sectionId;
               return (
                 <motion.a
                   key={i}
@@ -152,9 +205,13 @@ export default function Nav() {
                   }}
                   className="py-2 text-sm font-medium flex items-center gap-2 relative overflow-hidden group border-b box-border/30 pb-5"
                 >
-                  
                   <span className="relative z-10">{item.name}</span>
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                  <span
+                    className={cn(
+                      "absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full",
+                      isActive && "w-full"
+                    )}
+                  ></span>
                 </motion.a>
               );
             })}
