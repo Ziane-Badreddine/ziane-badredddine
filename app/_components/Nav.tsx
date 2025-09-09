@@ -168,18 +168,24 @@ export default function Nav({ hidden }: NavProps) {
         >
           <ModeToggle />
         </motion.div>
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.3, delay: 0.4 }}
         >
-          {mobileMenuOpen ? (
-            <X className="size-5" />
-          ) : (
-            <Menu className="size-5" />
-          )}
-          <span className="sr-only">Toggle menu</span>
-        </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? (
+              <X className="size-5" />
+            ) : (
+              <Menu className="size-5" />
+            )}
+            <span className="sr-only">Toggle menu</span>
+          </Button>
+        </motion.div>
       </div>
       {mobileMenuOpen && !hidden && (
         <motion.div

@@ -114,7 +114,21 @@ export default function Hero() {
 
   return (
     <section className="relative isolate container mx-auto w-full pt-26 pb-10 md:pb-32 md:pt-48  overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(from_var(--muted-foreground)_r_g_b_/_0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(from_var(--muted-foreground)_r_g_b_/_0.05)_1px,transparent_1px)] bg-[size:3rem_3rem]"></div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          backgroundImage: `
+      repeating-linear-gradient(22.5deg, transparent, transparent 2px, color-mix(in srgb, var(--muted-foreground) 18%, transparent) 2px, color-mix(in srgb, var(--muted-foreground) 18%, transparent) 3px, transparent 3px, transparent 8px),
+      repeating-linear-gradient(67.5deg, transparent, transparent 2px, color-mix(in srgb, var(--muted-foreground) 10%, transparent) 2px, color-mix(in srgb, var(--muted-foreground) 10%, transparent) 3px, transparent 3px, transparent 8px),
+      repeating-linear-gradient(112.5deg, transparent, transparent 2px, color-mix(in srgb, var(--muted-foreground) 8%, transparent) 2px, color-mix(in srgb, var(--muted-foreground) 8%, transparent) 3px, transparent 3px, transparent 8px),
+      repeating-linear-gradient(157.5deg, transparent, transparent 2px, color-mix(in srgb, var(--muted-foreground) 6%, transparent) 2px, color-mix(in srgb, var(--muted-foreground) 6%, transparent) 3px, transparent 3px, transparent 8px)
+    `,
+        }}
+      />
 
       <motion.div
         initial={{ opacity: 0 }}
@@ -493,12 +507,27 @@ export default function Hero() {
             </motion.svg>
 
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{
-                delay: 0.6,
-                duration: 0.6,
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                y: [0, -10, 0],
+                transition: {
+                  y: {
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  },
+                },
               }}
+              transition={{ duration: 0.7, delay: 1 }}
+              viewport={{ once: true }}
+              whileHover={{
+                scale: 1.05,
+                rotate: 3,
+                transition: { type: "spring", stiffness: 250 },
+              }}
+              whileTap={{ scale: 0.97 }}
               className="w-[298px] h-[298px] md:w-[398px] md:h-[398px] lg:w-[498px] lg:h-[498px] mix-blend-lighten"
             >
               <Image
