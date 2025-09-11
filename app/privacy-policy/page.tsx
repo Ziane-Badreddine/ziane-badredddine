@@ -1,9 +1,15 @@
-
+"use client";
+import { motion } from "motion/react";
 import React from "react";
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="container mx-auto px-4 py-12 md:px-6 md:py-20 lg:max-w-4xl">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="container mx-auto px-4 py-12 md:px-6 md:py-20 lg:max-w-4xl"
+    >
       <h1 className="mb-6 text-3xl font-bold">Privacy Policy</h1>
       <p className="text-muted-foreground mb-8 text-sm">
         Last Updated: 17 Jul 2025
@@ -23,18 +29,19 @@ export default function PrivacyPolicyPage() {
         <p className="text-muted-foreground">
           We use privacy-focused analytics tools like Plausible or Vercel
           Analytics to understand general usage of this website. These tools
-          <strong> do not use cookies</strong> and <strong>do not track personal data</strong>. All data is
-          aggregated and anonymized.
+          <strong> do not use cookies</strong> and{" "}
+          <strong>do not track personal data</strong>. All data is aggregated
+          and anonymized.
         </p>
       </section>
 
       <section className="mb-8 space-y-4">
         <h2 className="text-xl font-semibold">3. Contact Form</h2>
         <p className="text-muted-foreground">
-          When you fill out the contact form to start a project or get in
-          touch, we collect the information you provide (such as your name,
-          email address, and message). This data is used solely to respond to
-          your inquiry and is not shared or used for marketing purposes.
+          When you fill out the contact form to start a project or get in touch,
+          we collect the information you provide (such as your name, email
+          address, and message). This data is used solely to respond to your
+          inquiry and is not shared or used for marketing purposes.
         </p>
         <p className="text-muted-foreground">
           The form data may be temporarily processed by a third-party service
@@ -63,8 +70,8 @@ export default function PrivacyPolicyPage() {
       <section className="mb-8 space-y-4">
         <h2 className="text-xl font-semibold">6. Contact</h2>
         <p className="text-muted-foreground">
-          For any questions or privacy-related concerns, feel free to contact
-          us at{" "}
+          For any questions or privacy-related concerns, feel free to contact us
+          at{" "}
           <a
             href="mailto:your.email@example.com"
             className="text-primary hover:underline"
@@ -77,6 +84,6 @@ export default function PrivacyPolicyPage() {
       <p className="text-muted-foreground mt-12 text-sm">
         By using this site, you agree to this privacy policy.
       </p>
-    </div>
+    </motion.div>
   );
 }

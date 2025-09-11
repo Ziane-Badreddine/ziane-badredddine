@@ -7,6 +7,7 @@ import Link from "next/link";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 import { FaXTwitter } from "react-icons/fa6";
 import Image from "next/image";
+import { faustina } from "@/lib/fonts";
 
 const socialLinks = [
   {
@@ -31,7 +32,7 @@ const container = {
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.3,
+      staggerChildren: 0.1,
     },
   },
 };
@@ -65,7 +66,7 @@ export default function Footer() {
           <div className=" max-w-md space-y-4 text-center md:text-left">
             <Link
               href="/"
-              className="flex items-center justify-center md:justify-start  font-bold text-xl  "
+              className="flex items-center justify-center md:justify-start  font-bold text-lg "
             >
               <>
                 <Image
@@ -83,11 +84,16 @@ export default function Footer() {
                   className="hidden dark:block"
                 />
               </>
-              <span className="text-secondary ml-2">Badr</span>eddine
+              <span className={`${faustina.className} ml-2`}>
+                Ziane_badreddine__
+              </span>
             </Link>
-            <p className="text-sm">
-              I built this portfolio using Next.js and Tailwind CSS — inspired
-              by TweakCN.
+            <p className="text-sm ">
+              This portfolio was built with{" "}
+              <span className="font-bold">Next.js</span> and{" "}
+              <span className="font-bold">Tailwind CSS</span>, inspired by the{" "}
+              <span className="font-bold">TweakCN</span> design system, and
+              styled using <span className="font-bold">ShadCN UI</span>.
             </p>
           </div>
 
@@ -125,11 +131,12 @@ export default function Footer() {
 
         <div className="border-border/40 flex flex-col items-center justify-between gap-4 border-t pt-8 sm:flex-row">
           <p className="text-xs">
-            &copy; {new Date().getFullYear()} Badreddine. All rights reserved.
+            &copy; {new Date().getFullYear()} Ziane_badreddine__. All rights
+            reserved.
           </p>
           <p className="text-xs ">
             <Link href="/privacy-policy" className=" hover:underline">
-                Privacy Policy
+              Privacy Policy
             </Link>
           </p>
         </div>

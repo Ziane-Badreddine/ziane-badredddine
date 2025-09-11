@@ -31,6 +31,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { lora } from "@/lib/fonts";
 const icons = [
   {
     icon: SiNextdotjs,
@@ -189,7 +190,7 @@ export default function Hero() {
             >
               Hi, I’m{" "}
               <span className="font-serif text-primary font-light italic inline-flex items-center gap-2">
-                Ziane
+                <span className={`${lora.className}`}>Ziane</span>
                 <Link
                   href={socialLinks[0].href}
                   target="_blank"
@@ -213,7 +214,7 @@ export default function Hero() {
                     }}
                   ></div>
                 </Link>{" "}
-              </span>
+              </span>{" "}
               — building modern web apps with{" "}
               <motion.div
                 variants={container}

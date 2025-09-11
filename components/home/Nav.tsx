@@ -2,9 +2,10 @@
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import type React from "react";
+import {  useState } from "react";
 import { motion } from "framer-motion";
-import { ModeToggle } from "@/components/ui/mode-toggle";
+import { ModeToggle } from "@/components/mode-toggle";
 //import { useGithubStars } from "@/hooks/use-github-stars";
 import { formatCompactNumber } from "@/utils/format";
 
@@ -57,33 +58,11 @@ interface NavProps {
 export default function Nav({ hidden }: NavProps) {
   const { totalStars } = useGithubProfileStars("Ziane-Badreddine");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState<string>("");
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const MotionLink = motion.create(Link);
 
-        if (visible.length > 0) {
-          setActiveSection(visible[0].target.id);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    navLinks.forEach((link) => {
-      const el = document.getElementById(
-        link.name.toLowerCase().replace(/\s+/g, "-")
-      );
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
 
   const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
     const targetId = e.currentTarget.getAttribute("href")?.slice(1);
     if (!targetId) return;
 
@@ -92,47 +71,58 @@ export default function Nav({ hidden }: NavProps) {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY === 0) {
-        setActiveSection("home");
-      }
-    };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
   return (
     <>
       <div className="hidden md:flex items-center  gap-4 lg:gap-8 capitalize">
         {navLinks.map((link, i) => {
-          const sectionId = link.name.toLowerCase().replace(/\s+/g, "-");
-          const isActive = activeSection === sectionId;
-          //console.log(activeSection,sectionId)
           return (
-            <motion.a
+            <MotionLink
               key={i}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.1 + i * 0.05 }}
-              href={`#${link.name.toLowerCase().replace(/\s+/g, "-")}`}
+              initial={!hasAnimated ? { opacity: 0, y: -10 } : false}
+              animate={!hasAnimated ? { opacity: 1, y: 0 } : {}}
+              transition={
+                !hasAnimated ? { duration: 0.3, delay: 0.1 + i * 0.05 } : {}
+              }
+              href={`/#${link.name.toLowerCase().replace(/\s+/g, "-")}`}
               onClick={handleScrollToSection}
               className={cn(
-                "text-xs lg:text-sm font-medium text-muted-foreground transition-colors hover:text-foreground relative group",
-                isActive && "text-foreground"
+                "text-xs lg:text-sm font-medium text-muted-foreground transition-colors hover:text-foreground relative group"
               )}
             >
               {link.name}
 
               <span
                 className={cn(
-                  "absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full",
-                  isActive && "w-full"
+                  "absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"
                 )}
               ></span>
-            </motion.a>
+            </MotionLink>
           );
         })}
+        <MotionLink
+          href="/blog"
+          initial={!hasAnimated ? { opacity: 0, y: -10 } : false}
+          animate={!hasAnimated ? { opacity: 1, y: 0 } : {}}
+          transition={
+            !hasAnimated
+              ? { duration: 0.3, delay: 0.1 + navLinks.length * 0.05 }
+              : {}
+          }
+          onAnimationComplete={() => {
+              setHasAnimated(true);
+          }}
+          className={cn(
+            "text-xs lg:text-sm font-medium text-muted-foreground transition-colors hover:text-foreground relative group"
+          )}
+        >
+          blog
+          <span
+            className={cn(
+              "absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"
+            )}
+          />
+        </MotionLink>
       </div>
       <motion.div className=" hidden md:flex gap-4 items-center">
         <motion.div
@@ -192,41 +182,47 @@ export default function Nav({ hidden }: NavProps) {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="md:hidden absolute top-16 inset-x-0 bg-background/95 backdrop-blur-lg border-b"
+          className="md:hidden absolute top-16 inset-x-0 bg-background/95 backdrop-blur-3xl border-b border-foreground"
         >
           <div className="container mx-auto py-4 flex flex-col gap-4 px-4 capitalize">
             {navLinks.map((item, i) => {
-              const sectionId = item.name.toLowerCase().replace(/\s+/g, "-");
-              const isActive = activeSection === sectionId;
               return (
-                <motion.a
+                <MotionLink
                   key={i}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.2, delay: i * 0.05 }}
-                  href={`#${item.name.toLowerCase().replace(/\s+/g, "-")}`}
+                  href={`/#${item.name.toLowerCase().replace(/\s+/g, "-")}`}
                   onClick={(e) => {
                     handleScrollToSection(e);
                     setMobileMenuOpen(false);
                   }}
-                  className="py-2 text-sm font-medium flex items-center gap-2 relative overflow-hidden group border-b box-border/30 pb-5"
+                  className="py-2 text-sm font-medium flex items-center gap-2 relative overflow-hidden group "
                 >
-                  <span className="relative z-10">{item.name}</span>
-                  <span
-                    className={cn(
-                      "absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full",
-                      isActive && "w-full"
-                    )}
-                  ></span>
-                </motion.a>
+                  <span className={cn("relative z-10", "hover:text-primary")}>
+                    #{item.name}
+                  </span>
+                </MotionLink>
               );
             })}
+            <MotionLink
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.2, delay: navLinks.length * 0.05 }}
+              href={`/blog`}
+              onClick={() => {
+                setMobileMenuOpen(false);
+              }}
+              className="py-2 text-sm font-medium flex items-center gap-2 relative overflow-hidden group "
+            >
+              <span className={cn("relative z-10")}>/blog</span>
+            </MotionLink>
 
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.3 }}
-              className="pt-2 mt-2 "
+              className="pt-5 border-t "
             >
               <Link
                 href="https://github.com/Ziane-Badreddine"
@@ -238,7 +234,7 @@ export default function Nav({ hidden }: NavProps) {
                   <FaGithub className="size-4 animate-pulse" />
                   Star on GitHub
                   {totalStars > 0 && (
-                    <span className="text-sm text-accent ml-1">
+                    <span className="text-sm text-foreground ml-1">
                       ({formatCompactNumber(totalStars)})
                     </span>
                   )}

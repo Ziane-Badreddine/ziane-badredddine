@@ -1,7 +1,7 @@
 import React from "react";
-import Footer from "../_components/footer";
-import { Header } from "./_components/Header";
 import { Metadata } from "next";
+import { Header } from "@/components/privacy-policy/Header";
+import Footer from "@/components/home/footer";
 
 
 export const metadata: Metadata = {

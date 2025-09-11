@@ -57,7 +57,7 @@ export default function Skills() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.2 }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
               className="relative z-10 flex flex-col items-center text-center space-y-4"
             >
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary/70 text-primary-foreground text-2xl shadow-lg relative">

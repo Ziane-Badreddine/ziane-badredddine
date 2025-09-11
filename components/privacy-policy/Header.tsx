@@ -1,13 +1,14 @@
 "use client";
 import { motion } from "motion/react";
 
-import Logo from "@/app/_components/Logo";
-import { ModeToggle } from "@/components/ui/mode-toggle";
+import Logo from "@/components/home/Logo";
+import { ModeToggle } from "@/components/mode-toggle";
 import { formatCompactNumber } from "@/utils/format";
 import Link from "next/link";
 import { useGithubProfileStars } from "@/hooks/useGithubProfileStars";
 import { Button } from "@/components/ui/button";
 import { FaGithub } from "react-icons/fa";
+import { faustina } from "@/lib/fonts";
 
 export function Header() {
   const { totalStars } = useGithubProfileStars("Ziane-Badreddine");
@@ -17,12 +18,15 @@ export function Header() {
       <div className="flex items-center justify-between gap-2 p-4">
         <div className="flex items-center gap-1">
           <Link href={"/"}>
-            <div className="flex items-center gap-2 font-bold ">
+            <motion.div
+              className="flex items-center gap-2 font-bold text-sm md:text-base "
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            >
               <Logo />
-              <span>
-                <span className="text-primary">Badr</span>eddine
-              </span>
-            </div>
+              <span className={`${faustina.className}`}>Ziane_badreddine__</span>
+            </motion.div>
           </Link>
         </div>
         <motion.div className=" flex gap-2 items-center">
