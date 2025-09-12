@@ -114,7 +114,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative isolate container mx-auto w-full pt-26 pb-10 md:pb-32 md:pt-48  overflow-hidden">
+    <section className="relative isolate container mx-auto w-full pt-26 pb-10 md:pb-32 md:pt-40  overflow-hidden">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -201,7 +201,7 @@ export default function Hero() {
                 >
                   <Image
                     alt="Profile"
-                    className="size-8 overflow-hidden rounded-full sm:size-10 md:size-12 lg:size-14"
+                    className="overflow-hidden rounded-full size-12 lg:size-16"
                     height={56}
                     src={`/avatar.jpeg`}
                     width={56}
@@ -221,14 +221,14 @@ export default function Hero() {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}
-                className="-space-x-2 -translate-y-1.5 md:-translate-y-2.5 inline-flex items-center justify-center"
+                className="-space-x-2 translate-y-1.5 md:translate-y-2.5 lg:-translate-y-2.5 inline-flex items-center justify-center"
               >
                 {icons.map((icon, index) => (
                   <Tooltip key={icon.name}>
                     <TooltipTrigger asChild>
                       <motion.div
                         variants={item}
-                        className="inline-flex size-8 items-center justify-center rounded-full text-white sm:size-10 md:size-12 lg:size-14"
+                        className="inline-flex size-12 items-center justify-center rounded-full text-white md:size-12 lg:size-14"
                         style={{
                           backgroundColor: icon.color,
                           maskImage: index
@@ -236,7 +236,7 @@ export default function Hero() {
                             : "none",
                         }}
                       >
-                        <icon.icon className="size-3 sm:size-4 md:size-5 lg:size-6" />
+                        <icon.icon className="size-5 lg:size-6" />
                       </motion.div>
                     </TooltipTrigger>
                     <TooltipContent>{icon.name}</TooltipContent>
@@ -319,7 +319,7 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          <div className="w-full h-full relative order-1 lg:order-none mx-auto flex items-center justify-center   ">
+          <div className="w-full h-full relative order-1 lg:order-none mx-auto  items-center justify-center hidden md:flex    ">
             <motion.svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 800 600"
