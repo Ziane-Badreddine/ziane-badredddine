@@ -4,6 +4,8 @@ import { lora } from "@/lib/fonts";
 import { Metadata } from "next";
 import React from "react";
 
+export const revalidate = 30
+
 export const metadata: Metadata = {
   title: "Blog | Ziane Badreddine",
   description: "blog for Ziane Badreddine.",

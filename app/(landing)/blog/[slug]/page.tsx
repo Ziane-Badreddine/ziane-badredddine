@@ -11,6 +11,29 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 
+export const revalidate = 30;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const blog = await getBlog(slug);
+
+  if (!blog) {
+    return {
+      title: `Article Not Found - My Blog`,
+      description: `The article you are looking for does not exist or has been moved.`,
+    };
+  }
+
+  return {
+    title: `${blog.title} - My Blog`,
+    description: blog.description,
+  };
+}
+
 interface BlogPageProps {
   params: Promise<{ slug: string }>;
 }
@@ -18,20 +41,22 @@ interface BlogPageProps {
 export default async function BlogPage({ params }: BlogPageProps) {
   const { slug } = await params;
   const blog = await getBlog(slug);
+
   if (!blog) {
     notFound();
   }
 
   return (
     <div className="w-full h-full flex-1 pt-24 pb-16 md:pt-28 md:pb-32 relative isolate">
+      {/* Background with cosmic noise */}
       <div
         className="absolute inset-0 -z-10"
         style={{
           background: `
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.08) 0%, transparent 40%),
-        radial-gradient(circle at 80% 30%, rgba(255,255,255,0.05) 0%, transparent 40%),
-        linear-gradient(120deg, var(--background) 0%, var(--card) 100%)
-      `,
+            radial-gradient(circle at 20% 20%, var(--foreground)/8% 0%, transparent 40%),
+            radial-gradient(circle at 80% 30%, var(--foreground)/5% 0%, transparent 40%),
+            linear-gradient(120deg, var(--background) 0%, var(--card) 100%)
+          `,
         }}
       />
 
@@ -45,7 +70,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
           Back to Blog
         </Link>
 
-        {/* Date */}
+        {/* Published date */}
         <p className="text-muted-foreground text-sm">
           {format(new Date(blog.publishedAt), "EEEE, MMMM d yyyy")}
         </p>
@@ -57,7 +82,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
           {blog.title}
         </h1>
 
-        {/* Author */}
+        {/* Author info */}
         <div className="flex flex-col gap-3">
           <p className="text-muted-foreground">Posted by</p>
           <Link href={blog.author.twitter ?? "/"}>
@@ -89,8 +114,8 @@ export default async function BlogPage({ params }: BlogPageProps) {
           <Separator />
         </div>
 
-        {/* Body */}
-        <div className={` ${inter.className}`}>
+        {/* Blog body */}
+        <div className={inter.className}>
           <BlogBody body={blog.body} />
         </div>
       </div>
