@@ -31,7 +31,7 @@ export default function BlogCard({ blog }: BlogCardProps) {
         height={320}
         className="aspect-video w-full rounded-t-xl "
       />
-      <CardContent className="px-4 flex flex-col gap-4">
+      <CardContent className="px-4 flex flex-col gap-4 h-full">
         <div className="flex w-full items-center justify-between">
           <div className="flex gap-2">
             <Calendar className="size-4" />

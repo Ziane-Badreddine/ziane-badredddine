@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { lora } from "@/lib/fonts";
 import { urlFor } from "@/sanity/lib/image";
-import { Separator } from "@/components/ui/separator";
 import { ArrowUpRight } from "lucide-react";
 
 const components: PortableTextComponents = {
@@ -39,7 +38,6 @@ const components: PortableTextComponents = {
     normal: ({ children }) => (
       <div className="my-6">
         <p className="leading-7 text-muted-foreground">{children}</p>
-        <Separator className="my-6 opacity-40" />
       </div>
     ),
     blockquote: ({ children }) => (
