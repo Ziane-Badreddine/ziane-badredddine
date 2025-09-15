@@ -117,7 +117,7 @@ const components: PortableTextComponents = {
       </h1>
     ),
     h2: ({ children }) => (
-      <div className="pt-8">
+      <div className="pt-8 mb-6">
         <Separator className="h-[2px] w-16  rounded-full mb-10" />
         <h2 className="text-3xl font-semibold ">{children}</h2>
       </div>
@@ -165,7 +165,7 @@ const components: PortableTextComponents = {
       </Link>
     ),
     strong: ({ children }) => (
-      <strong className="font-semibold text-foreground bg-primary/50 px-1 rounded">
+      <strong className="font-semibold text-foreground bg-primary/50 px-1.5 py-0.5 rounded-md">
         {children}
       </strong>
     ),
