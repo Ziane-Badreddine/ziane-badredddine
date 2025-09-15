@@ -94,5 +94,8 @@ export const blockContentType = defineType({
         withFilename: true,
       },
     }),
+    defineArrayMember({
+      type: "youtube",
+    }),
   ],
 });

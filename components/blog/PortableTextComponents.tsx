@@ -4,7 +4,7 @@ import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import type { PortableTextBlock } from "sanity";
 import Image from "next/image";
 import Link from "next/link";
-import { inter, lora } from "@/lib/fonts";
+import { inter, jetBrainsMono, lora } from "@/lib/fonts";
 import { urlFor } from "@/sanity/lib/image";
 import { ArrowUpRight } from "lucide-react";
 import {
@@ -76,7 +76,9 @@ const components: PortableTextComponents = {
               <CodeBlockFiles>
                 {(item) => (
                   <CodeBlockFilename key={item.language} value={item.language}>
-                    <div className={`flex items-center gap-2 ${inter.className}`}>
+                    <div
+                      className={`flex items-center gap-2 ${inter.className}`}
+                    >
                       {languageIcons[item.language?.toLowerCase()] || null}
                       <span>{item.filename || "snippet"}</span>
                     </div>
@@ -139,48 +141,51 @@ const components: PortableTextComponents = {
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="list-disc list-inside my-4 space-y-2">{children}</ul>
+      <ul className="list-disc list-inside pl-2 md:pl-4 my-4 space-y-2 marker:text-primary">
+        {children}
+      </ul>
     ),
     number: ({ children }) => (
-      <ol className="list-decimal list-inside my-4 space-y-2">{children}</ol>
+      <ol className="list-decimal list-inside pl-2 md:pl-4 my-4 space-y-2 marker:text-primary">
+        {children}
+      </ol>
     ),
   },
-marks: {
-  link: ({ children, value }) => (
-    <Link
-      href={value.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-primary font-medium hover:underline underline-offset-4 relative"
-    >
-      {children}
-      <ArrowUpRight className="absolute -right-5 top-0 size-4" />
-    </Link>
-  ),
-  strong: ({ children }) => (
-    <strong className="font-semibold text-foreground bg-primary/50 px-1 rounded">
-      {children}
-    </strong>
-  ),
-  em: ({ children }) => (
-    <em className="italic text-muted-foreground">{children}</em>
-  ),
-  code: ({ children }) => (
-    <code className="px-1.5 py-0.5 rounded-md bg-muted font-mono text-sm text-primary">
-      {children}
-    </code>
-  ),
-  underline: ({ children }) => (
-    <span className="underline underline-offset-4">{children}</span>
-  ),
-  "strike-through": ({ children }) => (
-    <span className="line-through text-muted-foreground">{children}</span>
-  ),
-},
 
+  marks: {
+    link: ({ children, value }) => (
+      <Link
+        href={value.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-primary font-medium hover:underline underline-offset-4 relative"
+      >
+        {children}
+        <ArrowUpRight className="absolute -right-5 top-0 size-4" />
+      </Link>
+    ),
+    strong: ({ children }) => (
+      <strong className="font-semibold text-foreground bg-primary/50 px-1 rounded">
+        {children}
+      </strong>
+    ),
+    em: ({ children }) => (
+      <em className="italic text-muted-foreground">{children}</em>
+    ),
+    code: ({ children }) => (
+      <code className={`px-1.5 py-0.5 rounded-md bg-sidebar-border  text-primary ${jetBrainsMono.className}`}>
+        {children}
+      </code>
+    ),
+    underline: ({ children }) => (
+      <span className="underline underline-offset-4">{children}</span>
+    ),
+    "strike-through": ({ children }) => (
+      <span className="line-through text-muted-foreground">{children}</span>
+    ),
+  },
 };
 
 export default function BlogBody({ body }: { body: PortableTextBlock[] }) {
-  console.log(body)
   return <PortableText value={body} components={components} />;
 }

@@ -114,7 +114,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative isolate container mx-auto w-full pt-26 pb-10 md:pb-32 md:pt-40  overflow-hidden">
+    <section className="relative isolate container mx-auto w-full py-14 md:py-26 lg:py-30  overflow-hidden">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}

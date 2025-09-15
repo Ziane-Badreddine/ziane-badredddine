@@ -51,11 +51,9 @@ export const navLinks = [
   },
 ];
 
-interface NavProps {
-  hidden: boolean;
-}
 
-export default function Nav({ hidden }: NavProps) {
+
+export default function Nav() {
   const { totalStars } = useGithubProfileStars("Ziane-Badreddine");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -177,12 +175,12 @@ export default function Nav({ hidden }: NavProps) {
           </Button>
         </motion.div>
       </div>
-      {mobileMenuOpen && !hidden && (
+      {mobileMenuOpen  && (
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="md:hidden absolute top-16 inset-x-0 bg-background/95 backdrop-blur-3xl border-b border-foreground"
+          className="md:hidden absolute top-16 inset-x-0 bg-background/90 backdrop-blur-md border-b border-foreground"
         >
           <div className="container mx-auto py-4 flex flex-col gap-4 px-4 capitalize">
             {navLinks.map((item, i) => {

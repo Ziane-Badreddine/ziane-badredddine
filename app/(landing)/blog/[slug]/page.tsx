@@ -47,18 +47,9 @@ export default async function BlogPage({ params }: BlogPageProps) {
   }
 
   return (
-    <div className="w-full h-full flex-1 pt-24 pb-16 md:pt-28 md:pb-32 relative isolate">
+    <div className="w-full h-full flex-1 py-10 md:py-10 lg:py-20 relative isolate">
       {/* Background with cosmic noise */}
-      <div
-        className="absolute inset-0 -z-10"
-        style={{
-          background: `
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.08) 0%, transparent 40%),
-        radial-gradient(circle at 80% 30%, rgba(255,255,255,0.05) 0%, transparent 40%),
-        linear-gradient(120deg, var(--background) 0%,var(--popover) 50%, var(--card) 100%)
-      `,
-        }}
-      />
+
 
       <div className="container mx-auto max-w-5xl px-5 md:px-8 space-y-8">
         {/* Back link */}

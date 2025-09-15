@@ -407,11 +407,11 @@ export const CodeBlockFilename = ({
 
   return (
     <div
-     className={cn("flex items-center gap-2   px-2 py-1.5 text-muted-foreground text-xs", className)}
+     className={cn("flex items-center gap-2   px-2 py-1.5 text-muted-foreground text-sm", className)}
       
       {...props}
     >
-      {Icon && <Icon className="h-4 w-4 shrink-0" />}
+      {Icon && <Icon className="size-5 shrink-0" />}
       <span className="flex-1 truncate">{children}</span>
     </div>
   );
