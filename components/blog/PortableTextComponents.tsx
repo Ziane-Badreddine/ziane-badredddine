@@ -1,17 +1,59 @@
-import { PortableText, PortableTextComponents } from "next-sanity";
-import { PortableTextBlock } from "sanity";
+"use client";
+
+import { PortableText, type PortableTextComponents } from "@portabletext/react";
+import type { PortableTextBlock } from "sanity";
 import Image from "next/image";
 import Link from "next/link";
-import { lora } from "@/lib/fonts";
+import { inter, lora } from "@/lib/fonts";
 import { urlFor } from "@/sanity/lib/image";
 import { ArrowUpRight } from "lucide-react";
+import {
+  BundledLanguage,
+  CodeBlock,
+  CodeBlockBody,
+  CodeBlockContent,
+  CodeBlockCopyButton,
+  CodeBlockFilename,
+  CodeBlockFiles,
+  CodeBlockHeader,
+  CodeBlockItem,
+} from "@/components/ui/kibo-ui/code-block";
+
+// Icons
+import {
+  SiJavascript,
+  SiTypescript,
+  SiPython,
+  SiCplusplus,
+  SiHtml5,
+  SiCss3,
+  SiGnubash,
+  SiMysql,
+} from "react-icons/si";
+import { VscJson } from "react-icons/vsc";
+import { FaJava } from "react-icons/fa";
+import { JSX } from "react";
+import { Separator } from "../ui/separator";
+
+const languageIcons: Record<string, JSX.Element> = {
+  javascript: <SiJavascript className="size-4 text-current" />,
+  typescript: <SiTypescript className="size-4 text-current" />,
+  html: <SiHtml5 className="size-4 text-current" />,
+  css: <SiCss3 className="size-4 text-current" />,
+  python: <SiPython className="size-4 text-current" />,
+  java: <FaJava className="size-4 text-current" />,
+  cpp: <SiCplusplus className="size-4 text-current" />,
+  json: <VscJson className="size-5 text-current" />,
+  bash: <SiGnubash className="size-4 text-current" />,
+  sql: <SiMysql className="size-4 text-current" />,
+};
 
 const components: PortableTextComponents = {
   types: {
     image: ({ value }) => (
       <div className="my-6 w-full flex justify-center">
         <Image
-          src={urlFor(value).width(800).url()}
+          src={urlFor(value).width(800).url() || "/placeholder.svg"}
           alt={value.alt || "Blog image"}
           width={800}
           height={500}
@@ -19,6 +61,52 @@ const components: PortableTextComponents = {
         />
       </div>
     ),
+    code: ({ value }) => {
+      const code = [
+        {
+          language: value.language ?? "javascript",
+          filename: value.filename,
+          code: value.code,
+        },
+      ];
+      return (
+        <div className="my-6">
+          <CodeBlock data={code} defaultValue={code[0].language}>
+            <CodeBlockHeader className=" bg-muted dark:bg-background ">
+              <CodeBlockFiles>
+                {(item) => (
+                  <CodeBlockFilename key={item.language} value={item.language}>
+                    <div className={`flex items-center gap-2 ${inter.className}`}>
+                      {languageIcons[item.language?.toLowerCase()] || null}
+                      <span>{item.filename || "snippet"}</span>
+                    </div>
+                  </CodeBlockFilename>
+                )}
+              </CodeBlockFiles>
+              <CodeBlockCopyButton
+                onCopy={() => console.log("Copied code to clipboard")}
+                onError={() =>
+                  console.error("Failed to copy code to clipboard")
+                }
+              />
+            </CodeBlockHeader>
+            <CodeBlockBody>
+              {(item) => (
+                <CodeBlockItem
+                  className="dark:bg-muted/25 bg-background"
+                  key={item.language}
+                  value={item.language}
+                >
+                  <CodeBlockContent language={item.language as BundledLanguage}>
+                    {item.code}
+                  </CodeBlockContent>
+                </CodeBlockItem>
+              )}
+            </CodeBlockBody>
+          </CodeBlock>
+        </div>
+      );
+    },
   },
   block: {
     h1: ({ children }) => (
@@ -27,7 +115,10 @@ const components: PortableTextComponents = {
       </h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-3xl font-semibold my-5">{children}</h2>
+      <div className="pt-8">
+        <Separator className="h-[2px] w-16  rounded-full mb-10" />
+        <h2 className="text-3xl font-semibold ">{children}</h2>
+      </div>
     ),
     h3: ({ children }) => (
       <h3 className="text-2xl font-medium my-4">{children}</h3>
@@ -54,23 +145,42 @@ const components: PortableTextComponents = {
       <ol className="list-decimal list-inside my-4 space-y-2">{children}</ol>
     ),
   },
-  marks: {
-    link: ({ children, value }) => (
-      <Link
-        href={value.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-primary hover:underline underline-offset-4 relative"
-      >
-        {children}
-        <ArrowUpRight className=" absolute -right-5 top-0 size-4" />
-      </Link>
-    ),
-    strong: ({ children }) => <strong className="font-bold">{children}</strong>,
-    em: ({ children }) => <em className="italic">{children}</em>,
-  },
+marks: {
+  link: ({ children, value }) => (
+    <Link
+      href={value.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-primary font-medium hover:underline underline-offset-4 relative"
+    >
+      {children}
+      <ArrowUpRight className="absolute -right-5 top-0 size-4" />
+    </Link>
+  ),
+  strong: ({ children }) => (
+    <strong className="font-semibold text-foreground bg-primary/50 px-1 rounded">
+      {children}
+    </strong>
+  ),
+  em: ({ children }) => (
+    <em className="italic text-muted-foreground">{children}</em>
+  ),
+  code: ({ children }) => (
+    <code className="px-1.5 py-0.5 rounded-md bg-muted font-mono text-sm text-primary">
+      {children}
+    </code>
+  ),
+  underline: ({ children }) => (
+    <span className="underline underline-offset-4">{children}</span>
+  ),
+  "strike-through": ({ children }) => (
+    <span className="line-through text-muted-foreground">{children}</span>
+  ),
+},
+
 };
 
 export default function BlogBody({ body }: { body: PortableTextBlock[] }) {
+  console.log(body)
   return <PortableText value={body} components={components} />;
 }

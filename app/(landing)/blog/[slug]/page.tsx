@@ -53,10 +53,10 @@ export default async function BlogPage({ params }: BlogPageProps) {
         className="absolute inset-0 -z-10"
         style={{
           background: `
-            radial-gradient(circle at 20% 20%, var(--foreground)/8% 0%, transparent 40%),
-            radial-gradient(circle at 80% 30%, var(--foreground)/5% 0%, transparent 40%),
-            linear-gradient(120deg, var(--background) 0%, var(--card) 100%)
-          `,
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.08) 0%, transparent 40%),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,0.05) 0%, transparent 40%),
+        linear-gradient(120deg, var(--background) 0%,var(--popover) 50%, var(--card) 100%)
+      `,
         }}
       />
 
