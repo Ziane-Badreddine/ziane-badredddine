@@ -50,17 +50,26 @@ const languageIcons: Record<string, JSX.Element> = {
 
 const components: PortableTextComponents = {
   types: {
-    image: ({ value }) => (
-      <div className="my-6 w-full flex justify-center">
-        <Image
-          src={urlFor(value).width(800).url() || "/placeholder.svg"}
-          alt={value.alt || "Blog image"}
-          width={800}
-          height={500}
-          className=" shadow-lg object-cover"
-        />
-      </div>
-    ),
+    image: ({ value }) => {
+      return (
+        <div className="my-6 w-full flex flex-col justify-center">
+          <Image
+            src={urlFor(value).width(800).url() || "/placeholder.svg"}
+            alt={value.alt || "Blog image"}
+            width={800}
+            height={500}
+            className=" shadow-lg object-cover w-full"
+            priority
+            quality={100}
+          />
+          {value.alt && (
+            <figcaption className="mt-3 text-center text-sm text-muted-foreground italic">
+              {value.alt}
+            </figcaption>
+          )}
+        </div>
+      );
+    },
     code: ({ value }) => {
       const code = [
         {
@@ -165,15 +174,15 @@ const components: PortableTextComponents = {
       </Link>
     ),
     strong: ({ children }) => (
-      <strong className="font-semibold text-foreground bg-primary/50 px-1.5 py-0.5 rounded-md">
-        {children}
-      </strong>
+      <strong className="font-semibold text-foreground">{children}</strong>
     ),
     em: ({ children }) => (
       <em className="italic text-muted-foreground">{children}</em>
     ),
     code: ({ children }) => (
-      <code className={`px-1.5 py-0.5 rounded-md bg-sidebar-border  text-primary ${jetBrainsMono.className}`}>
+      <code
+        className={`px-1.5 py-0.5 rounded-md bg-sidebar-border  text-primary ${jetBrainsMono.className}`}
+      >
         {children}
       </code>
     ),
