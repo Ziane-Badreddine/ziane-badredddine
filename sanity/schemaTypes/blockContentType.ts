@@ -32,6 +32,9 @@ export const blockContentType = defineType({
         { title: "H3", value: "h3" },
         { title: "H4", value: "h4" },
         { title: "Quote", value: "blockquote" },
+        { title: "Warning", value: "warning" }, // <-- warning style
+        { title: "Error", value: "error" },
+         { title: "Info", value: "info" },
       ],
       lists: [{ title: "Bullet", value: "bullet" }],
       // Marks let you mark up inline text in the Portable Text Editor

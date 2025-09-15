@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { inter, jetBrainsMono, lora } from "@/lib/fonts";
 import { urlFor } from "@/sanity/lib/image";
-import { ArrowUpRight } from "lucide-react";
+import { AlertCircle, AlertTriangle, ArrowUpRight, Info } from "lucide-react";
 import {
   BundledLanguage,
   CodeBlock,
@@ -34,6 +34,7 @@ import { VscJson } from "react-icons/vsc";
 import { FaJava } from "react-icons/fa";
 import { JSX } from "react";
 import { Separator } from "../ui/separator";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 const languageIcons: Record<string, JSX.Element> = {
   javascript: <SiJavascript className="size-4 text-current" />,
@@ -147,6 +148,42 @@ const components: PortableTextComponents = {
         {children}
       </blockquote>
     ),
+    info: ({ children }) => (
+      <Alert
+        variant="default"
+        className="border-l-2 border-dashed border-l-blue-600 rounded-none "
+      >
+        <Info
+          className="w-5 h-5 text-blue-600 mr-2"
+          color="#155dfc"
+        />
+        <AlertDescription className="block ">{children}</AlertDescription>
+      </Alert>
+    ),
+    warning: ({ children }) => (
+      <Alert
+        variant="default"
+        className="border-l-2 border-dashed border-l-yellow-400 rounded-none text-primary-foreground"
+      >
+        <AlertTriangle
+          className="size-10  mr-2"
+          fill="oklch(68.1% 0.162 75.834)"
+        />
+        <AlertDescription className="block ">{children}</AlertDescription>
+      </Alert>
+    ),
+    error: ({ children }) => (
+      <Alert
+        variant="destructive"
+        className="border-l-2 border-dashed border-l-red-600 rounded-none"
+      >
+        <AlertCircle
+          className="w-10 h-10 mr-2  text-foreground"
+         color="oklch(57.7% 0.245 27.325)"
+        />
+        <AlertDescription className="block ">{children}</AlertDescription>
+      </Alert>
+    ),
   },
   list: {
     bullet: ({ children }) => (
@@ -167,7 +204,7 @@ const components: PortableTextComponents = {
         href={value.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-primary font-medium hover:underline underline-offset-4 relative"
+        className="text-primary font-medium hover:underline underline-offset-4 mr-5 relative"
       >
         {children}
         <ArrowUpRight className="absolute -right-5 top-0 size-4" />
