@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { inter, jetBrainsMono, lora } from "@/lib/fonts";
 import { urlFor } from "@/sanity/lib/image";
-import { AlertCircle, AlertTriangle, ArrowUpRight, Info } from "lucide-react";
+import { AlertCircle, AlertTriangle, ArrowUpRight, CheckCircle, Info } from "lucide-react";
 import {
   BundledLanguage,
   CodeBlock,
@@ -81,8 +81,8 @@ const components: PortableTextComponents = {
       ];
       return (
         <div className="my-6">
-          <CodeBlock data={code} defaultValue={code[0].language}>
-            <CodeBlockHeader className=" bg-muted dark:bg-background ">
+          <CodeBlock data={code} defaultValue={code[0].language} className="shadow-md dark:shadow-none">
+            <CodeBlockHeader className=" bg-sidebar-border dark:bg-background ">
               <CodeBlockFiles>
                 {(item) => (
                   <CodeBlockFilename key={item.language} value={item.language}>
@@ -151,19 +151,16 @@ const components: PortableTextComponents = {
     info: ({ children }) => (
       <Alert
         variant="default"
-        className="border-l-2 border-dashed border-l-blue-600 rounded-none "
+        className="border-l-2 border-dashed border-l-blue-600 rounded-none shadow-md  dark:shadow-none  "
       >
-        <Info
-          className="w-5 h-5 text-blue-600 mr-2"
-          color="#155dfc"
-        />
+        <Info className="w-5 h-5 text-blue-600 mr-2" color="#155dfc" />
         <AlertDescription className="block ">{children}</AlertDescription>
       </Alert>
     ),
     warning: ({ children }) => (
       <Alert
         variant="default"
-        className="border-l-2 border-dashed border-l-yellow-400 rounded-none text-primary-foreground"
+        className="border-l-2 border-dashed border-l-yellow-400 rounded-none text-primary-foreground shadow-md  dark:shadow-none "
       >
         <AlertTriangle
           className="size-10  mr-2"
@@ -175,15 +172,27 @@ const components: PortableTextComponents = {
     error: ({ children }) => (
       <Alert
         variant="destructive"
-        className="border-l-2 border-dashed border-l-red-600 rounded-none"
+        className="border-l-2 border-dashed border-l-red-600 rounded-none shadow-md  dark:shadow-none "
       >
         <AlertCircle
           className="w-10 h-10 mr-2  text-foreground"
-         color="oklch(57.7% 0.245 27.325)"
+          color="oklch(57.7% 0.245 27.325)"
         />
         <AlertDescription className="block ">{children}</AlertDescription>
       </Alert>
     ),
+     success: ({ children }) => (
+    <Alert
+      variant="default"
+      className="border-l-2 border-dashed border-l-green-600 rounded-none shadow-md dark:shadow-none"
+    >
+      <CheckCircle
+        className="w-10 h-10 mr-2 text-green-600"
+        color="oklch(70% 0.17 145)"
+      />
+      <AlertDescription className="block">{children}</AlertDescription>
+    </Alert>
+  ),
   },
   list: {
     bullet: ({ children }) => (
