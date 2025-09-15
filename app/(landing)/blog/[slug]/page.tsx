@@ -1,6 +1,7 @@
 import { getBlog } from "@/actions/blog";
 import BlogBody from "@/components/blog/PortableTextComponents";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge"; // ✅ import Badge
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { inter, lora } from "@/lib/fonts";
@@ -47,18 +48,15 @@ export default async function BlogPage({ params }: BlogPageProps) {
   }
 
   return (
-    <div className="w-full h-full flex-1 py-10 md:py-10 lg:py-20 relative isolate">
-      {/* Background with cosmic noise */}
-
-
-      <div className="container mx-auto max-w-5xl px-5 md:px-8 space-y-8">
+    <div className="w-full h-full flex-1 py-10 md:py-10 lg:py-20 relative isolate container">
+      <div className=" mx-auto max-w-5xl px-5 md:px-8 space-y-8">
         {/* Back link */}
         <Link
           href="/blog"
-          className="flex max-w-[150px] items-center gap-1 text-muted-foreground hover:text-foreground transition-colors duration-300 hover:underline underline-offset-4 mb-8"
+          className="inline-flex items-center gap-1  font-medium text-muted-foreground transition-colors duration-200 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-md mb-8 hover:underline underline-offset-2 group"
         >
-          <ArrowLeft className="size-5" />
-          Back to Blog
+          <ArrowLeft className="size-5 transition-transform group-hover:-translate-x-1 " />
+          <span>Back to Blog</span>
         </Link>
 
         {/* Published date */}
@@ -72,6 +70,17 @@ export default async function BlogPage({ params }: BlogPageProps) {
         >
           {blog.title}
         </h1>
+
+        {/* Categories */}
+        {blog.categories?.length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            {blog.categories.map((cat) => (
+              <Badge className="rounded-xs" key={cat._id}>
+                {cat.title}
+              </Badge>
+            ))}
+          </div>
+        )}
 
         {/* Author info */}
         <div className="flex flex-col gap-3">

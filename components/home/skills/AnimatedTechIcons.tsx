@@ -8,12 +8,8 @@ import {
   useAnimate,
 } from "motion/react";
 import { useEffect, useRef } from "react";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { technologies } from "@/data/data";
+import { Card, CardContent } from "@/components/ui/card";
 
 const buttonWidthPx = 120;
 const gapPx = 16;
@@ -39,9 +35,7 @@ export default function TechIconsScroller() {
     return {
       key: `tech-row-${rowIndex}`,
       items: duplicated,
-       animate: isReverse
-      ? { x: [-totalWidth, 0] } 
-      : { x: [0, -totalWidth] }, 
+      animate: isReverse ? { x: [-totalWidth, 0] } : { x: [0, -totalWidth] },
       transition: {
         duration,
         ease: "linear" as const,
@@ -56,7 +50,7 @@ export default function TechIconsScroller() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="w-full overflow-hidden flex flex-col mt-20 my-8 py-5"
+      className="w-full overflow-hidden flex flex-col mt-20 my-8 py-5 "
       style={{
         gap: `1rem`,
         maskImage:
@@ -71,31 +65,27 @@ export default function TechIconsScroller() {
           target={row.animate}
           options={row.transition}
         >
-          <div className="flex flex-shrink-0" style={{ gap: `${gapPx}px` }}>
+          <div className="flex  gap-4">
             {row.items.map((tech, i) => {
               const Icon = tech.icon;
               return (
-                <motion.div
+                <Card
                   key={`${tech.name}-${i}`}
-                  whileHover={{ scale: 1.1, y: -4, zIndex: 20 }}
-                  transition={{ duration: 0.2 }}
-                  className="  text-card-foreground flex-shrink-0 md:w-[120px] md:h-[120px] w-[100px] h-[100px] shadow-sm flex items-center justify-center group rounded-full  from-card to-card/50 hover:border-primary/20 group focus-within:ring-primary  bg-primary/15 bg-gradient-to-b backdrop-blur transition-all border-primary/60! border border-dashed focus-within:ring-2 focus-within:ring-offset-2 hover:shadow-lg"
+                  className="border-border/40 from-card to-card/50 hover:border-primary/50 group focus-within:ring-primary max-h-[220px] w-full max-w-[360px] min-w-[220px] overflow-hidden border bg-gradient-to-b backdrop-blur transition-all focus-within:ring-2 focus-within:ring-offset-2 hover:shadow-lg sm:max-w-[320px] sm:min-w-[240px]"
                 >
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                     <Icon className="text-5xl" style={{ color: tech.color }} />
-                    </TooltipTrigger>
-                    <TooltipContent side="top" className="text-xs">
+                  <CardContent className="flex h-full flex-col items-center justify-center gap-4 p-6">
+                    <Icon className="text-5xl" style={{ color: tech.color }} />
+
+                    <h3 className="text-foreground text-lg font-semibold text-center">
                       {tech.name}
-                    </TooltipContent>
-                  </Tooltip>
-                </motion.div>
+                    </h3>
+                  </CardContent>
+                </Card>
               );
             })}
           </div>
         </AnimatedRow>
       ))}
-
     </motion.div>
   );
 }
