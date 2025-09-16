@@ -45,6 +45,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { ImageZoom } from "../ui/kibo-ui/image-zoom";
 import { cn } from "@/lib/utils";
 import Placeholder from "../Placeholder";
+import { toast } from "sonner";
 
 const languageIcons: Record<string, JSX.Element> = {
   javascript: <SiJavascript className="size-4 text-current" />,
@@ -136,10 +137,8 @@ const components: PortableTextComponents = {
               </CodeBlockFiles>
               <CodeBlockCopyButton
                 className="hover:bg-primary/50 cursor-pointer"
-                onCopy={() => console.log("Copied code to clipboard")}
-                onError={() =>
-                  console.error("Failed to copy code to clipboard")
-                }
+                onCopy={() => toast.success("Copied code to clipboard!")}
+                onError={() => toast.error("Failed to copy code to clipboard")}
               />
             </CodeBlockHeader>
             <CodeBlockBody>
