@@ -83,7 +83,7 @@ export default function TechIconsScroller() {
                   <CardContent className="flex h-full flex-col items-center justify-center gap-4  p-6">
                     <Icon className="text-7xl group-hover:text-primary-foreground" />
                   </CardContent>
-                  <h3 className="text-foreground uppercase  font-light text-center absolute bg-primary-foreground bottom-0 left-0 py-1 pr-2 z-20">
+                  <h3 className="text-foreground uppercase backdrop-blur-xl  font-light text-center absolute bg-gradient-to-r from-primary/30 to-primary-foreground bottom-0 left-0 py-1 pr-2 z-20">
                     {tech.name}
                   </h3>
                 </Card>

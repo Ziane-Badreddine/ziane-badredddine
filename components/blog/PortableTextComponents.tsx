@@ -43,6 +43,7 @@ import { Separator } from "../ui/separator";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { ImageZoom } from "../ui/kibo-ui/image-zoom";
 import { cn } from "@/lib/utils";
+import Placeholder from "../Placeholder";
 
 const languageIcons: Record<string, JSX.Element> = {
   javascript: <SiJavascript className="size-4 text-current" />,
@@ -64,19 +65,28 @@ const components: PortableTextComponents = {
         <div className="my-6 w-full flex flex-col justify-center">
           <ImageZoom
             backdropClassName={cn(
-              '[&_[data-rmiz-modal-overlay="visible"]]:bg-black/80'
+              '[&_[data-rmiz-modal-overlay="visible"]]:from-background w-full [&_[data-rmiz-modal-overlay="visible"]]:via-background [&_[data-rmiz-modal-overlay="visible"]]:to-muted/20'
             )}
           >
-            <Image
-              src={urlFor(value).width(1200).url() || "/placeholder.svg"}
-              alt={value.alt || "Blog image"}
-              width={1200}
-              height={700}
-              className="shadow-lg object-cover w-full max-w-[800px] mx-auto 
-                 [data-rmiz-modal-img]:!w-auto [data-rmiz-modal-img]:!max-w-[90vw] [data-rmiz-modal-img]:!max-h-[90vh]"
-              priority
-              quality={100}
-            />
+            {urlFor(value).width(1200).url() ? (
+              <Image
+                src={urlFor(value).width(1200).url()}
+                alt={value.alt || "Blog image"}
+                width={1200}
+                height={700}
+                className="shadow-lg object-cover w-full max-w-[800px] mx-auto 
+      [data-rmiz-modal-img]:!w-auto [data-rmiz-modal-img]:!max-w-[90vw] [data-rmiz-modal-img]:!max-h-[90vh]"
+                priority
+                quality={100}
+              />
+            ) : (
+              <Placeholder
+                alt={value.alt || "Blog image"}
+                width={1200}
+                height={700}
+                className="shadow-lg object-cover w-full max-w-[800px] mx-auto"
+              />
+            )}
           </ImageZoom>
 
           {value.alt && (
