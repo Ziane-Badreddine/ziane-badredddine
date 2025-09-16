@@ -6,7 +6,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { inter, jetBrainsMono, lora } from "@/lib/fonts";
 import { urlFor } from "@/sanity/lib/image";
-import { AlertCircle, AlertTriangle, ArrowUpRight, CheckCircle, Info } from "lucide-react";
+import {
+  AlertCircle,
+  AlertTriangle,
+  ArrowUpRight,
+  CheckCircle,
+  Info,
+  Terminal,
+} from "lucide-react";
 import {
   BundledLanguage,
   CodeBlock,
@@ -27,7 +34,6 @@ import {
   SiCplusplus,
   SiHtml5,
   SiCss3,
-  SiGnubash,
   SiMysql,
 } from "react-icons/si";
 import { VscJson } from "react-icons/vsc";
@@ -45,7 +51,7 @@ const languageIcons: Record<string, JSX.Element> = {
   java: <FaJava className="size-4 text-current" />,
   cpp: <SiCplusplus className="size-4 text-current" />,
   json: <VscJson className="size-5 text-current" />,
-  bash: <SiGnubash className="size-4 text-current" />,
+  bash: <Terminal className="size-4 text-current" />,
   sql: <SiMysql className="size-4 text-current" />,
 };
 
@@ -81,8 +87,12 @@ const components: PortableTextComponents = {
       ];
       return (
         <div className="my-6">
-          <CodeBlock data={code} defaultValue={code[0].language} className="shadow-md dark:shadow-none">
-            <CodeBlockHeader className=" bg-sidebar-border dark:bg-background ">
+          <CodeBlock
+            data={code}
+            defaultValue={code[0].language}
+            className="shadow-md dark:shadow-none"
+          >
+            <CodeBlockHeader className=" bg-muted-foreground/10 dark:bg-background ">
               <CodeBlockFiles>
                 {(item) => (
                   <CodeBlockFilename key={item.language} value={item.language}>
@@ -90,12 +100,13 @@ const components: PortableTextComponents = {
                       className={`flex items-center gap-2 ${inter.className}`}
                     >
                       {languageIcons[item.language?.toLowerCase()] || null}
-                      <span>{item.filename || "snippet"}</span>
+                      <span>{item.filename || item.language === "bash" ? "terminal" : "snippet"}</span>
                     </div>
                   </CodeBlockFilename>
                 )}
               </CodeBlockFiles>
               <CodeBlockCopyButton
+                className="hover:bg-primary/50 cursor-pointer"
                 onCopy={() => console.log("Copied code to clipboard")}
                 onError={() =>
                   console.error("Failed to copy code to clipboard")
@@ -105,8 +116,9 @@ const components: PortableTextComponents = {
             <CodeBlockBody>
               {(item) => (
                 <CodeBlockItem
-                  className="dark:bg-muted/25 bg-background"
+                  className="dark:bg-muted/25 bg-background "
                   key={item.language}
+                  lineNumbers={!["bash"].includes(value.language) }
                   value={item.language}
                 >
                   <CodeBlockContent language={item.language as BundledLanguage}>
@@ -181,18 +193,18 @@ const components: PortableTextComponents = {
         <AlertDescription className="block ">{children}</AlertDescription>
       </Alert>
     ),
-     success: ({ children }) => (
-    <Alert
-      variant="default"
-      className="border-l-2 border-dashed border-l-green-600 rounded-none shadow-md dark:shadow-none"
-    >
-      <CheckCircle
-        className="w-10 h-10 mr-2 text-green-600"
-        color="oklch(70% 0.17 145)"
-      />
-      <AlertDescription className="block">{children}</AlertDescription>
-    </Alert>
-  ),
+    success: ({ children }) => (
+      <Alert
+        variant="default"
+        className="border-l-2 border-dashed border-l-green-600 rounded-none shadow-md dark:shadow-none"
+      >
+        <CheckCircle
+          className="w-10 h-10 mr-2 text-green-600"
+          color="oklch(70% 0.17 145)"
+        />
+        <AlertDescription className="block">{children}</AlertDescription>
+      </Alert>
+    ),
   },
   list: {
     bullet: ({ children }) => (
@@ -213,10 +225,10 @@ const components: PortableTextComponents = {
         href={value.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-primary font-medium hover:underline underline-offset-4 mr-5 relative"
+        className="inline-flex items-center gap-1 text-primary font-medium hover:underline underline-offset-4 ml-1 mr-5"
       >
         {children}
-        <ArrowUpRight className="absolute -right-5 top-0 size-4" />
+        <ArrowUpRight className="size-4 shrink-0" />
       </Link>
     ),
     strong: ({ children }) => (
