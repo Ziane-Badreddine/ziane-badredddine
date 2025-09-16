@@ -85,7 +85,7 @@ export default function Footer() {
                 />
               </>
               <span className={`${faustina.className} ml-2`}>
-                Ziane_badreddine__
+                ZIANE_BADREDDINE__
               </span>
             </Link>
             <p className="text-sm ">
@@ -131,7 +131,7 @@ export default function Footer() {
 
         <div className="border-border/40 flex flex-col items-center justify-between gap-4 border-t pt-8 sm:flex-row">
           <p className="text-xs">
-            &copy; {new Date().getFullYear()} Ziane_badreddine__. All rights
+            &copy; {new Date().getFullYear()} ZIANE_BADREDDINE__. All rights
             reserved.
           </p>
           <p className="text-xs ">

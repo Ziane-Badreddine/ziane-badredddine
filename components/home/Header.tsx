@@ -35,7 +35,7 @@ export default function Header() {
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
             <Logo />
-            <span className={`${faustina.className}`}>Ziane_badreddine__</span>
+            <span className={`${faustina.className}`}>ZIANE_BADREDDINE__</span>
           </motion.div>
         </Link>
         <Nav />
