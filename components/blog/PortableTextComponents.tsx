@@ -41,6 +41,8 @@ import { FaJava } from "react-icons/fa";
 import { JSX } from "react";
 import { Separator } from "../ui/separator";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { ImageZoom } from "../ui/kibo-ui/image-zoom";
+import { cn } from "@/lib/utils";
 
 const languageIcons: Record<string, JSX.Element> = {
   javascript: <SiJavascript className="size-4 text-current" />,
@@ -60,15 +62,23 @@ const components: PortableTextComponents = {
     image: ({ value }) => {
       return (
         <div className="my-6 w-full flex flex-col justify-center">
-          <Image
-            src={urlFor(value).width(800).url() || "/placeholder.svg"}
-            alt={value.alt || "Blog image"}
-            width={800}
-            height={500}
-            className=" shadow-lg object-cover w-full"
-            priority
-            quality={100}
-          />
+          <ImageZoom
+            backdropClassName={cn(
+              '[&_[data-rmiz-modal-overlay="visible"]]:bg-black/80'
+            )}
+          >
+            <Image
+              src={urlFor(value).width(1200).url() || "/placeholder.svg"}
+              alt={value.alt || "Blog image"}
+              width={1200}
+              height={700}
+              className="shadow-lg object-cover w-full max-w-[800px] mx-auto 
+                 [data-rmiz-modal-img]:!w-auto [data-rmiz-modal-img]:!max-w-[90vw] [data-rmiz-modal-img]:!max-h-[90vh]"
+              priority
+              quality={100}
+            />
+          </ImageZoom>
+
           {value.alt && (
             <figcaption className="mt-3 text-center text-sm text-muted-foreground italic">
               {value.alt}
@@ -100,7 +110,11 @@ const components: PortableTextComponents = {
                       className={`flex items-center gap-2 ${inter.className}`}
                     >
                       {languageIcons[item.language?.toLowerCase()] || null}
-                      <span>{item.filename || item.language === "bash" ? "terminal" : "snippet"}</span>
+                      <span>
+                        {item.filename || item.language === "bash"
+                          ? "terminal"
+                          : "snippet"}
+                      </span>
                     </div>
                   </CodeBlockFilename>
                 )}
@@ -118,7 +132,7 @@ const components: PortableTextComponents = {
                 <CodeBlockItem
                   className="dark:bg-muted/25 bg-background "
                   key={item.language}
-                  lineNumbers={!["bash"].includes(value.language) }
+                  lineNumbers={!["bash"].includes(value.language)}
                   value={item.language}
                 >
                   <CodeBlockContent language={item.language as BundledLanguage}>

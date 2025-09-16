@@ -71,15 +71,21 @@ export default function TechIconsScroller() {
               return (
                 <Card
                   key={`${tech.name}-${i}`}
-                  className="border-border/40 from-card to-card/50 hover:border-primary/50 group focus-within:ring-primary max-h-[220px] w-full max-w-[360px] min-w-[220px] overflow-hidden border bg-gradient-to-b backdrop-blur transition-all focus-within:ring-2 focus-within:ring-offset-2 hover:shadow-lg sm:max-w-[320px] sm:min-w-[240px]"
+                  className="relative group flex h-[180px] w-[200px] sm:h-[200px] sm:w-[240px] overflow-hidden     hover:shadow-lg focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 rounded-none hover:bg-foreground border-none group"
                 >
-                  <CardContent className="flex h-full flex-col items-center justify-center gap-4 p-6">
-                    <Icon className="text-5xl" style={{ color: tech.color }} />
+                  <div
+                    className="absolute z-10 inset-0 
+             bg-[radial-gradient(theme(colors.foreground)_1px,transparent_1px)] 
+             group-hover:bg-[radial-gradient(theme(colors.primary-foreground)_1px,transparent_1px)] 
+             [background-size:6px_6px] opacity-40 pointer-events-none transition-colors duration-300"
+                  />
 
-                    <h3 className="text-foreground text-lg font-semibold text-center">
-                      {tech.name}
-                    </h3>
+                  <CardContent className="flex h-full flex-col items-center justify-center gap-4  p-6">
+                    <Icon className="text-7xl group-hover:text-primary-foreground" />
                   </CardContent>
+                  <h3 className="text-foreground uppercase  font-light text-center absolute bg-primary-foreground bottom-0 left-0 py-1 pr-2 z-20">
+                    {tech.name}
+                  </h3>
                 </Card>
               );
             })}

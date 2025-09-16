@@ -23,7 +23,8 @@ interface BlogCardProps {
 
 export default function BlogCard({ blog }: BlogCardProps) {
   return (
-    <Card className="hover:border-primary pt-0 transition-all duration-300 shadow-xs w-full">
+    <Card className="group ring-primary/50  from-card to-primary/5 relative border-2 bg-gradient-to-b ring-2 transition-all duration-300 pt-0">
+      
       <Image
         src={urlFor(blog.mainImage).auto("format").url()}
         alt={blog.title}
@@ -32,6 +33,7 @@ export default function BlogCard({ blog }: BlogCardProps) {
         className="aspect-video w-full rounded-t-xl "
       />
       <CardContent className="px-4 flex flex-col gap-4 h-full">
+
         <div className="flex w-full items-center justify-between">
           <div className="flex gap-2">
             <Calendar className="size-4" />
@@ -67,7 +69,7 @@ export default function BlogCard({ blog }: BlogCardProps) {
       </CardContent>
       <CardFooter className="px-4">
         <Link className="w-full" href={`/blog/${blog.slug.current}`}>
-          <Button className="w-full cursor-pointer">Read More</Button>
+          <Button size={"lg"} className="w-full border cursor-pointer h-12 text-base font-medium">Read More</Button>
         </Link>
       </CardFooter>
     </Card>
