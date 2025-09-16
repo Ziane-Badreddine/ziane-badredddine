@@ -71,7 +71,7 @@ const components: PortableTextComponents = {
               '[&_[data-rmiz-modal-overlay="visible"]]:from-background w-full [&_[data-rmiz-modal-overlay="visible"]]:via-background [&_[data-rmiz-modal-overlay="visible"]]:to-muted/20'
             )}
           >
-            {urlFor(value).width(1200).url() ? (
+            {value ? (
               <Image
                 src={urlFor(value).width(1200).url()}
                 alt={value.alt || "Blog image"}
@@ -124,9 +124,11 @@ const components: PortableTextComponents = {
                     >
                       {languageIcons[item.language?.toLowerCase()] || null}
                       <span>
-                        {item.filename || item.language === "bash"
+                        {item.language === "bash"
                           ? "terminal"
-                          : "snippet"}
+                          : item.filename
+                            ? item.filename
+                            : "snippet"}
                       </span>
                     </div>
                   </CodeBlockFilename>
