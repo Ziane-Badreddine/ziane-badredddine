@@ -86,6 +86,9 @@ export const blockContentType = defineType({
         languageAlternatives: [
           { title: "JavaScript", value: "javascript" },
           { title: "TypeScript", value: "typescript" },
+          { title: "JSX", value: "jsx" },
+          { title: "TSX", value: "tsx" },
+          { title: "SQL", value: "sql" },
           { title: "HTML", value: "html" },
           { title: "CSS", value: "css" },
           { title: "Python", value: "python" },

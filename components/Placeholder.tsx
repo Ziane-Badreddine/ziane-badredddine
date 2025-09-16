@@ -18,9 +18,7 @@ export default function Placeholder({
       role="img"
       aria-label={alt}
       style={{ width, height }}
-      className={`flex items-center justify-center rounded-md bg-muted/40 
-        [background-image:radial-gradient(circle,theme(colors.muted.DEFAULT)_1px,transparent_1px)] 
-        [background-size:20px_20px] text-muted-foreground ${className}`}
+      className={`flex items-center w-full h-full  ${className}`}
     >
       <ImageIcon className="w-16 h-16" strokeWidth={1.5} />
     </div>

@@ -35,6 +35,7 @@ import {
   SiHtml5,
   SiCss3,
   SiMysql,
+  SiReact,
 } from "react-icons/si";
 import { VscJson } from "react-icons/vsc";
 import { FaJava } from "react-icons/fa";
@@ -48,6 +49,8 @@ import Placeholder from "../Placeholder";
 const languageIcons: Record<string, JSX.Element> = {
   javascript: <SiJavascript className="size-4 text-current" />,
   typescript: <SiTypescript className="size-4 text-current" />,
+  jsx: <SiReact className="size-4 text-current" />,
+  tsx: <SiReact className="size-4 text-current" />,
   html: <SiHtml5 className="size-4 text-current" />,
   css: <SiCss3 className="size-4 text-current" />,
   python: <SiPython className="size-4 text-current" />,
