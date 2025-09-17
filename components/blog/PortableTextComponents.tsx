@@ -295,10 +295,10 @@ const components: PortableTextComponents = {
         href={value.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-1 text-primary font-medium hover:underline underline-offset-4 ml-1 mr-5"
+        className="inline-flex items-center gap-1 text-primary font-medium hover:underline underline-offset-4 ml-1 mr-1 "
       >
         {children}
-        <ArrowUpRight className="size-4 shrink-0" />
+        <ArrowUpRight className="size-4 shrink-0 " />
       </Link>
     ),
     strong: ({ children }) => (
