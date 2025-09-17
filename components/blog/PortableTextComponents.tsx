@@ -123,13 +123,13 @@ const components: PortableTextComponents = {
         },
       ];
       return (
-        <div className="my-6">
-          <CodeBlock
-            data={code}
-            defaultValue={code[0].language}
-            className="shadow-md dark:shadow-none"
-          >
-            <CodeBlockHeader className=" bg-muted-foreground/10 dark:bg-background ">
+        <CodeBlock
+          data={code}
+          defaultValue={code[0].language}
+          className="shadow-md dark:shadow-none "
+        >
+          {value.filename ? (
+            <CodeBlockHeader className="bg-muted-foreground/10 dark:bg-background">
               <CodeBlockFiles>
                 {(item) => (
                   <CodeBlockFilename key={item.language} value={item.language}>
@@ -138,11 +138,7 @@ const components: PortableTextComponents = {
                     >
                       {languageIcons[item.language?.toLowerCase()] || null}
                       <span>
-                        {item.language === "bash"
-                          ? "terminal"
-                          : item.filename
-                            ? item.filename
-                            : "snippet"}
+                        {item.language === "bash" ? "terminal" : item.filename}
                       </span>
                     </div>
                   </CodeBlockFilename>
@@ -154,22 +150,34 @@ const components: PortableTextComponents = {
                 onError={() => toast.error("Failed to copy code to clipboard")}
               />
             </CodeBlockHeader>
-            <CodeBlockBody>
-              {(item) => (
-                <CodeBlockItem
-                  className="dark:bg-muted/25 bg-background "
-                  key={item.language}
-                  lineNumbers={!["bash"].includes(value.language)}
-                  value={item.language}
-                >
-                  <CodeBlockContent language={item.language as BundledLanguage}>
-                    {item.code}
-                  </CodeBlockContent>
-                </CodeBlockItem>
-              )}
-            </CodeBlockBody>
-          </CodeBlock>
-        </div>
+          ) : null}
+
+          <CodeBlockBody className="relative">
+            {(item) => (
+              <CodeBlockItem
+                className="dark:bg-muted/25 bg-background group"
+                key={item.language}
+                lineNumbers={!["bash"].includes(value.language)}
+                value={item.language}
+              >
+                {/* Ajout bouton copy si pas de filename */}
+                {!value.filename && (
+                  <CodeBlockCopyButton
+                    className="absolute top-2 right-2 z-10 hover:bg-primary/50 cursor-pointer hidden group-hover:flex"
+                    variant={"outline"}
+                    onCopy={() => toast.success("Copied code to clipboard!")}
+                    onError={() =>
+                      toast.error("Failed to copy code to clipboard")
+                    }
+                  />
+                )}
+                <CodeBlockContent language={item.language as BundledLanguage}>
+                  {item.code}
+                </CodeBlockContent>
+              </CodeBlockItem>
+            )}
+          </CodeBlockBody>
+        </CodeBlock>
       );
     },
   },
