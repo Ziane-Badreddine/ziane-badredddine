@@ -195,7 +195,7 @@ const components: PortableTextComponents = {
       </div>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="relative rounded-lg border-l-7 border-primary bg-card text-card-foreground p-6 sm:p-8">
+      <blockquote className="relative rounded-lg border-l-7 border border-l-primary bg-card text-card-foreground p-6 sm:p-8 shadow-xs dark:shadow-none">
         {/* SVG quote icon */}
         <svg
           className="absolute top-0 left-0 w-16 h-16 text-muted-foreground/50"
