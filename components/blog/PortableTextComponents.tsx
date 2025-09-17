@@ -67,7 +67,7 @@ const components: PortableTextComponents = {
       const style = value?.style || "solid";
       return (
         <hr
-          className={`my-10 border-t border-muted-foreground h-[2px]  ${
+          className={`my-10 border-t border-border h-[2px]  ${
             style === "dashed"
               ? "border-dashed "
               : style === "dotted"
@@ -321,7 +321,7 @@ const components: PortableTextComponents = {
       <span className="line-through text-muted-foreground">{children}</span>
     ),
     highlight: ({ children }) => (
-      <span className="bg-primary/30  text-primary px-1  rounded-md">
+      <span className="bg-primary   px-1  text-primary-foreground">
         {children}
       </span>
     ),

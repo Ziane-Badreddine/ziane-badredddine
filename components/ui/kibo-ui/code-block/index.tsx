@@ -251,16 +251,18 @@ const wordHighlightClassNames = cn(
 const codeBlockClassName = cn(
   "mt-0 bg-background text-sm",
   "[&_pre]:py-4",
-  // "[&_.shiki]:!bg-[var(--shiki-bg)]",
+  "[&_pre]:overflow-x-auto", // 👈 scroll sur <pre>
+  "[&_pre]:w-full",
+  "[&_.shiki]:!bg-[var(--shiki-bg)]",
   "[&_.shiki]:!bg-transparent",
-  "[&_code]:w-full",
-  "[&_code]:grid",
-  "[&_code]:overflow-x-auto",
+  "[&_code]:min-w-full",
   "[&_code]:bg-transparent",
+  "[&_code]:grid",
   "[&_.line]:px-4",
   "[&_.line]:w-full",
   "[&_.line]:relative"
 );
+
 
 const highlight = (
   html: string,
@@ -334,7 +336,10 @@ export const CodeBlock = ({
   return (
     <CodeBlockContext.Provider value={{ value, onValueChange, data }}>
       <div
-        className={cn("size-full overflow-hidden rounded-xs border my-6 ", className)}
+        className={cn(
+          "size-full overflow-hidden rounded-xs border my-6 ",
+          className
+        )}
         {...props}
       />
     </CodeBlockContext.Provider>
@@ -348,10 +353,7 @@ export const CodeBlockHeader = ({
   ...props
 }: CodeBlockHeaderProps) => (
   <div
-    className={cn(
-      "flex flex-row items-center border-b  p-2",
-      className
-    )}
+    className={cn("flex flex-row items-center border-b  p-2", className)}
     {...props}
   />
 );
@@ -407,8 +409,10 @@ export const CodeBlockFilename = ({
 
   return (
     <div
-     className={cn("flex items-center gap-2   px-2 py-1.5 text-muted-foreground text-sm", className)}
-      
+      className={cn(
+        "flex items-center gap-2   px-2 py-1.5 text-muted-foreground text-sm",
+        className
+      )}
       {...props}
     >
       {Icon && <Icon className="size-5 shrink-0" />}
