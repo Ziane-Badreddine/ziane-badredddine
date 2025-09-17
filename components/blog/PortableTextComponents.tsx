@@ -176,26 +176,30 @@ const components: PortableTextComponents = {
 
   block: {
     h1: ({ children }) => (
-      <h1 className={`text-4xl md:text-4xl font-bold my-6 ${lora.className}`}>
+      <h1
+        className={`text-4xl md:text-5xl font-bold tracking-tight mb-8 mt-10 ${lora.className}`}
+      >
         {children}
       </h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-3xl font-semibold ">{children}</h2>
+      <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-6 mt-8">
+        {children}
+      </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-2xl font-medium my-4">{children}</h3>
+      <h3 className="text-2xl md:text-3xl font-medium mb-4 mt-6">{children}</h3>
     ),
     h4: ({ children }) => (
-      <h4 className="text-xl font-medium my-3">{children}</h4>
+      <h4 className="text-xl md:text-2xl font-medium mb-3 mt-5">{children}</h4>
     ),
     normal: ({ children }) => (
-      <div className="my-6">
+      <div className="my-5">
         <p className="leading-7 text-muted-foreground">{children}</p>
       </div>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="relative rounded-lg border-l-7 border border-l-primary bg-card text-card-foreground p-6 sm:p-8 shadow-xs dark:shadow-none">
+      <blockquote className="relative rounded-lg border-l-7 my-6 border border-l-primary bg-card text-card-foreground p-6 sm:p-8 shadow-xs dark:shadow-none">
         {/* SVG quote icon */}
         <svg
           className="absolute top-0 left-0 w-16 h-16 text-muted-foreground/50"
@@ -221,7 +225,7 @@ const components: PortableTextComponents = {
     info: ({ children }) => (
       <Alert
         variant="default"
-        className="border-l-2 border-dashed border-l-blue-600 rounded-none shadow-md  dark:shadow-none  "
+        className="border-l-2 border-dashed border-l-blue-600 rounded-none shadow-md my-6  dark:shadow-none  "
       >
         <Info className="w-5 h-5 text-blue-600 mr-2" color="#155dfc" />
         <AlertDescription className="block ">{children}</AlertDescription>
@@ -230,7 +234,7 @@ const components: PortableTextComponents = {
     warning: ({ children }) => (
       <Alert
         variant="default"
-        className="border-l-2 border-dashed border-l-yellow-400 rounded-none  shadow-md  dark:shadow-none "
+        className="border-l-2 border-dashed border-l-yellow-400 rounded-none my-6  shadow-md  dark:shadow-none "
       >
         <AlertTriangle
           className="size-10  mr-2 text-yellow-400"
@@ -242,7 +246,7 @@ const components: PortableTextComponents = {
     error: ({ children }) => (
       <Alert
         variant="destructive"
-        className="border-l-2 border-dashed border-l-red-600 rounded-none shadow-md  dark:shadow-none "
+        className="border-l-2 border-dashed border-l-red-600 rounded-none shadow-md my-6  dark:shadow-none "
       >
         <XCircle
           className="w-10 h-10 mr-2  text-foreground"
@@ -254,7 +258,7 @@ const components: PortableTextComponents = {
     success: ({ children }) => (
       <Alert
         variant="default"
-        className="border-l-2 border-dashed border-l-green-600 rounded-none shadow-md dark:shadow-none"
+        className="border-l-2 border-dashed border-l-green-600 my-6 rounded-none shadow-md dark:shadow-none"
       >
         <CheckCircle
           className="w-10 h-10 mr-2 text-green-600"
