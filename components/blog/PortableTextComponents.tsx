@@ -67,7 +67,7 @@ const components: PortableTextComponents = {
       const style = value?.style || "solid";
       return (
         <hr
-          className={`my-8 border-t border-muted-foreground h-[2px]  ${
+          className={`my-10 border-t border-muted-foreground h-[2px]  ${
             style === "dashed"
               ? "border-dashed "
               : style === "dotted"
