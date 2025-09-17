@@ -37,13 +37,19 @@ export const blockContentType = defineType({
         { title: "Info", value: "info" },
         { title: "Success", value: "success" },
       ],
-      lists: [{ title: "Bullet", value: "bullet" }],
+      lists: [
+        { title: "Bullet", value: "bullet" },
+        { title: "Numbered", value: "number" },
+      ],
       // Marks let you mark up inline text in the Portable Text Editor
       marks: {
-        // Decorators usually describe a single property – e.g. a typographic
-        // preference or highlighting
-
-        // Annotations can be any object structure – e.g. a link or a footnote.
+        decorators: [
+          { title: "Strong", value: "strong" },
+          { title: "Emphasis", value: "em" },
+          { title: "Underline", value: "underline" },
+          { title: "Code", value: "code" },
+          { title: "Highlight", value: "highlight" }, // <--- highlight
+        ],
         annotations: [
           {
             title: "URL",
@@ -100,6 +106,9 @@ export const blockContentType = defineType({
         ],
         withFilename: true,
       },
+    }),
+    defineArrayMember({
+      type: "divider",
     }),
     defineArrayMember({
       type: "youtube",
