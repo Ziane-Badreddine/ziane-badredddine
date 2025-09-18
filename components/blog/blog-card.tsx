@@ -59,7 +59,7 @@ export default function BlogCard({ blog }: BlogCardProps) {
           </Tooltip>
         </div>
         <div className="flex flex-wrap gap-2">
-          {blog.categories.map((cat) => (
+          {blog.categories && blog.categories.length > 0 && blog.categories.map((cat) => (
             <Badge className="rounded-xs" variant={"secondary"} key={cat._id}>
               {cat.title}
             </Badge>

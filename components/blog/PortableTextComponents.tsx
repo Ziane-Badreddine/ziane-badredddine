@@ -42,9 +42,10 @@ import { FaJava } from "react-icons/fa";
 import { JSX } from "react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { ImageZoom } from "../ui/kibo-ui/image-zoom";
-import { cn } from "@/lib/utils";
+import { cn, extractYouTubeId } from "@/lib/utils";
 import Placeholder from "../Placeholder";
 import { toast } from "sonner";
+import { YouTubePlayer } from "../ui/YouTubePlayer";
 
 const languageIcons: Record<string, JSX.Element> = {
   javascript: <SiJavascript className="size-4 text-current" />,
@@ -63,6 +64,18 @@ const languageIcons: Record<string, JSX.Element> = {
 
 const components: PortableTextComponents = {
   types: {
+    youtube: ({ value }) => {
+      const videoId = extractYouTubeId(value?.url);
+      if (!videoId) return null;
+
+      return (
+        <YouTubePlayer
+          videoId={videoId}
+          title={value.title || "YouTube Video"}
+          customThumbnail={value.thumbnail}
+        />
+      );
+    },
     divider: ({ value }) => {
       const style = value?.style || "solid";
       return (
@@ -290,17 +303,34 @@ const components: PortableTextComponents = {
   },
 
   marks: {
-    link: ({ children, value }) => (
-      <Link
-        href={value.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center gap-1 text-primary font-medium hover:underline underline-offset-4 ml-1 mr-1 "
-      >
-        {children}
-        <ArrowUpRight className="size-4 shrink-0 " />
-      </Link>
-    ),
+    link: ({ children, value }) => {
+      const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
+      const href = value?.href || "#";
+      const isInternal = href.startsWith("/") || href.startsWith(BASE_URL);
+      console.log(BASE_URL, href, isInternal);
+      if (isInternal) {
+        return (
+          <Link
+            href={href.startsWith(BASE_URL) ? href.replace(BASE_URL, "") : href}
+            className="inline-flex items-center gap-1 text-primary font-medium hover:underline underline-offset-4 mx-1"
+          >
+            {children}
+          </Link>
+        );
+      }
+
+      return (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 text-primary font-medium hover:underline underline-offset-4 mx-1"
+        >
+          {children}
+          <ArrowUpRight className="size-4 shrink-0" />
+        </a>
+      );
+    },
     strong: ({ children }) => (
       <strong className="font-semibold text-foreground">{children}</strong>
     ),
@@ -309,7 +339,7 @@ const components: PortableTextComponents = {
     ),
     code: ({ children }) => (
       <code
-        className={`px-1.5 py-0.5 rounded-md bg-sidebar-border  text-primary ${jetBrainsMono.className}`}
+        className={`px-1.5 py-0.5 rounded-md bg-sidebar-border   text-primary ${jetBrainsMono.className}`}
       >
         {children}
       </code>
