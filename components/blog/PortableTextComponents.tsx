@@ -30,15 +30,43 @@ import {
 import {
   SiJavascript,
   SiTypescript,
-  SiPython,
-  SiCplusplus,
+  SiReact,
   SiHtml5,
   SiCss3,
+  SiCssmodules,
+  SiSass,
+  SiLess,
+  SiPython,
+  SiC,
+  SiCplusplus,
+  SiCoffeescript,
+  SiGo,
+  SiGraphql,
+  SiRust,
+  SiRuby,
+  SiPhp,
+  SiPerl,
+  SiScala,
+  SiSwift,
+  SiDart,
+  SiKotlin,
+  SiR,
+  SiPrisma,
+  SiAstro,
+  SiVuedotjs,
+  SiSvelte,
+  SiPug,
+  SiHandlebarsdotjs,
+  SiMarkdown,
+  SiMdx,
+  SiYaml,
+  SiToml,
+  SiGnubash,
+  SiDocker,
+  SiWebassembly,
+  SiSvg,
   SiMysql,
-  SiReact,
 } from "react-icons/si";
-import { VscJson } from "react-icons/vsc";
-import { FaJava } from "react-icons/fa";
 import { JSX } from "react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { ImageZoom } from "../ui/kibo-ui/image-zoom";
@@ -46,20 +74,54 @@ import { cn, extractYouTubeId } from "@/lib/utils";
 import Placeholder from "../Placeholder";
 import { toast } from "sonner";
 import { YouTubePlayer } from "../ui/YouTubePlayer";
+import { FaJava } from "react-icons/fa";
+import { VscJson } from "react-icons/vsc";
 
-const languageIcons: Record<string, JSX.Element> = {
+export const languageIcons: Record<string, JSX.Element> = {
   javascript: <SiJavascript className="size-4 text-current" />,
   typescript: <SiTypescript className="size-4 text-current" />,
   jsx: <SiReact className="size-4 text-current" />,
   tsx: <SiReact className="size-4 text-current" />,
   html: <SiHtml5 className="size-4 text-current" />,
   css: <SiCss3 className="size-4 text-current" />,
+  cssmodules: <SiCssmodules className="size-4 text-current" />,
+  sass: <SiSass className="size-4 text-current" />,
+  scss: <SiSass className="size-4 text-current" />,
+  less: <SiLess className="size-4 text-current" />,
   python: <SiPython className="size-4 text-current" />,
   java: <FaJava className="size-4 text-current" />,
+  c: <SiC className="size-4 text-current" />,
   cpp: <SiCplusplus className="size-4 text-current" />,
-  json: <VscJson className="size-5 text-current" />,
-  bash: <Terminal className="size-4 text-current" />,
+  coffeescript: <SiCoffeescript className="size-4 text-current" />,
+  go: <SiGo className="size-4 text-current" />,
+  graphql: <SiGraphql className="size-4 text-current" />,
+  rust: <SiRust className="size-4 text-current" />,
+  ruby: <SiRuby className="size-4 text-current" />,
+  php: <SiPhp className="size-4 text-current" />,
+  perl: <SiPerl className="size-4 text-current" />,
+  scala: <SiScala className="size-4 text-current" />,
+  swift: <SiSwift className="size-4 text-current" />,
+  dart: <SiDart className="size-4 text-current" />,
+  kotlin: <SiKotlin className="size-4 text-current" />,
+  r: <SiR className="size-4 text-current" />,
   sql: <SiMysql className="size-4 text-current" />,
+  prisma: <SiPrisma className="size-4 text-current" />,
+  astro: <SiAstro className="size-4 text-current" />,
+  vue: <SiVuedotjs className="size-4 text-current" />,
+  svelte: <SiSvelte className="size-4 text-current" />,
+  pug: <SiPug className="size-4 text-current" />,
+  hbs: <SiHandlebarsdotjs className="size-4 text-current" />,
+  mustache: <SiHandlebarsdotjs className="size-4 text-current" />,
+  markdown: <SiMarkdown className="size-4 text-current" />,
+  mdx: <SiMdx className="size-4 text-current" />,
+  json: <VscJson className="size-5 text-current" />,
+  yaml: <SiYaml className="size-4 text-current" />,
+  toml: <SiToml className="size-4 text-current" />,
+  bash: <Terminal className="size-4 text-current" />,
+  sh: <SiGnubash className="size-4 text-current" />,
+  docker: <SiDocker className="size-4 text-current" />,
+  wasm: <SiWebassembly className="size-4 text-current" />,
+  svg: <SiSvg className="size-4 text-current" />,
 };
 
 const components: PortableTextComponents = {
@@ -141,7 +203,7 @@ const components: PortableTextComponents = {
           defaultValue={code[0].language}
           className="shadow-md dark:shadow-none "
         >
-          {value.filename ? (
+          {value.language === "bash" || value.filename ? ( // on vérifie seulement s'il y a un language
             <CodeBlockHeader className="bg-muted-foreground/10 dark:bg-background">
               <CodeBlockFiles>
                 {(item) => (
@@ -151,7 +213,11 @@ const components: PortableTextComponents = {
                     >
                       {languageIcons[item.language?.toLowerCase()] || null}
                       <span>
-                        {item.language === "bash" ? "terminal" : item.filename}
+                        {
+                          !item.filename && item.language === "bash"
+                            ? "terminal"
+                            : item.filename || item.language // fallback: si filename null et pas bash, affiche le language
+                        }
                       </span>
                     </div>
                   </CodeBlockFilename>
@@ -165,16 +231,16 @@ const components: PortableTextComponents = {
             </CodeBlockHeader>
           ) : null}
 
-          <CodeBlockBody className="relative">
+          <CodeBlockBody className="relative scro-b">
             {(item) => (
               <CodeBlockItem
                 className="dark:bg-muted/25 bg-background group"
                 key={item.language}
                 lineNumbers={!["bash"].includes(value.language)}
-                value={item.language}
+                value={item.language}   
               >
                 {/* Ajout bouton copy si pas de filename */}
-                {!value.filename && (
+                {!value.filename && value.language !== "bash" && (
                   <CodeBlockCopyButton
                     className="absolute top-2 right-2 z-10 hover:bg-primary/50 cursor-pointer hidden group-hover:flex"
                     variant={"outline"}
@@ -204,15 +270,15 @@ const components: PortableTextComponents = {
       </h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-6 mt-8">
+      <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-6 mt-8">
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-2xl md:text-3xl font-medium mb-4 mt-6">{children}</h3>
+      <h3 className="text-xl md:text-2xl font-medium mb-4 mt-6">{children}</h3>
     ),
     h4: ({ children }) => (
-      <h4 className="text-xl md:text-2xl font-medium mb-3 mt-5">{children}</h4>
+      <h4 className="text-lg md:text-xl font-medium mb-3 mt-5">{children}</h4>
     ),
     normal: ({ children }) => (
       <div className="my-5">
@@ -339,7 +405,7 @@ const components: PortableTextComponents = {
     ),
     code: ({ children }) => (
       <code
-        className={`px-1.5 py-0.5 rounded-md bg-sidebar-border   text-primary ${jetBrainsMono.className}`}
+        className={`px-1.5 py-0.5  rounded-md bg-sidebar-border   text-primary ${jetBrainsMono.className}`}
       >
         {children}
       </code>

@@ -251,7 +251,8 @@ const wordHighlightClassNames = cn(
 const codeBlockClassName = cn(
   "mt-0 bg-background text-sm",
   "[&_pre]:py-4",
-  "[&_pre]:overflow-x-auto", // 👈 scroll sur <pre>
+  "[&_pre]:overflow-x-auto ",
+  "[&_pre]:scrollbar scrollbar-w-2 scrollbar-thumb-primary scrollbar-track-sidebar scrollbar-thumb-rounded-none scrollbar-track-rounded-none",  // 👈 scroll sur <pre>
   "[&_pre]:w-full",
   "[&_.shiki]:!bg-[var(--shiki-bg)]",
   "[&_.shiki]:!bg-transparent",
