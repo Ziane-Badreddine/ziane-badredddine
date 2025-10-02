@@ -5,6 +5,9 @@ import { ThemeProvider } from "@/providers/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { Analytics } from "@vercel/analytics/next";
 import React from "react";
+import { Banner } from "@/components/banner";
+import { getBanner } from "@/actions/banner";
+import { PortableTextRender } from "@/components/banner/portable-text";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -72,11 +75,12 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const banner = await getBanner();
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <body
@@ -89,6 +93,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          {banner && (
+            <Banner
+              variant="rainbow"
+
+              className="bg-primary/5 text-foreground container mx-auto"
+            >
+              <PortableTextRender value={banner.content} />
+            </Banner>
+          )}
           {children}
           <Analytics />
           <Toaster richColors />
