@@ -5,6 +5,8 @@ export async function getBanner() {
     `*[_type == "banner" && isActive == true][0]{
       title,
       content
-    }`
+    }`,
+    {},
+    { next: { revalidate: 10 } }
   );
 }
