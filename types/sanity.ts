@@ -32,7 +32,7 @@ export interface Category extends Base {
 export interface Post extends Base {
   title: string;
   slug: Slug;
-  description: string;
+  description: Block[];
   author: Author;
   mainImage: Image;
   categories: Category[];

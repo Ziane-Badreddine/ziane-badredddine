@@ -17,14 +17,22 @@ import {
 } from "@/components/ui/tooltip";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
+import BlogBody from "./PortableTextComponents";
 
 interface BlogCardProps {
   blog: Post;
 }
 
 export default function BlogCard({ blog }: BlogCardProps) {
+
+  console.log(blog.description)
   return (
-    <Card className={cn("group ring-primary/50  from-card to-primary/5 relative border-2 bg-gradient-to-b ring-2 transition-all duration-300",blog.mainImage && "pt-0")}>
+    <Card
+      className={cn(
+        "group ring-primary/50  from-card to-primary/5 relative border-2 bg-gradient-to-b ring-2 transition-all duration-300",
+        blog.mainImage && "pt-0"
+      )}
+    >
       {blog.mainImage && (
         <Image
           src={urlFor(blog.mainImage).auto("format").url()}
@@ -59,14 +67,18 @@ export default function BlogCard({ blog }: BlogCardProps) {
           </Tooltip>
         </div>
         <div className="flex flex-wrap gap-2">
-          {blog.categories && blog.categories.length > 0 && blog.categories.map((cat) => (
-            <Badge className="rounded-xs" variant={"secondary"} key={cat._id}>
-              {cat.title}
-            </Badge>
-          ))}
+          {blog.categories &&
+            blog.categories.length > 0 &&
+            blog.categories.map((cat) => (
+              <Badge className="rounded-xs" variant={"secondary"} key={cat._id}>
+                {cat.title}
+              </Badge>
+            ))}
         </div>
         <h4 className="text-xl">{blog.title}</h4>
-        <p className=" text-muted-foreground break-all ">{blog.description}</p>
+       <div>
+         {blog.description && <BlogBody body={blog.description} />}
+       </div>
       </CardContent>
       <CardFooter className="px-4">
         <Link className="w-full" href={`/blog/${blog.slug.current}`}>

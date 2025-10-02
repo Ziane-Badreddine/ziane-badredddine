@@ -237,7 +237,7 @@ const components: PortableTextComponents = {
                 className="dark:bg-muted/25 bg-background group"
                 key={item.language}
                 lineNumbers={!["bash"].includes(value.language)}
-                value={item.language}   
+                value={item.language}
               >
                 {/* Ajout bouton copy si pas de filename */}
                 {!value.filename && value.language !== "bash" && (
@@ -281,7 +281,7 @@ const components: PortableTextComponents = {
       <h4 className="text-lg md:text-xl font-medium mb-3 mt-5">{children}</h4>
     ),
     normal: ({ children }) => (
-      <div className="my-5">
+      <div className="mb-5">
         <p className="leading-7 text-muted-foreground">{children}</p>
       </div>
     ),
@@ -357,12 +357,12 @@ const components: PortableTextComponents = {
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="list-disc list-inside pl-2 md:pl-4 my-4 space-y-2 marker:text-primary">
+      <ul className="list-disc list-outside mb-5 pl-6 mx-2 space-y-2 [&>li]:marker:text-primary [&>li]:marker:text-xl">
         {children}
       </ul>
     ),
     number: ({ children }) => (
-      <ol className="list-decimal list-inside pl-2 md:pl-4 my-4 space-y-2 marker:text-primary">
+      <ol className="list-decimal list-outside pl-6 mb-5 space-y-2 [&>li]:marker:text-primary [&>li]:marker:text-xl">
         {children}
       </ol>
     ),
