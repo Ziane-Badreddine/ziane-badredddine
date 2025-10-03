@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/theme-provider";
@@ -23,43 +23,45 @@ const siteUrl = "https://ziane-badreddine.vercel.app";
 export const metadata: Metadata = {
   title: "Ziane Badreddine | Software Engineer & Full-Stack Developer",
   description:
-    "Full-stack software engineer based in Settat, Morocco. Passionate about building modern web applications with Next.js and Tailwind on the frontend, and scalable APIs using Node.js and Java Spring Boot on the backend.",
+    "Full-stack software engineer based in Settat, Morocco. Passionate about building modern web applications with Next.js, Tailwind, Node.js, and Java Spring Boot.",
   keywords:
     "full-stack developer, software engineer, Next.js, Tailwind, Node.js, Spring Boot, Ziane Badreddine, Settat, Morocco",
-  authors: [
-    {
-      name: "Ziane Badreddine",
-      url: siteUrl,
-    },
-  ],
+  authors: [{ name: "Ziane Badreddine", url: siteUrl }],
   creator: "Ziane Badreddine",
   publisher: "Ziane Badreddine",
+  robots: "index, follow",
+  alternates: { canonical: siteUrl },
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
   openGraph: {
     title: "Ziane Badreddine | Software Engineer & Full-Stack Developer",
     description:
-      "Full-stack software engineer based in Settat, Morocco, specializing in building scalable web apps using Next.js, Tailwind, Node.js, and Java Spring Boot.",
+      "Full-stack software engineer based in Settat, Morocco, specializing in scalable web apps with Next.js, Tailwind, Node.js & Spring Boot.",
     url: siteUrl,
     siteName: "Ziane Badreddine Portfolio",
     images: [
       {
-        url: `${siteUrl}/icons/code.svg`,
+        url: `${siteUrl}/icons/favicon-black.svg`,
         width: 1200,
         height: 630,
         alt: "Ziane Badreddine – Software Engineer Portfolio",
       },
     ],
     locale: "en_US",
-    type: "website",
+    type: "profile",
+    firstName: "Ziane",
+    lastName: "Badreddine",
   },
   twitter: {
     card: "summary_large_image",
     title: "Ziane Badreddine | Software Engineer & Full-Stack Developer",
     description:
-      "Full-stack developer based in Settat, Morocco, building modern, scalable web apps with cutting-edge technologies.",
-    images: [`${siteUrl}/icons/code.svg`],
+      "Full-stack developer from Settat, Morocco. Building modern, scalable web apps with cutting-edge technologies.",
+    images: [`${siteUrl}/icons/favicon-black.svg`],
     creator: "@EddineZian27143",
   },
-  robots: "index, follow",
   icons: [
     {
       rel: "icon",
@@ -75,6 +77,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1.0,
+};
+
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -83,6 +90,37 @@ export default async function RootLayout({
   const banner = await getBanner();
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
+      <head>
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          href="/apple-touch-icon.png"
+          type="image/png"
+          sizes="180x180"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <meta name="darkreader-lock" />
+      </head>
       <body
         suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased `}
@@ -96,7 +134,6 @@ export default async function RootLayout({
           {banner && (
             <Banner
               variant="rainbow"
-
               className="bg-primary/5 text-foreground container mx-auto"
             >
               <PortableTextRender value={banner.content} />
