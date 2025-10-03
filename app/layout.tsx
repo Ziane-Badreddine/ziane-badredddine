@@ -62,18 +62,6 @@ export const metadata: Metadata = {
     images: [`${siteUrl}/icons/favicon-black.svg`],
     creator: "@EddineZian27143",
   },
-  icons: [
-    {
-      rel: "icon",
-      url: "/icons/favicon-black.svg",
-      media: "(prefers-color-scheme: light)",
-    },
-    {
-      rel: "icon",
-      url: "/icons/favicon-white.svg",
-      media: "(prefers-color-scheme: dark)",
-    },
-  ],
   metadataBase: new URL(siteUrl),
 };
 
