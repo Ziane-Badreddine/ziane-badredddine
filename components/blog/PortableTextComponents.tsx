@@ -9,7 +9,6 @@ import { inter, jetBrainsMono, lora } from "@/lib/fonts";
 import { urlFor } from "@/sanity/lib/image";
 import {
   AlertTriangle,
-  ArrowUpRight,
   CheckCircle,
   Info,
   Terminal,
@@ -133,7 +132,7 @@ const components: PortableTextComponents = {
         {value.items?.map((item: any, i: number) => (
           <Step key={i}>
             {item.title && (
-              <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+              <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
             )}
             {item.content && (
               <PortableText
@@ -161,7 +160,7 @@ const components: PortableTextComponents = {
       const style = value?.style || "solid";
       return (
         <hr
-          className={`my-10 border-t border-border h-[2px]  ${
+          className={`my-10 border-t border-muted-foreground/50 h-[2px]  ${
             style === "dashed"
               ? "border-dashed "
               : style === "dotted"
@@ -173,7 +172,7 @@ const components: PortableTextComponents = {
     },
     image: ({ value }) => {
       return (
-        <div className="my-6 w-full flex flex-col justify-center">
+        <div className="my-5 w-full flex flex-col justify-center">
           <ImageZoom
             backdropClassName={cn(
               '[&_[data-rmiz-modal-overlay="visible"]]:from-background w-full [&_[data-rmiz-modal-overlay="visible"]]:via-background [&_[data-rmiz-modal-overlay="visible"]]:to-muted/20'
@@ -185,7 +184,7 @@ const components: PortableTextComponents = {
                 alt={value.alt || "Blog image"}
                 width={1200}
                 height={700}
-                className="shadow-lg object-cover w-full max-w-[800px] mx-auto 
+                className="shadow-lg object-cover w-full  mx-auto 
       [data-rmiz-modal-img]:!w-auto [data-rmiz-modal-img]:!max-w-[90vw] [data-rmiz-modal-img]:!max-h-[90vh]"
                 priority
                 quality={100}
@@ -201,7 +200,7 @@ const components: PortableTextComponents = {
           </ImageZoom>
 
           {value.alt && (
-            <figcaption className="mt-3 text-center text-sm text-muted-foreground italic">
+            <figcaption className={cn("mt-3 text-center text-sm text-muted-foreground ",lora.className)}>
               {value.alt}
             </figcaption>
           )}
@@ -220,22 +219,22 @@ const components: PortableTextComponents = {
         <CodeBlock
           data={code}
           defaultValue={code[0].language}
-          className="shadow-md dark:shadow-none "
+          className="shadow-md dark:shadow-none my-4 "
         >
           {value.language === "bash" || value.filename ? ( // on vérifie seulement s'il y a un language
             <CodeBlockHeader className="bg-muted-foreground/10 dark:bg-background">
-              <CodeBlockFiles>
+              <CodeBlockFiles  className="w-[calc(100%-36px)]" >
                 {(item) => (
-                  <CodeBlockFilename key={item.language} value={item.language}>
+                  <CodeBlockFilename className="w-[calc(100%-36px)]"   key={item.language} value={item.language}>
                     <div
-                      className={`flex items-center gap-2 ${inter.className}`}
+                      className={`flex items-center gap-2   ${inter.className}`}
                     >
                       {languageIcons[item.language?.toLowerCase()] || null}
-                      <span>
+                      <span className="truncate min-w-0">
                         {
                           !item.filename && item.language === "bash"
                             ? "terminal"
-                            : item.filename || item.language // fallback: si filename null et pas bash, affiche le language
+                            : item.filename || item.language 
                         }
                       </span>
                     </div>
@@ -250,7 +249,7 @@ const components: PortableTextComponents = {
             </CodeBlockHeader>
           ) : null}
 
-          <CodeBlockBody className="relative scro-b">
+          <CodeBlockBody className="relative ">
             {(item) => (
               <CodeBlockItem
                 className="dark:bg-muted/25 bg-background group"
@@ -283,7 +282,7 @@ const components: PortableTextComponents = {
   block: {
     h1: ({ children }) => (
       <h1
-        className={`text-4xl md:text-5xl font-bold tracking-tight mb-8 mt-10 ${lora.className}`}
+        className={`text-4xl md:text-5xl font-bold tracking-tight mb-6 mt-10 ${lora.className}`}
       >
         {children}
       </h1>
@@ -294,18 +293,16 @@ const components: PortableTextComponents = {
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-xl md:text-2xl font-medium mb-4 mt-6">{children}</h3>
+      <h3 className="text-xl md:text-2xl font-medium mb-3 ">{children}</h3>
     ),
     h4: ({ children }) => (
-      <h4 className="text-lg md:text-xl font-medium mb-3 mt-5">{children}</h4>
+      <h4 className="text-lg md:text-xl font-medium mb-2 mt-6">{children}</h4>
     ),
     normal: ({ children }) => (
-      <div className="mb-5">
-        <p className="leading-7 text-muted-foreground">{children}</p>
-      </div>
+        <p className="leading-7 text-base text-muted-foreground my-4">{children}</p>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="relative rounded-lg border-l-7 my-6 border border-l-primary bg-card text-card-foreground p-6 sm:p-8 shadow-xs dark:shadow-none">
+      <blockquote className={cn("relative border  border-l-6 my-6  border-l-primary bg-card text-card-foreground p-6 sm:p-8 shadow-xs dark:shadow-none font-semibold leading-tight",lora.className)}>
         {/* SVG quote icon */}
         <svg
           className="absolute top-0 left-0 w-16 h-16 text-muted-foreground/50"
@@ -322,7 +319,7 @@ const components: PortableTextComponents = {
 
         {/* Texte */}
         <div className="relative z-10">
-          <p className="text-gray-800 sm:text-xl dark:text-white italic leading-relaxed">
+          <p className=" sm:text-xl  italic leading-relaxed">
             {children}
           </p>
         </div>
@@ -392,29 +389,23 @@ const components: PortableTextComponents = {
       const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
       const href = value?.href || "#";
       const isInternal = href.startsWith("/") || href.startsWith(BASE_URL);
-      if (isInternal) {
         return (
-          <Link
-            href={href.startsWith(BASE_URL) ? href.replace(BASE_URL, "") : href}
-            className="inline-flex items-center gap-1 text-primary font-medium hover:underline underline-offset-4 mx-1"
-          >
-            {children}
-          </Link>
-        );
-      }
+<Link
+  target={isInternal ? "_self" : "_blank"}
+  href={href.startsWith(BASE_URL) ? href.replace(BASE_URL, "") : href}
+  className={cn(
+    "inline break-all underline underline-offset-4 decoration-primary text-primary font-semibold",
+    !isInternal
+      ? "hover:text-primary/80"
+      : "text-foreground hover:text-foreground/80"
+  )}
+>
+  {children}
+</Link>
 
-      return (
-        <a
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 text-primary font-medium hover:underline underline-offset-4 mx-1"
-        >
-          {children}
-          <ArrowUpRight className="size-4 shrink-0" />
-        </a>
-      );
-    },
+        );
+      },
+
     strong: ({ children }) => (
       <strong className="font-semibold text-foreground">{children}</strong>
     ),

@@ -321,36 +321,35 @@ body::before {
 }
 
 @layer components {
-  /* --- Steps Container --- */
   .fd-steps {
-    @apply relative flex flex-col gap-10 ml-4 pl-7 border-l border-muted-foreground/30 ;
+    @apply relative flex flex-col gap-4 ml-4 pl-7 border-l border-muted-foreground/30;
+    counter-reset: step;
   }
 
-  /* --- Single Step --- */
   .fd-step {
     @apply relative;
+  }
+
+  /* Supprime les marges internes du dernier bloc dans le dernier step */
+  .fd-step:last-child *:last-child {
+    @apply mb-0;
   }
 
   /* --- Number Circle --- */
   .fd-step::before {
     content: counter(step);
     counter-increment: step;
-    @apply absolute -left-11 flex items-center justify-center w-8 h-8 rounded-full bg-muted-foreground/50  text-sm font-semibold ring-0 backdrop-blur-3xl;
+    @apply absolute -left-11 -top-0.5 flex items-center justify-center w-8 h-8 rounded-full bg-muted-foreground/20 text-sm font-semibold ring-0 backdrop-blur-3xl font-mono;
   }
 
-  /* --- First Step resets counter --- */
-  .fd-steps {
-    counter-reset: step;
-  }
-
-  /* --- Step Title --- */
   .fd-step > h3 {
     @apply text-xl font-semibold;
   }
 
-  /* --- Step Content --- */
   .fd-step > p {
     @apply mt-2 text-sm leading-relaxed;
   }
 }
-
+.fd-step:last-child .size-full:last-child {
+  margin-bottom: 0 !important;
+}

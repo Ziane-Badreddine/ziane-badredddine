@@ -18,6 +18,7 @@ import {
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 import BlogBody from "./PortableTextComponents";
+import { lora } from "@/lib/fonts";
 
 interface BlogCardProps {
   blog: Post;
@@ -28,7 +29,7 @@ export default function BlogCard({ blog }: BlogCardProps) {
   return (
     <Card
       className={cn(
-        "group ring-primary/50  from-card to-primary/5 relative border-2 bg-gradient-to-b ring-2 transition-all duration-300",
+        "group ring-primary/50  from-card to-primary/5 relative border-2 bg-gradient-to-b ring-2 transition-all duration-300 overflow-hidden",
         blog.mainImage && "pt-0"
       )}
     >
@@ -38,10 +39,10 @@ export default function BlogCard({ blog }: BlogCardProps) {
           alt={blog.title}
           width={640}
           height={320}
-          className="aspect-video w-full rounded-t-xl "
+          className="aspect-video w-full rounded-t-xl hover:scale-105 transition-transform duration-300 hover:scale-105 "
         />
       )}
-      <CardContent className="px-4 flex flex-col gap-4 h-full">
+      <CardContent className="px-4 flex flex-col  h-full">
         <div className="flex w-full items-center justify-between">
           <div className="flex gap-2">
             <Calendar className="size-4" />
@@ -65,16 +66,16 @@ export default function BlogCard({ blog }: BlogCardProps) {
             </TooltipContent>
           </Tooltip>
         </div>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 mt-4">
           {blog.categories &&
             blog.categories.length > 0 &&
             blog.categories.map((cat) => (
-              <Badge className="rounded-xs" variant={"secondary"} key={cat._id}>
+              <Badge className="rounded-xs"  key={cat._id}>
                 {cat.title}
               </Badge>
             ))}
         </div>
-        <h4 className="text-xl">{blog.title}</h4>
+        <h4 className={cn("text-xl md:text-2xl mt-4 font-semibold",lora.className)}>{blog.title}</h4>
        <div>
          {blog.description && <BlogBody body={blog.description} />}
        </div>
