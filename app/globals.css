@@ -220,22 +220,23 @@ body::before {
   }
 }
 
-body {
+* {
   --sb-track-color: var(--sidebar);
   --sb-thumb-color: var(--color-primary);
   --sb-size: 7px;
 }
 
-body::-webkit-scrollbar {
+*::-webkit-scrollbar {
   width: var(--sb-size);
+  height: var(--sb-size) ;
 }
 
-body::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
   background: var(--sb-track-color);
   border-radius: 1px;
 }
 
-body::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
   background: var(--color-primary);
   border-radius: 1px;
 }
@@ -319,4 +320,37 @@ body::-webkit-scrollbar-thumb {
   border-radius: 1px;
 }
 
+@layer components {
+  /* --- Steps Container --- */
+  .fd-steps {
+    @apply relative flex flex-col gap-10 ml-4 pl-7 border-l border-muted-foreground/30 ;
+  }
+
+  /* --- Single Step --- */
+  .fd-step {
+    @apply relative;
+  }
+
+  /* --- Number Circle --- */
+  .fd-step::before {
+    content: counter(step);
+    counter-increment: step;
+    @apply absolute -left-11 flex items-center justify-center w-8 h-8 rounded-full bg-muted-foreground/50  text-sm font-semibold ring-0 backdrop-blur-3xl;
+  }
+
+  /* --- First Step resets counter --- */
+  .fd-steps {
+    counter-reset: step;
+  }
+
+  /* --- Step Title --- */
+  .fd-step > h3 {
+    @apply text-xl font-semibold;
+  }
+
+  /* --- Step Content --- */
+  .fd-step > p {
+    @apply mt-2 text-sm leading-relaxed;
+  }
+}
 

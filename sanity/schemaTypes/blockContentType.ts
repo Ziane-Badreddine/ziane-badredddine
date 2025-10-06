@@ -145,5 +145,8 @@ export const blockContentType = defineType({
     defineArrayMember({
       type: "youtube",
     }),
+    defineArrayMember({
+      type: "steps",
+    }),
   ],
 });

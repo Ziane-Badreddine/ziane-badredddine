@@ -25,7 +25,6 @@ interface BlogCardProps {
 
 export default function BlogCard({ blog }: BlogCardProps) {
 
-  console.log(blog.description)
   return (
     <Card
       className={cn(

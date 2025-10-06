@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
@@ -76,6 +77,7 @@ import { toast } from "sonner";
 import { YouTubePlayer } from "../ui/YouTubePlayer";
 import { FaJava } from "react-icons/fa";
 import { VscJson } from "react-icons/vsc";
+import { Step, Steps } from "../steps";
 
 export const languageIcons: Record<string, JSX.Element> = {
   javascript: <SiJavascript className="size-4 text-current" />,
@@ -126,6 +128,23 @@ export const languageIcons: Record<string, JSX.Element> = {
 
 const components: PortableTextComponents = {
   types: {
+    steps: ({ value }) => (
+      <Steps>
+        {value.items?.map((item: any, i: number) => (
+          <Step key={i}>
+            {item.title && (
+              <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+            )}
+            {item.content && (
+              <PortableText
+                value={item.content}
+                components={components} // allows nested rich blocks inside each step
+              />
+            )}
+          </Step>
+        ))}
+      </Steps>
+    ),
     youtube: ({ value }) => {
       const videoId = extractYouTubeId(value?.url);
       if (!videoId) return null;
@@ -373,7 +392,6 @@ const components: PortableTextComponents = {
       const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
       const href = value?.href || "#";
       const isInternal = href.startsWith("/") || href.startsWith(BASE_URL);
-      console.log(BASE_URL, href, isInternal);
       if (isInternal) {
         return (
           <Link
