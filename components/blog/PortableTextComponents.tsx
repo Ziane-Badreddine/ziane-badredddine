@@ -175,7 +175,7 @@ const components: PortableTextComponents = {
         <div className="my-5 w-full flex flex-col justify-center">
           <ImageZoom
             backdropClassName={cn(
-              '[&_[data-rmiz-modal-overlay="visible"]]:from-background w-full [&_[data-rmiz-modal-overlay="visible"]]:via-background [&_[data-rmiz-modal-overlay="visible"]]:to-muted/20'
+              '[&_[data-rmiz-modal-overlay="visible"]]:from-primary w-full [&_[data-rmiz-modal-overlay="visible"]]:via-background [&_[data-rmiz-modal-overlay="visible"]]:to-muted '
             )}
           >
             {value ? (
@@ -184,8 +184,15 @@ const components: PortableTextComponents = {
                 alt={value.alt || "Blog image"}
                 width={1200}
                 height={700}
-                className="shadow-lg object-cover w-full  mx-auto 
-      [data-rmiz-modal-img]:!w-auto [data-rmiz-modal-img]:!max-w-[90vw] [data-rmiz-modal-img]:!max-h-[90vh]"
+                className={cn(
+                  "shadow-lg object-cover w-full mx-auto primary",
+                  // Zoomed image size
+                  "[data-rmiz-modal-img]:!w-[1200px]",
+                  "[data-rmiz-modal-img]:!h-[700px]",
+                  "[data-rmiz-modal-img]:!max-w-[90vw]",
+                  "[data-rmiz-modal-img]:!max-h-[90vh]"
+                )}
+                unoptimized
                 priority
                 quality={100}
               />
@@ -200,13 +207,19 @@ const components: PortableTextComponents = {
           </ImageZoom>
 
           {value.alt && (
-            <figcaption className={cn("mt-3 text-center text-sm text-muted-foreground ",lora.className)}>
+            <figcaption
+              className={cn(
+                "mt-3 text-center text-sm text-muted-foreground",
+                lora.className
+              )}
+            >
               {value.alt}
             </figcaption>
           )}
         </div>
       );
     },
+
     code: ({ value }) => {
       const code = [
         {
@@ -223,19 +236,21 @@ const components: PortableTextComponents = {
         >
           {value.language === "bash" || value.filename ? ( // on vérifie seulement s'il y a un language
             <CodeBlockHeader className="bg-muted-foreground/10 dark:bg-background">
-              <CodeBlockFiles  className="w-[calc(100%-36px)]" >
+              <CodeBlockFiles className="w-[calc(100%-36px)]">
                 {(item) => (
-                  <CodeBlockFilename className="w-[calc(100%-36px)]"   key={item.language} value={item.language}>
+                  <CodeBlockFilename
+                    className="w-[calc(100%-36px)]"
+                    key={item.language}
+                    value={item.language}
+                  >
                     <div
                       className={`flex items-center gap-2   ${inter.className}`}
                     >
                       {languageIcons[item.language?.toLowerCase()] || null}
                       <span className="truncate min-w-0">
-                        {
-                          !item.filename && item.language === "bash"
-                            ? "terminal"
-                            : item.filename || item.language 
-                        }
+                        {!item.filename && item.language === "bash"
+                          ? "terminal"
+                          : item.filename || item.language}
                       </span>
                     </div>
                   </CodeBlockFilename>
@@ -299,10 +314,17 @@ const components: PortableTextComponents = {
       <h4 className="text-lg md:text-xl font-medium mb-2 mt-6">{children}</h4>
     ),
     normal: ({ children }) => (
-        <p className="leading-7 text-base text-muted-foreground my-4">{children}</p>
+      <p className="leading-7 text-base text-muted-foreground my-4">
+        {children}
+      </p>
     ),
     blockquote: ({ children }) => (
-      <blockquote className={cn("relative border  border-l-6 my-6  border-l-primary bg-card text-card-foreground p-6 sm:p-8 shadow-xs dark:shadow-none font-semibold leading-tight",lora.className)}>
+      <blockquote
+        className={cn(
+          "relative border  border-l-6 my-6  border-l-primary bg-card text-card-foreground p-6 sm:p-8 shadow-xs dark:shadow-none font-semibold leading-tight",
+          lora.className
+        )}
+      >
         {/* SVG quote icon */}
         <svg
           className="absolute top-0 left-0 w-16 h-16 text-muted-foreground/50"
@@ -319,9 +341,7 @@ const components: PortableTextComponents = {
 
         {/* Texte */}
         <div className="relative z-10">
-          <p className=" sm:text-xl  italic leading-relaxed">
-            {children}
-          </p>
+          <p className=" sm:text-xl  italic leading-relaxed">{children}</p>
         </div>
       </blockquote>
     ),
@@ -389,22 +409,21 @@ const components: PortableTextComponents = {
       const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
       const href = value?.href || "#";
       const isInternal = href.startsWith("/") || href.startsWith(BASE_URL);
-        return (
-<Link
-  target={isInternal ? "_self" : "_blank"}
-  href={href.startsWith(BASE_URL) ? href.replace(BASE_URL, "") : href}
-  className={cn(
-    "inline break-all underline underline-offset-4 decoration-primary text-primary font-semibold",
-    !isInternal
-      ? "hover:text-primary/80"
-      : "text-foreground hover:text-foreground/80"
-  )}
->
-  {children}
-</Link>
-
-        );
-      },
+      return (
+        <Link
+          target={isInternal ? "_self" : "_blank"}
+          href={href.startsWith(BASE_URL) ? href.replace(BASE_URL, "") : href}
+          className={cn(
+            "inline break-all underline underline-offset-4 decoration-primary text-primary font-semibold",
+            !isInternal
+              ? "hover:text-primary/80"
+              : "text-foreground hover:text-foreground/80"
+          )}
+        >
+          {children}
+        </Link>
+      );
+    },
 
     strong: ({ children }) => (
       <strong className="font-semibold text-foreground">{children}</strong>
