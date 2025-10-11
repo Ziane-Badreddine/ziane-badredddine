@@ -44,7 +44,7 @@ export const SplitTextReveal = ({
 
   return (
     <motion.h1
-      className={`flex flex-wrap gap-x-1  ${className}`}
+      className={cn("flex flex-wrap gap-x-1 items-center justify-start ", className)}
       variants={container}
       initial="hidden"
       animate="show"
@@ -57,7 +57,7 @@ export const SplitTextReveal = ({
           className={cn(
             "text-muted-foreground text-lg leading-relaxed md:text-xl",
             filterWorld.includes(wordText) &&
-              "text-primary font-serif font-light italic"
+              "text-primary "
           )}
         >
           {wordText}
