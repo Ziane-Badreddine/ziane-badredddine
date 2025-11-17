@@ -195,13 +195,16 @@ export default function Nav() {
                     className="py-2 text-sm font-medium flex items-center gap-2 relative overflow-hidden group "
                   >
                     <Link
-                    className={cn("relative z-10", "hover:text-primary")}
+                      className={cn("relative z-10", "hover:text-primary")}
                       href={`/#${item.name.toLowerCase().replace(/\s+/g, "-")}`}
                       onClick={(e) => {
                         handleScrollToSection(e);
                         setMobileMenuOpen(false);
                       }}
-                    > #{item.name}</Link>
+                    >
+                      {" "}
+                      #{item.name}
+                    </Link>
                   </motion.div>
                 );
               })}
@@ -223,7 +226,7 @@ export default function Nav() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.3 }}
-                className="pt-5 border-t  mt-auto "
+                className="pt-5 border-t"
               >
                 <Link
                   href="https://github.com/Ziane-Badreddine"
