@@ -29,7 +29,7 @@ export default function BlogCard({ blog }: BlogCardProps) {
   return (
     <Card
       className={cn(
-        "group ring-primary/50  from-card to-primary/5 relative border-2 bg-gradient-to-b ring-2 transition-all duration-300 overflow-hidden",
+        "group ring-primary/50  from-card to-primary/5 relative border-2 bg-gradient-to-b ring-2 transition-all duration-300 overflow-hidden h-full",
         blog.mainImage && "pt-0"
       )}
     >

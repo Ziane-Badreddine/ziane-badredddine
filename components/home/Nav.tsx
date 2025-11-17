@@ -3,15 +3,13 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import type React from "react";
-import {  useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { ModeToggle } from "@/components/mode-toggle";
 //import { useGithubStars } from "@/hooks/use-github-stars";
 import { formatCompactNumber } from "@/utils/format";
 
 import {
-  Menu,
-  X,
   GraduationCap,
   FileCode,
   BriefcaseBusiness,
@@ -22,6 +20,8 @@ import {
 import { useGithubProfileStars } from "@/hooks/useGithubProfileStars";
 import { FaGithub } from "react-icons/fa";
 import { cn } from "@/lib/utils";
+import { Menu } from "../animate-ui/icons/menu";
+import { AnimateIcon } from "../animate-ui/icons/icon";
 
 export const navLinks = [
   {
@@ -51,14 +51,17 @@ export const navLinks = [
   },
 ];
 
-
-
 export default function Nav() {
   const { totalStars } = useGithubProfileStars("Ziane-Badreddine");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const MotionLink = motion.create(Link);
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      window.document.body.style.overflow = "hidden";
+    } else {
+      window.document.body.style.overflow = "auto";
+    }
+  }, [mobileMenuOpen]);
 
   const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const targetId = e.currentTarget.getAttribute("href")?.slice(1);
@@ -75,52 +78,47 @@ export default function Nav() {
       <div className="hidden md:flex items-center  gap-4 lg:gap-8 capitalize">
         {navLinks.map((link, i) => {
           return (
-            <MotionLink
+            <motion.div
               key={i}
-              initial={!hasAnimated ? { opacity: 0, y: -10 } : false}
-              animate={!hasAnimated ? { opacity: 1, y: 0 } : {}}
-              transition={
-                !hasAnimated ? { duration: 0.3, delay: 0.1 + i * 0.05 } : {}
-              }
-              href={`/#${link.name.toLowerCase().replace(/\s+/g, "-")}`}
-              onClick={handleScrollToSection}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.1 + i * 0.05 }}
               className={cn(
                 "text-xs lg:text-sm font-medium text-muted-foreground transition-colors hover:text-foreground relative group"
               )}
             >
-              {link.name}
+              <Link
+                href={`/#${link.name.toLowerCase().replace(/\s+/g, "-")}`}
+                onClick={handleScrollToSection}
+              >
+                {link.name}
+              </Link>
 
               <span
                 className={cn(
                   "absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"
                 )}
               ></span>
-            </MotionLink>
+            </motion.div>
           );
         })}
-        <MotionLink
-          href="/blog"
-          initial={!hasAnimated ? { opacity: 0, y: -10 } : false}
-          animate={!hasAnimated ? { opacity: 1, y: 0 } : {}}
-          transition={
-            !hasAnimated
-              ? { duration: 0.3, delay: 0.1 + navLinks.length * 0.05 }
-              : {}
-          }
-          onAnimationComplete={() => {
-              setHasAnimated(true);
-          }}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, delay: 0.1 + navLinks.length * 0.05 }}
           className={cn(
             "text-xs lg:text-sm font-medium text-muted-foreground transition-colors hover:text-foreground relative group"
           )}
         >
-          blog
-          <span
-            className={cn(
-              "absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"
-            )}
-          />
-        </MotionLink>
+          <Link href="/blog">
+            blog
+            <span
+              className={cn(
+                "absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"
+              )}
+            />
+          </Link>
+        </motion.div>
       </div>
       <motion.div className=" hidden md:flex gap-4 items-center">
         <motion.div
@@ -148,7 +146,7 @@ export default function Nav() {
           <ModeToggle />
         </motion.div>
       </motion.div>
-      <div className="flex items-center gap-4 md:hidden">
+      <div className="flex items-center  md:hidden">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -165,84 +163,90 @@ export default function Nav() {
             variant="ghost"
             size="icon"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className=" rounded-full"
           >
-            {mobileMenuOpen ? (
-              <X className="size-5" />
-            ) : (
-              <Menu className="size-5" />
-            )}
-            <span className="sr-only">Toggle menu</span>
+            <AnimateIcon
+              animate={mobileMenuOpen ? "default" : false} // 🔥 Animation ON quand menu ouvert
+              persistOnAnimateEnd={mobileMenuOpen} // Garde l’icône en mode X
+              completeOnStop // Termine l’animation proprement
+            >
+              <Menu className={"size-5"} />
+            </AnimateIcon>
           </Button>
         </motion.div>
       </div>
-      {mobileMenuOpen  && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          className="md:hidden absolute top-16 inset-x-0 bg-background/90 backdrop-blur-md border-b border-foreground"
-        >
-          <div className="container mx-auto py-4 flex flex-col gap-4 px-4 capitalize">
-            {navLinks.map((item, i) => {
-              return (
-                <MotionLink
-                  key={i}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.2, delay: i * 0.05 }}
-                  href={`/#${item.name.toLowerCase().replace(/\s+/g, "-")}`}
-                  onClick={(e) => {
-                    handleScrollToSection(e);
-                    setMobileMenuOpen(false);
-                  }}
-                  className="py-2 text-sm font-medium flex items-center gap-2 relative overflow-hidden group "
-                >
-                  <span className={cn("relative z-10", "hover:text-primary")}>
-                    #{item.name}
-                  </span>
-                </MotionLink>
-              );
-            })}
-            <MotionLink
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.2, delay: navLinks.length * 0.05 }}
-              href={`/blog`}
-              onClick={() => {
-                setMobileMenuOpen(false);
-              }}
-              className="py-2 text-sm font-medium flex items-center gap-2 relative overflow-hidden group "
-            >
-              <span className={cn("relative z-10")}>/blog</span>
-            </MotionLink>
-
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.3 }}
-              className="pt-5 border-t "
-            >
-              <Link
-                href="https://github.com/Ziane-Badreddine"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMobileMenuOpen(false)}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.25 }}
+            className="md:hidden absolute border-t  h-[calc(100vh-64px)] top-16 inset-x-0 bg-background "
+          >
+            <div className="container mx-auto py-4 flex flex-col gap-4 px-4 h-full capitalize">
+              {navLinks.map((item, i) => {
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.2, delay: i * 0.05 }}
+                    className="py-2 text-sm font-medium flex items-center gap-2 relative overflow-hidden group "
+                  >
+                    <Link
+                    className={cn("relative z-10", "hover:text-primary")}
+                      href={`/#${item.name.toLowerCase().replace(/\s+/g, "-")}`}
+                      onClick={(e) => {
+                        handleScrollToSection(e);
+                        setMobileMenuOpen(false);
+                      }}
+                    > #{item.name}</Link>
+                  </motion.div>
+                );
+              })}
+              <motion.div
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.2, delay: navLinks.length * 0.05 }}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                }}
+                className="py-2 text-sm font-medium flex items-center gap-2 relative overflow-hidden group "
               >
-                <Button className="w-full justify-center gap-2 rounded-full ">
-                  <FaGithub className="size-4 animate-pulse" />
-                  Star on GitHub
-                  {totalStars > 0 && (
-                    <span className="text-sm text-foreground ml-1">
-                      ({formatCompactNumber(totalStars)})
-                    </span>
-                  )}
-                  <MoveUpRight className=" animate-pulse " />
-                </Button>
-              </Link>
-            </motion.div>
-          </div>
-        </motion.div>
-      )}
+                <Link href={`/blog`} className={cn("relative z-10")}>
+                  /blog
+                </Link>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.3 }}
+                className="pt-5 border-t  mt-auto "
+              >
+                <Link
+                  href="https://github.com/Ziane-Badreddine"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <Button className="w-full justify-center gap-2 rounded-full ">
+                    <FaGithub className="size-4 animate-pulse" />
+                    Star on GitHub
+                    {totalStars > 0 && (
+                      <span className="text-sm text-foreground ml-1">
+                        ({formatCompactNumber(totalStars)})
+                      </span>
+                    )}
+                    <MoveUpRight className=" animate-pulse " />
+                  </Button>
+                </Link>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

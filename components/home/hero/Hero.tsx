@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Download } from "lucide-react";
 import { motion } from "framer-motion";
 import { socialLinks } from "@/data/data";
 import { Spotlight } from "./Spotlight";
@@ -24,6 +23,9 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { AnimateIcon } from "@/components/animate-ui/icons/icon";
+import { ArrowRight } from "@/components/animate-ui/icons/arrow-right";
+import { Download } from "@/components/animate-ui/icons/download";
 const icons = [
   {
     icon: SiNextdotjs,
@@ -83,7 +85,6 @@ export default function Hero() {
       }
     };
 
-    // تحديث مستمر أثناء السحب أو resize
     const interval = setInterval(updateLine, 16);
     return () => clearInterval(interval);
   }, []);
@@ -103,10 +104,28 @@ export default function Hero() {
     show: { opacity: 1, y: 0 },
   };
 
-  const isMobile = useIsMobile()
+  const isMobile = useIsMobile();
 
   return (
     <section className="relative isolate container mx-auto w-full py-10 md:py-20 lg:py-20  overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.5 }}
+        transition={{duration: 2 }}
+        className="absolute inset-0 -z-10 opacity-50"
+        style={{
+          backgroundImage: `
+        linear-gradient(45deg, transparent 49%, var(--foreground) 49%, var(--foreground) 51%, transparent 51%),
+        linear-gradient(-45deg, transparent 49%, var(--foreground) 49%, var(--foreground) 51%, transparent 51%)
+      `,
+          backgroundSize: "40px 40px",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 80% 80% at 0% 0%, var(--background) 50%, transparent 90%)",
+          maskImage:
+            "radial-gradient(ellipse 80% 80% at 0% 0%, var(--background) 50%, transparent 90%)",
+        }}
+      />
+
       <motion.svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 800 600"
@@ -126,68 +145,48 @@ export default function Hero() {
           strokeDasharray="10,5"
         />
       </motion.svg>
-        <motion.svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 200 200"
-              className={cn(
-                "absolute    w-32 h-32 -z-10 cursor-grab md:z-500",
-                isMobile ? " bottom-1/2 -left-[10%] " : " right-10 bottom-10"
-              )}
-              initial={{ opacity: 0, rotate: 0 }}
-              animate={{ opacity: 1, rotate: 360 }}
-              transition={{
-                opacity: { duration: 2, ease: "easeOut", delay: 1.6 },
-                rotate: { duration: 12, repeat: Infinity, ease: "linear" },
-              }}
-              drag
-              dragSnapToOrigin
-              whileDrag={{ scale: 0.9 }}
-              dragMomentum={false} // optional, disables inertia
-              dragConstraints={{
-                top: -100,
-                bottom: 100,
-                left: -200,
-                right: -100,
-              }} // optional
-            >
-              <defs>
-                {/* Glow / Blur filter */}
-                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur
-                    in="SourceGraphic"
-                    stdDeviation="8"
-                    result="blur"
-                  />
-                  <feMerge>
-                    <feMergeNode in="blur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-              </defs>
-
-              <polygon
-                points="100,20 180,180 20,180"
-                fill="currentColor"
-                filter="url(#glow)"
-                className="text-primary/10"
-              />
-            </motion.svg>
-       
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        className="absolute inset-0 z-0 pointer-events-none"
-        style={{
-          backgroundImage: `
-      repeating-linear-gradient(22.5deg, transparent, transparent 2px, color-mix(in srgb, var(--muted-foreground) 18%, transparent) 2px, color-mix(in srgb, var(--muted-foreground) 18%, transparent) 3px, transparent 3px, transparent 8px),
-      repeating-linear-gradient(67.5deg, transparent, transparent 2px, color-mix(in srgb, var(--muted-foreground) 10%, transparent) 2px, color-mix(in srgb, var(--muted-foreground) 10%, transparent) 3px, transparent 3px, transparent 8px),
-      repeating-linear-gradient(112.5deg, transparent, transparent 2px, color-mix(in srgb, var(--muted-foreground) 8%, transparent) 2px, color-mix(in srgb, var(--muted-foreground) 8%, transparent) 3px, transparent 3px, transparent 8px),
-      repeating-linear-gradient(157.5deg, transparent, transparent 2px, color-mix(in srgb, var(--muted-foreground) 6%, transparent) 2px, color-mix(in srgb, var(--muted-foreground) 6%, transparent) 3px, transparent 3px, transparent 8px)
-    `,
+      <motion.svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 200 200"
+        className={cn(
+          "absolute    w-32 h-32 -z-10 cursor-grab md:z-500",
+          isMobile ? " bottom-1/2 -left-[10%] " : " right-10 bottom-10"
+        )}
+        initial={{ opacity: 0, rotate: 0 }}
+        animate={{ opacity: 1, rotate: 360 }}
+        transition={{
+          opacity: { duration: 2, ease: "easeOut", delay: 1.6 },
+          rotate: { duration: 12, repeat: Infinity, ease: "linear" },
         }}
-      />
+        drag
+        dragSnapToOrigin
+        whileDrag={{ scale: 0.9 }}
+        dragMomentum={false} // optional, disables inertia
+        dragConstraints={{
+          top: -100,
+          bottom: 100,
+          left: -200,
+          right: -100,
+        }} // optional
+      >
+        <defs>
+          {/* Glow / Blur filter */}
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        <polygon
+          points="100,20 180,180 20,180"
+          fill="currentColor"
+          filter="url(#glow)"
+          className="text-primary/10"
+        />
+      </motion.svg>
 
       <motion.div
         initial={{ opacity: 0 }}
@@ -230,10 +229,10 @@ export default function Hero() {
         <Avatar className="size-36 mb-6 ring-primary ring-4 relative">
           <AvatarImage src="https://avatars.githubusercontent.com/u/183768832?v=4" />
           <AvatarFallback>CN</AvatarFallback>
-                          <div
-                  className="absolute inset-0 rounded-full bg-primary/20 animate-ping opacity-75"
-                  style={{ animationDuration: "3s", animationDelay: "0.5s" }}
-                ></div>
+          <div
+            className="absolute inset-0 rounded-full bg-primary/20 animate-ping opacity-75"
+            style={{ animationDuration: "3s", animationDelay: "0.5s" }}
+          ></div>
         </Avatar>
 
         <motion.h1
@@ -295,13 +294,15 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.5 }}
             href="#projects"
           >
-            <Button
-              size="lg"
-              className="h-12 w-full cursor-pointer rounded-full px-8 text-base shadow-md transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-lg"
-            >
-              View My Work
-              <ArrowRight className="size-4 ml-2" />
-            </Button>
+            <AnimateIcon animateOnHover="out" completeOnStop asChild>
+              <Button
+                size="lg"
+                className="h-12 w-full cursor-pointer rounded-full px-8 text-base shadow-md transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+              >
+                View My Work
+                <ArrowRight className="size-5 " />
+              </Button>
+            </AnimateIcon>
           </motion.a>
 
           <motion.a
@@ -313,14 +314,21 @@ export default function Hero() {
             target="_blank"
             download
           >
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-primary/20 w-full hover:border-primary/50 h-12 cursor-pointer rounded-full px-8 text-base transition-transform duration-300 hover:-translate-y-0.5"
+            <AnimateIcon
+              loop={isMobile}
+              animateOnHover={!isMobile}
+              completeOnStop
+              asChild
             >
-              <span className=" hidden md:inline">Download CV</span>
-              <Download className=" animate-bounce" />
-            </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-primary/20 w-full hover:border-primary/50 h-12 cursor-pointer rounded-full px-8 text-base transition-transform duration-300 hover:-translate-y-0.5"
+              >
+                <span className=" hidden md:inline">Download CV</span>
+                <Download className="size-5 " />
+              </Button>
+            </AnimateIcon>
           </motion.a>
         </div>
 

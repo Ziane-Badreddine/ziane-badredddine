@@ -31,7 +31,7 @@ export async function generateMetadata({
 
   return {
     title: `${blog.title} - My Blog`,
-    description: blog.description,
+    description: blog.description.toString(),
   };
 }
 

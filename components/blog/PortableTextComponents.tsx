@@ -172,7 +172,7 @@ const components: PortableTextComponents = {
     },
     image: ({ value }) => {
       return (
-        <div className="my-5 w-full flex flex-col justify-center">
+        <div className="my-5 w-full flex flex-col justify-center last:mb-0">
           <ImageZoom
             backdropClassName={cn(
               '[&_[data-rmiz-modal-overlay="visible"]]:from-primary w-full [&_[data-rmiz-modal-overlay="visible"]]:via-background [&_[data-rmiz-modal-overlay="visible"]]:to-muted '
@@ -232,7 +232,7 @@ const components: PortableTextComponents = {
         <CodeBlock
           data={code}
           defaultValue={code[0].language}
-          className="shadow-md dark:shadow-none my-4 "
+          className="shadow-md dark:shadow-none my-4 last:mb-0"
         >
           {value.language === "bash" || value.filename ? ( // on vérifie seulement s'il y a un language
             <CodeBlockHeader className="bg-muted-foreground/10 dark:bg-background">
@@ -297,31 +297,31 @@ const components: PortableTextComponents = {
   block: {
     h1: ({ children }) => (
       <h1
-        className={`text-4xl md:text-5xl font-bold tracking-tight mb-6 mt-10 ${lora.className}`}
+        className={`text-4xl md:text-5xl font-bold tracking-tight mb-6 mt-10 last:mb-0 ${lora.className}`}
       >
         {children}
       </h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-6 mt-8">
+      <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-6 mt-8 last:mb-0">
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-xl md:text-2xl font-medium mb-3 ">{children}</h3>
+      <h3 className="text-xl md:text-2xl font-medium mb-3 last:mb-0 ">{children}</h3>
     ),
     h4: ({ children }) => (
-      <h4 className="text-lg md:text-xl font-medium mb-2 mt-6">{children}</h4>
+      <h4 className="text-lg md:text-xl font-medium mb-2 mt-6 last:mb-0">{children}</h4>
     ),
     normal: ({ children }) => (
-      <p className="leading-7 text-base text-muted-foreground my-4">
+      <p className="leading-7 text-base text-muted-foreground my-4 last:mb-0">
         {children}
       </p>
     ),
     blockquote: ({ children }) => (
       <blockquote
         className={cn(
-          "relative border  border-l-6 my-6  border-l-primary bg-card text-card-foreground p-6 sm:p-8 shadow-xs dark:shadow-none font-semibold leading-tight",
+          "relative border  border-l-6 my-6 last:mb-0   border-l-primary bg-card text-card-foreground p-6 sm:p-8 shadow-xs dark:shadow-none font-semibold leading-tight",
           lora.className
         )}
       >
@@ -348,7 +348,7 @@ const components: PortableTextComponents = {
     info: ({ children }) => (
       <Alert
         variant="default"
-        className="border-l-2 border-dashed border-l-blue-600 rounded-none shadow-md my-6  dark:shadow-none  "
+        className="border-l-2 border-dashed border-l-blue-600 rounded-none shadow-md my-6 last:mb-0  dark:shadow-none  "
       >
         <Info className="w-5 h-5 text-blue-600 mr-2" color="#155dfc" />
         <AlertDescription className="block ">{children}</AlertDescription>
@@ -357,7 +357,7 @@ const components: PortableTextComponents = {
     warning: ({ children }) => (
       <Alert
         variant="default"
-        className="border-l-2 border-dashed border-l-yellow-400 rounded-none my-6  shadow-md  dark:shadow-none "
+        className="border-l-2 border-dashed border-l-yellow-400 rounded-none my-6 last:mb-0  shadow-md  dark:shadow-none "
       >
         <AlertTriangle
           className="size-10  mr-2 text-yellow-400"
@@ -369,7 +369,7 @@ const components: PortableTextComponents = {
     error: ({ children }) => (
       <Alert
         variant="destructive"
-        className="border-l-2 border-dashed border-l-red-600 rounded-none shadow-md my-6  dark:shadow-none "
+        className="border-l-2 border-dashed border-l-red-600 rounded-none shadow-md my-6 last:mb-0  dark:shadow-none "
       >
         <XCircle
           className="w-10 h-10 mr-2  text-foreground"
@@ -381,7 +381,7 @@ const components: PortableTextComponents = {
     success: ({ children }) => (
       <Alert
         variant="default"
-        className="border-l-2 border-dashed border-l-green-600 my-6 rounded-none shadow-md dark:shadow-none"
+        className="border-l-2 border-dashed border-l-green-600 my-6 last:mb-0 rounded-none shadow-md dark:shadow-none"
       >
         <CheckCircle
           className="w-10 h-10 mr-2 text-green-600"

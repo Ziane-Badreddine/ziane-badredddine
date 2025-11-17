@@ -14,7 +14,7 @@ export function Header() {
   const { totalStars } = useGithubProfileStars("Ziane-Badreddine");
 
   return (
-    <header className="border-b sticky top-0 z-50 w-full  backdrop-blur-md transition-colors border-foreground  ">
+    <header className="border-b sticky top-0 z-50 w-full  backdrop-blur-md transition-colors border-border  ">
       <div className="flex items-center justify-between gap-2 p-4 container mx-auto h-16 ">
         <div className="flex items-center gap-1">
           <Link href={"/"}>

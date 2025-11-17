@@ -6,16 +6,18 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { services } from "@/data/data";
-import { Check, Mail } from "lucide-react";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 import { Button } from "@/components/ui/button";
+import { Check } from "@/components/animate-ui/icons/check";
+import { Send } from "@/components/animate-ui/icons/send";
+import { AnimateIcon } from "@/components/animate-ui/icons/icon";
 
 const container = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.2,
     },
   },
 };
@@ -58,15 +60,33 @@ export function ServicesGrid() {
             {service.id === 0 && (
               <div className="hidden md:flex flex-col text-sm gap-1 text-foreground">
                 <p className="flex items-center gap-2">
-                  <Check className="w-4 h-4" />
+                  <Check
+                    loop
+                    animateOnView
+                    loopDelay={5000}
+                    delay={1000}
+                    className="w-4 h-4"
+                  />
                   Responsive Design
                 </p>
                 <p className="flex items-center gap-2">
-                  <Check className="w-4 h-4 " />
+                  <Check
+                    loop
+                    animateOnView
+                    loopDelay={5000}
+                    delay={1000}
+                    className="w-4 h-4 "
+                  />
                   Custom Development
                 </p>
                 <p className="flex items-center gap-2">
-                  <Check className="w-4 h-4" />
+                  <Check
+                    loop
+                    animateOnView
+                    loopDelay={5000}
+                    delay={1000}
+                    className="w-4 h-4"
+                  />
                   SEO Optimization
                 </p>
               </div>
@@ -258,13 +278,15 @@ export function ServicesGrid() {
             <h3 className="text-xl md:text-3xl  font-bold  mb-4  bg-gradient-to-b  from-foreground via-foreground/90 to-muted-foreground/90 bg-clip-text text-transparent ">
               Do you want to start a project together?
             </h3>
-            <Button
-              size="lg"
-              className="bg-white text-black hover:bg-white/90 transition flex items-center gap-2"
-            >
-              <Mail className="w-5 h-5" />
-              Contact Me
-            </Button>
+            <AnimateIcon animateOnHover completeOnStop asChild>
+              <Button
+                size="lg"
+                className="bg-white text-black hover:bg-white/90 transition flex items-center gap-2"
+              >
+                <Send animateOnHover className="w-5 h-5" />
+                Contact Me
+              </Button>
+            </AnimateIcon>
           </div>
         </BackgroundGradientAnimation>
       </motion.a>

@@ -9,6 +9,7 @@ import Contact from "@/components/home/contact/Contact";
 export default function page() {
   return (
     <main className="w-full h-full flex-1">
+      
       <Hero />
       <Services />
       <Projects />

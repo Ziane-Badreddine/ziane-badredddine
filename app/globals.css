@@ -349,7 +349,7 @@ body::before {
   .fd-step > p {
     @apply mt-2 text-sm leading-relaxed;
   }
-}
-.fd-step:last-child .size-full:last-child {
-  margin-bottom: 0 !important;
+  .fd-step {
+    @apply last:mb-0
+  }
 }
