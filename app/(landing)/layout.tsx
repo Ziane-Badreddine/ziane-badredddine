@@ -8,7 +8,7 @@ export default function LegalLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="bg-background text-foreground  flex flex-col items-center justify-center scroll-smooth antialiased">
+    <div className="bg-background text-foreground  flex flex-col items-center justify-center ">
       <Header />
       {children}
       <Suspense>

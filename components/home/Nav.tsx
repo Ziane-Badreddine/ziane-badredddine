@@ -63,16 +63,6 @@ export default function Nav() {
     }
   }, [mobileMenuOpen]);
 
-  const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const targetId = e.currentTarget.getAttribute("href")?.slice(1);
-    if (!targetId) return;
-
-    const element = document.getElementById(targetId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <>
       <div className="hidden md:flex items-center  gap-4 lg:gap-8 capitalize">
@@ -87,12 +77,7 @@ export default function Nav() {
                 " font-medium text-muted-foreground transition-colors hover:text-foreground relative group"
               )}
             >
-              <Link
-                href={`/#${link.name.toLowerCase().replace(/\s+/g, "-")}`}
-                onClick={handleScrollToSection}
-              >
-                {link.name}
-              </Link>
+              <Link href={`/${link.href}`}>{link.name}</Link>
 
               <span
                 className={cn(
@@ -107,7 +92,7 @@ export default function Nav() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.1 + navLinks.length * 0.05 }}
           className={cn(
-            "text-xs lg:text-sm font-medium text-muted-foreground transition-colors hover:text-foreground relative group"
+            " font-medium text-muted-foreground transition-colors hover:text-foreground relative group"
           )}
         >
           <Link href="/blog">
@@ -196,9 +181,8 @@ export default function Nav() {
                   >
                     <Link
                       className={cn("relative z-10", "hover:text-primary")}
-                      href={`/#${item.name.toLowerCase().replace(/\s+/g, "-")}`}
-                      onClick={(e) => {
-                        handleScrollToSection(e);
+                      href={`/${item.href}`}
+                      onClick={() => {
                         setMobileMenuOpen(false);
                       }}
                     >

@@ -244,10 +244,10 @@ export default function Projects() {
               </div>
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
                 className="relative flex xl:col-span-2 max-h-[500px] flex-col items-center justify-center space-y-4 lg:flex lg:order-none order-1"
               >
                 <div className="relative w-full overflow-hidden border-2 border-border mask-b-from-85% backdrop-blur-xs transition-all delay-150 duration-300">

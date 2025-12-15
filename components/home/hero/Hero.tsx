@@ -226,14 +226,21 @@ export default function Hero() {
         transition={{ duration: 0.5 }}
         className=" text-left  md:text-center  relative z-10 px-4 md:px-6 mx-auto flex flex-col items-center justify-center  "
       >
-        <Avatar className="size-36 mb-6 ring-primary ring-4 relative">
-          <AvatarImage src="https://avatars.githubusercontent.com/u/183768832?v=4" />
-          <AvatarFallback>CN</AvatarFallback>
-          <div
-            className="absolute inset-0 rounded-full bg-primary/20 animate-ping opacity-75"
-            style={{ animationDuration: "3s", animationDelay: "0.5s" }}
-          ></div>
-        </Avatar>
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.3, delay: 0.2 }}
+        >
+          <Avatar className="size-36 mb-6 ring-primary ring-4 relative">
+            <AvatarImage src="https://avatars.githubusercontent.com/u/183768832?v=4" />
+            <AvatarFallback>CN</AvatarFallback>
+            <div
+              className="absolute inset-0 rounded-full bg-primary/20 animate-ping opacity-75"
+              style={{ animationDuration: "3s", animationDelay: "0.5s" }}
+            ></div>
+          </Avatar>
+        </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 30 }}

@@ -19,13 +19,13 @@ import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 import BlogBody from "./PortableTextComponents";
 import { lora } from "@/lib/fonts";
+import { motion } from "motion/react";
 
 interface BlogCardProps {
   blog: Post;
 }
 
 export default function BlogCard({ blog }: BlogCardProps) {
-
   return (
     <Card
       className={cn(
@@ -34,13 +34,20 @@ export default function BlogCard({ blog }: BlogCardProps) {
       )}
     >
       {blog.mainImage && (
-        <Image
-          src={urlFor(blog.mainImage).auto("format").url()}
-          alt={blog.title}
-          width={640}
-          height={320}
-          className="aspect-video w-full rounded-t-xl hover:scale-105 transition-transform duration-300 hover:scale-105 "
-        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.3 }}
+          viewport={{ once: true }}
+        >
+          <Image
+            src={urlFor(blog.mainImage).auto("format").url()}
+            alt={blog.title}
+            width={640}
+            height={320}
+            className="aspect-video w-full rounded-t-xl transition-transform duration-300 hover:scale-105 "
+          />
+        </motion.div>
       )}
       <CardContent className="px-4 flex flex-col  h-full">
         <div className="flex w-full items-center justify-between">
@@ -70,15 +77,20 @@ export default function BlogCard({ blog }: BlogCardProps) {
           {blog.categories &&
             blog.categories.length > 0 &&
             blog.categories.map((cat) => (
-              <Badge className="rounded-xs"  key={cat._id}>
+              <Badge className="rounded-xs" key={cat._id}>
                 {cat.title}
               </Badge>
             ))}
         </div>
-        <h4 className={cn("text-xl md:text-2xl mt-4 font-semibold",lora.className)}>{blog.title}</h4>
-       <div>
-         {blog.description && <BlogBody body={blog.description} />}
-       </div>
+        <h4
+          className={cn(
+            "text-xl md:text-2xl mt-4 font-semibold",
+            lora.className
+          )}
+        >
+          {blog.title}
+        </h4>
+        <div>{blog.description && <BlogBody body={blog.description} />}</div>
       </CardContent>
       <CardFooter className="px-4">
         <Link className="w-full" href={`/blog/${blog.slug.current}`}>

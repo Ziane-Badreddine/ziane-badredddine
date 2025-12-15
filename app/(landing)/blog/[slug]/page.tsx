@@ -10,6 +10,7 @@ import { format } from "date-fns";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import * as motion from "motion/react-client";
 export async function generateMetadata({
   params,
 }: {
@@ -44,7 +45,12 @@ export default async function BlogPage({ params }: BlogPageProps) {
   }
 
   return (
-    <div className="from-background w-full via-background to-muted/20 py-10 md:py-10 lg:py-20 relative isolate min-h-screen bg-gradient-to-br pb-10 md:pb-10 lg:pb-20 container ">
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="from-background w-full via-background to-muted/20 py-10 md:py-10 lg:py-20 relative isolate min-h-screen bg-gradient-to-br pb-10 md:pb-10 lg:pb-20 container "
+    >
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="bg-primary/10 absolute top-0 right-0 size-80 translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl" />
         <div className="bg-secondary/10 absolute bottom-0 left-0 size-80 -translate-x-1/2 translate-y-1/2 rounded-full blur-3xl" />
@@ -119,6 +125,6 @@ export default async function BlogPage({ params }: BlogPageProps) {
           <BlogBody body={blog.body} />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
