@@ -3,7 +3,7 @@ import { cacheLife } from "next/cache";
 
 export async function getBanner() {
   "use cache";
-  cacheLife("days");
+  cacheLife("hours");
   return client.fetch(
     `*[_type == "banner" && isActive == true][0]{
       title,
