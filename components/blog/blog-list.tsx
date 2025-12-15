@@ -40,10 +40,7 @@ export default function BlogList({ blogs }: BlogListProps) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.2, ease: "easeOut" }}
-          className={cn(
-            "from-foreground  to-foreground/50 bg-gradient-to-r bg-clip-text text-5xl font-bold tracking-tight text-pretty text-transparent md:text-6xl",
-            lora.className
-          )}
+          className={cn(" text-5xl font-semibold mb-4 md:text-6xl")}
         >
           Latest Updates
         </motion.h1>

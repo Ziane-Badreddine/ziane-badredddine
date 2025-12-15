@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 
 import { motion } from "framer-motion";
@@ -23,8 +22,8 @@ const container = {
 };
 
 const item = {
-  hidden: { opacity: 0, y: 5 },
-  show: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, scale: 0 },
+  show: { opacity: 1, scale: 1 },
 };
 
 export function ServicesGrid() {

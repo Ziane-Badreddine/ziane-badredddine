@@ -84,7 +84,7 @@ export default function Nav() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.1 + i * 0.05 }}
               className={cn(
-                "text-xs lg:text-sm font-medium text-muted-foreground transition-colors hover:text-foreground relative group"
+                " font-medium text-muted-foreground transition-colors hover:text-foreground relative group"
               )}
             >
               <Link
@@ -120,7 +120,7 @@ export default function Nav() {
           </Link>
         </motion.div>
       </div>
-      <motion.div className=" hidden md:flex gap-4 items-center">
+      <motion.div className=" hidden md:flex gap-2 items-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}

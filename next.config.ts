@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  cacheComponents: true,
+  reactCompiler: true,
   experimental: {
     typedEnv: true,
   },
@@ -11,6 +13,7 @@ const nextConfig: NextConfig = {
         hostname: "cdn.sanity.io",
       },
     ],
+    qualities: [75, 90, 100],
   },
 };
 

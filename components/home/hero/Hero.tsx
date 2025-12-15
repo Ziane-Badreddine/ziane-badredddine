@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { socialLinks } from "@/data/data";
 import { Spotlight } from "./Spotlight";
 import { SplitTextReveal } from "./SplitTextReveal";
@@ -111,7 +111,7 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.5 }}
-        transition={{duration: 2 }}
+        transition={{ duration: 2 }}
         className="absolute inset-0 -z-10 opacity-50"
         style={{
           backgroundImage: `

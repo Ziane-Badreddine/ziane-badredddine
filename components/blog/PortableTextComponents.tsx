@@ -308,13 +308,17 @@ const components: PortableTextComponents = {
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-xl md:text-2xl font-medium mb-3 last:mb-0 ">{children}</h3>
+      <h3 className="text-xl md:text-2xl font-medium mb-3 last:mb-0 ">
+        {children}
+      </h3>
     ),
     h4: ({ children }) => (
-      <h4 className="text-lg md:text-xl font-medium mb-2 mt-6 last:mb-0">{children}</h4>
+      <h4 className="text-lg md:text-xl font-medium mb-2 mt-6 last:mb-0">
+        {children}
+      </h4>
     ),
     normal: ({ children }) => (
-      <p className="leading-7 text-base text-muted-foreground my-4 last:mb-0">
+      <p className="leading-8 text-base text-muted-foreground my-4 last:mb-0">
         {children}
       </p>
     ),
@@ -393,7 +397,7 @@ const components: PortableTextComponents = {
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="list-disc list-outside mb-5 pl-6 mx-2 space-y-2 [&>li]:marker:text-primary [&>li]:marker:text-xl">
+      <ul className="list-disc [&>li]:leading-8 list-outside mb-5 pl-6 mx-2 space-y-2 [&>li]:marker:text-primary [&>li]:marker:text-xl">
         {children}
       </ul>
     ),
@@ -433,7 +437,7 @@ const components: PortableTextComponents = {
     ),
     code: ({ children }) => (
       <code
-        className={`px-1.5 py-0.5  rounded-md bg-sidebar-border   text-primary ${jetBrainsMono.className}`}
+        className={`px-1.5 py-0.5   rounded-md bg-sidebar-border   text-primary ${jetBrainsMono.className}`}
       >
         {children}
       </code>

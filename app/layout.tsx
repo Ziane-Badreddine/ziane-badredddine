@@ -8,6 +8,7 @@ import React from "react";
 import { Banner } from "@/components/banner";
 import { getBanner } from "@/actions/banner";
 import { PortableTextRender } from "@/components/banner/portable-text";
+import { merriweather, playfair } from "@/lib/fonts";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,10 +32,6 @@ export const metadata: Metadata = {
   publisher: "Ziane Badreddine",
   robots: "index, follow",
   alternates: { canonical: siteUrl },
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#000000" },
-  ],
   openGraph: {
     title: "Ziane Badreddine | Software Engineer & Full-Stack Developer",
     description:
@@ -68,6 +65,10 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1.0,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
 };
 
 export default async function RootLayout({
@@ -111,7 +112,7 @@ export default async function RootLayout({
       </head>
       <body
         suppressHydrationWarning
-        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
+        className={`${merriweather.className} antialiased `}
       >
         <ThemeProvider
           attribute="class"

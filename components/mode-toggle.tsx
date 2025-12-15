@@ -37,7 +37,7 @@ export function ModeToggle() {
   return (
     <TooltipWrapper label="Toggle theme" asChild>
       <Button
-        variant={isMobile ? "ghost" : "secondary"}
+        variant={"ghost"}
         size="icon"
         onClick={toggleTheme}
         className="rounded-full cursor-pointer  relative overflow-hidden transition-transform hover:scale-105"

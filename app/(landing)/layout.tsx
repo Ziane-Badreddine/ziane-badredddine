@@ -1,8 +1,6 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Footer from "@/components/home/footer";
 import Header from "@/components/home/Header";
-
-
 
 export default function LegalLayout({
   children,
@@ -13,7 +11,9 @@ export default function LegalLayout({
     <div className="bg-background text-foreground  flex flex-col items-center justify-center scroll-smooth antialiased">
       <Header />
       {children}
-      <Footer />
+      <Suspense>
+        <Footer />
+      </Suspense>
     </div>
   );
 }

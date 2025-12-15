@@ -1,38 +1,29 @@
 import { client } from "@/sanity/lib/client";
 import { Post } from "@/types/sanity";
+import { cacheLife } from "next/cache";
 
 export async function getBlogs() {
+  "use cache";
+  cacheLife("minutes");
+
   const query = `*[_type=="post"] | order(publishedAt desc){
-        ...,
-        author->,
-        categories[]->
-    }`;
-
-  const blogs = await client.fetch<Post[]>(
-    query,
-    {},
-    {
-      next: { revalidate: 10 }, 
-    }
-  );
-
-  return blogs;
-}
-
-export async function getBlog(slug: string) {
-  const query = `*[_type == "post" && slug.current == $slug] | order(publishedAt desc)[0] {
     ...,
     author->,
     categories[]->
   }`;
 
-  const blog = await client.fetch<Post>(
-    query,
-    { slug },
-    {
-      next: { revalidate: 10 }, 
-    }
-  );
+  return client.fetch<Post[]>(query);
+}
 
-  return blog;
+export async function getBlog(slug: string) {
+  "use cache";
+  cacheLife("hours");
+
+  const query = `*[_type == "post" && slug.current == $slug][0]{
+    ...,
+    author->,
+    categories[]->
+  }`;
+
+  return client.fetch<Post>(query, { slug });
 }

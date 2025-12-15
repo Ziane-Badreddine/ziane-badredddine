@@ -10,10 +10,6 @@ import { format } from "date-fns";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import React from "react";
-
-export const revalidate = 30;
-
 export async function generateMetadata({
   params,
 }: {
@@ -119,7 +115,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
         </div>
 
         {/* Blog body */}
-        <div className={inter.className}>
+        <div>
           <BlogBody body={blog.body} />
         </div>
       </div>

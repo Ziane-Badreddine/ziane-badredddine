@@ -258,6 +258,8 @@ export default function Projects() {
                     plugins={[
                       Autoplay({
                         delay: 10000,
+                        stopOnInteraction: true,
+                        stopOnLastSnap: true,
                       }),
                     ]}
                     setApi={setApi}
@@ -265,9 +267,12 @@ export default function Projects() {
                   >
                     <CarouselContent>
                       {projects.map((project, index) => (
-                        <CarouselItem key={index}>
+                        <CarouselItem
+                          className="drop-shadow-2xl drop-shadow-primary "
+                          key={index}
+                        >
                           <ImageZoom
-                          zoomMargin={0}
+                            zoomMargin={0}
                             backdropClassName={cn(
                               '[&_[data-rmiz-modal-overlay="visible"]]:bg-black/80'
                             )}
