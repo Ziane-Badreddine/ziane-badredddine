@@ -74,7 +74,7 @@ export default function Nav() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.1 + i * 0.05 }}
               className={cn(
-                " font-medium text-muted-foreground transition-colors hover:text-foreground relative group"
+                " font-medium text-sm text-muted-foreground transition-colors hover:text-foreground relative group"
               )}
             >
               <Link href={`/${link.href}`}>{link.name}</Link>
