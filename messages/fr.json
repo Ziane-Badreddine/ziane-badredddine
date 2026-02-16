@@ -1,0 +1,223 @@
+{
+  "Nav": {
+    "services": "Services",
+    "projects": "Projets",
+    "education": "Éducation",
+    "skills": "Compétences",
+    "contact": "Contact",
+    "blog": "Blog",
+    "githubStar": "Étoile sur GitHub",
+    "chooseLanguage": "Choisir la langue"
+  },
+  "Hero": {
+    "greeting": "Salut, je suis",
+    "building": "je crée des",
+    "web": "applications web",
+    "appsWith": "modernes avec",
+    "description": "Ingénieur logiciel fullstack passionné par la création d’applications web modernes avec Next.js et Tailwind côté frontend, et des APIs scalables avec Node.js ou Java Spring Boot côté backend.",
+    "viewWork": "Voir mes projets",
+    "downloadCV": "Télécharger CV"
+  },
+  "Projects": {
+    "badge": "Projets",
+    "title": "Des Projets Qui Illustrent Mon Stack",
+    "description": "Ces projets démontrent mon expérience avec des technologies comme Next.js, Java, SQL/NoSQL et diverses bibliothèques UI. Chaque projet répond à des cas réels : applications de chat, dashboards, intégrations API, etc.",
+
+    "viewProject": "Voir le projet",
+    "sourceCode": "Code source",
+    "status": {
+      "completed": "Terminé",
+      "comingSoon": "Bientôt disponible",
+      "planned": "Planifié"
+    },
+
+    "ecommerce": {
+      "title": "Application E-commerce",
+      "description": "Une plateforme e-commerce moderne avec catalogue produits, panier et système de paiement."
+    },
+    "storyCareer": {
+      "title": "StoryCareer | Partagez vos histoires.",
+      "description": "Une plateforme créative où les utilisateurs partagent et explorent des histoires personnelles inspirantes."
+    },
+    "xoGame": {
+      "title": "XO Game – Expérience Multijoueur",
+      "description": "Un jeu Tic-Tac-Toe en temps réel développé avec Convex, Next.js et Shadcn UI, incluant logique multijoueur et chat intégré."
+    },
+    "chatApp": {
+      "title": "Application de Chat",
+      "description": "Une application de messagerie en temps réel avec groupes, partage de fichiers et notifications."
+    }
+  },
+  "Services": {
+    "sectionTitle": "Solutions Web sur mesure adaptées à vos besoins",
+    "sectionDescription": "Je propose des services numériques personnalisés — du développement web full-stack au design graphique et à l'ingénierie de bases de données — conçus pour vous aider à lancer, développer ou améliorer votre présence en ligne.",
+    "badge": "Services",
+    "responsiveDesign": "Design Adaptatif",
+    "customDevelopment": "Développement sur mesure",
+    "seoOptimization": "Optimisation SEO",
+    "startProject": "Voulez-vous démarrer un projet ensemble ?",
+    "contactButton": "Contactez-moi",
+    "websiteDevelopment": {
+      "title": "Développement Web",
+      "description": "Sites web modernes et responsives avec design personnalisé et performance optimisée."
+    },
+    "flexibleCommunication": {
+      "title": "Communication Flexible",
+      "description": "Collaboration fluide à travers les fuseaux horaires avec des clients du monde entier."
+    },
+    "graphicDesign": {
+      "title": "Design Graphique",
+      "description": "Visuels créatifs correspondant à votre marque et améliorant l'expérience utilisateur."
+    },
+    "databases": {
+      "title": "Bases de données SQL/NoSQL",
+      "description": "Bases de données sécurisées et performantes adaptées à votre application."
+    },
+    "javaDevelopment": {
+      "title": "Développement Java",
+      "description": "Applications Java évolutives et maintenables pour diverses solutions."
+    },
+    "problemSolving": {
+      "title": "Résolution de problèmes",
+      "description": "Résolution efficace de défis algorithmiques complexes avec un code propre."
+    },
+    "features": {
+      "responsiveDesign": "Design Adaptatif",
+      "customDevelopment": "Développement Personnalisé",
+      "seoOptimization": "Optimisation SEO"
+    },
+    "cta": {
+      "question": "Voulez-vous lancer un projet ensemble ?",
+      "button": "Contactez-moi"
+    }
+  },
+  "Education": {
+    "badge": "Éducation",
+    "title": "Mon Parcours Académique",
+    "description": "Résumé de mon parcours académique et des compétences développées tout au long de mes études, constituant la base de mon évolution professionnelle.",
+
+    "degree": {
+      "badge": "Mathématiques · Physique · Informatique",
+      "title": "Diplôme en Mathématiques, Physique et Informatique",
+      "description": "Diplôme avec mention à la Faculté des Sciences et Techniques. Étude approfondie des mathématiques appliquées, de la physique et des bases de l'informatique avec un fort accent sur la résolution de problèmes. Langages étudiés : C et SQL. Réalisation de projets académiques de bases de données."
+    },
+
+    "frontend": {
+      "badge": "Développement Front-End",
+      "title": "Spécialisation Front-End",
+      "description": "Spécialisation en HTML, CSS, JavaScript, React, Next.js et Tailwind CSS. Création d’interfaces modernes et responsives, utilisation de Shadcn UI et Framer Motion, et développement d’applications web complètes en équipe."
+    },
+
+    "backend": {
+      "badge": "Développement Back-End",
+      "title": "Spécialisation Back-End",
+      "description": "Formation en Java, Node.js, Prisma et MongoDB. Conception de bases de données NoSQL, mise en place d’architectures serveur robustes et collaboration avec les équipes front-end."
+    }
+  },
+  "skillsSection": {
+    "badge": "Compétences",
+    "title": "Code propre, solutions concrètes",
+    "subtitle": "Un ensemble de compétences polyvalentes en développement Front-End et Back-End pour créer des interfaces rapides, responsives et des systèmes évolutifs."
+  },
+
+  "skills": {
+    "growth": {
+      "title": "Développement personnel",
+      "description": "Je cherche constamment à améliorer mon état d’esprit et mon comportement afin de renforcer mes relations professionnelles et mieux gérer les défis."
+    },
+    "adaptability": {
+      "title": "Adaptabilité et apprentissage",
+      "description": "Ouvert d’esprit et curieux, j’apprends rapidement de nouvelles technologies pour m’adapter aux besoins et aux contextes en évolution."
+    },
+    "teamwork": {
+      "title": "Gestion du temps & Travail en équipe",
+      "description": "Je respecte les délais avec rigueur et j’excelle dans les environnements collaboratifs orientés équipe."
+    },
+    "communication": {
+      "title": "Communication multilingue",
+      "description": "Maîtrise du français et de l’anglais, avec une communication efficace au sein d’équipes multiculturelles."
+    }
+  },
+  "contactSection": {
+    "badge": "Contact",
+    "title": "Construisons quelque chose d’exceptionnel ensemble",
+    "subtitle": "Que vous ayez un projet en tête ou que vous souhaitiez simplement dire bonjour, n’hésitez pas à me contacter. Je suis toujours ouvert aux nouvelles opportunités, aux idées créatives et aux collaborations potentielles."
+  },
+
+  "contactForm": {
+    "title": "Contactez-nous",
+    "description": "Veuillez remplir le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.",
+
+    "fields": {
+      "name": "Nom",
+      "namePlaceholder": "John Doe",
+      "email": "Email",
+      "emailPlaceholder": "johndoe@mail.com",
+      "subject": "Sujet",
+      "subjectPlaceholder": "Demande de projet, collaboration, etc.",
+      "message": "Message",
+      "messagePlaceholder": "Votre message..."
+    },
+
+    "send": "Envoyer le message",
+    "sending": "Envoi en cours...",
+    "success": "Votre message a été envoyé avec succès !",
+    "error": "Échec de l’envoi du message. Veuillez réessayer."
+  },
+
+  "contactInfo": {
+    "phone": "Téléphone",
+    "email": "Email",
+    "location": "Localisation",
+    "responseTimeTitle": "Temps de réponse",
+    "responseTimeDescription": "Je réponds généralement sous 24 heures. Pour les projets urgents, n’hésitez pas à m’appeler directement."
+  },
+  "Footer": {
+    "description": "Ce portfolio a été construit avec Next.js et Tailwind CSS, inspiré par le design system TweakCN, et stylisé avec ShadCN UI.",
+    "copyright": "Tous droits réservés.",
+    "privacyPolicy": "Politique de confidentialité",
+    "social": {
+      "GitHub": "GitHub",
+      "LinkedIn": "LinkedIn",
+      "Twitter": "Twitter"
+    }
+  },
+  "PrivacyPolicy": {
+    "title": "Politique de confidentialité",
+    "lastUpdated": "Dernière mise à jour : 17 juil. 2025",
+    "sections": {
+      "intro": {
+        "title": "1. Introduction",
+        "content": "Nous prenons votre vie privée au sérieux. Cette politique explique quelles données nous collectons lorsque vous utilisez ce site, pourquoi nous les collectons et comment nous les gérons en toute sécurité."
+      },
+      "analytics": {
+        "title": "2. Analytique",
+        "content": "Nous utilisons des outils d'analyse respectueux de la vie privée comme Plausible ou Vercel Analytics pour comprendre l'utilisation générale de ce site. Ces outils n'utilisent pas de cookies et ne suivent pas les données personnelles. Toutes les données sont agrégées et anonymisées."
+      },
+      "contactForm": {
+        "title": "3. Formulaire de contact",
+        "content1": "Lorsque vous remplissez le formulaire de contact pour démarrer un projet ou nous contacter, nous collectons les informations que vous fournissez (nom, email et message). Ces données sont uniquement utilisées pour répondre à votre demande et ne sont pas partagées ou utilisées à des fins marketing.",
+        "content2": "Les données du formulaire peuvent être temporairement traitées par un service tiers (par ex. Formspree, Resend, EmailJS), qui respecte les standards modernes de protection des données."
+      },
+      "dataSharing": {
+        "title": "4. Partage des données",
+        "content": "Nous ne vendons ni ne louons vos informations personnelles. Nous ne partageons les données qu'avec des prestataires nécessaires au fonctionnement de ce site (analytique, gestion des formulaires) sous des accords stricts de confidentialité."
+      },
+      "rights": {
+        "title": "5. Vos droits",
+        "content": "Vous avez le droit de demander l'accès, la correction ou la suppression de vos données personnelles. Pour ce faire, veuillez nous contacter à l'email ci-dessous."
+      },
+      "contact": {
+        "title": "6. Contact",
+        "content": "Pour toute question ou préoccupation liée à la vie privée, n'hésitez pas à nous contacter à",
+        "email": "zianebadredddine2004@gmail.com"
+      }
+    },
+    "agreement": "En utilisant ce site, vous acceptez cette politique de confidentialité."
+  },
+  "Blog": {
+    "title": "Dernières Actualités",
+    "description": "Tutoriels et analyses sur JavaScript, React, Next.js, Tailwind CSS, Node.js et Spring — par l’ingénieur full-stack Ziane Badreddine.",
+    "banner": "Le blog ne supporte actuellement que l’anglais."
+  }
+}

@@ -4,8 +4,11 @@ import { TracingBeam } from "@/components/ui/tracing-beam";
 import { education } from "@/data/data";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export default function Education() {
+  const t = useTranslations("Education");
+
   return (
     <section
       id="education"
@@ -25,16 +28,14 @@ export default function Education() {
               className="rounded-full px-4 py-1.5 text-sm font-medium shadow-sm"
               variant="secondary"
             >
-              <span className="text-primary mr-1">✦</span> Education
+              <span className="text-primary mr-1">✦</span> {t("badge")}
             </Badge>
           </div>
           <h2 className="from-foreground to-foreground/80 bg-gradient-to-r bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl">
-            My Educational Background
+            {t("title")}
           </h2>
           <p className="text-muted-foreground max-w-[800px] md:text-lg">
-            A summary of my academic achievements and the skills developed
-            throughout my studies, laying the groundwork for my professional
-            journey.
+            {t("description")}
           </p>
           <TracingBeam>
             {education.map((item, index) => (
@@ -55,13 +56,17 @@ export default function Education() {
                     transition={{ duration: 0.6, delay: index * 0.2 }}
                   >
                     <h1 className="text-2xl md:text-3xl font-semibold tracking-tight pb-1">
-                      {item.badge}
+                      {t(item.titleKey)}
                     </h1>
                     <h3 className="text-2xl leading-none font-mono md:text-3xl font-semibold tracking-tight mb-4 text-muted-foreground pb-1">
-                      {item.title}
+                      {item.year}
                     </h3>
-                    <div className="text-base leading-relaxed">
-                      {item.description}
+                    <div className="text-lg font-normal leading-relaxed">
+                      {t(item.descriptionKey)
+                        .split(". ")
+                        .map((sentence, index) => (
+                          <p key={index}>{sentence.trim()}.</p>
+                        ))}
                     </div>
                   </motion.div>
 
@@ -75,7 +80,7 @@ export default function Education() {
                   >
                     <Image
                       src={item.image}
-                      alt={item.title}
+                      alt={item.titleKey}
                       width={400}
                       height={300}
                       className="h-auto w-full max-w-md drop-shadow-lg relative z-10"

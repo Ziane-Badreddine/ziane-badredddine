@@ -26,6 +26,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { AnimateIcon } from "@/components/animate-ui/icons/icon";
 import { ArrowRight } from "@/components/animate-ui/icons/arrow-right";
 import { Download } from "@/components/animate-ui/icons/download";
+import { useTranslations } from "next-intl";
 const icons = [
   {
     icon: SiNextdotjs,
@@ -105,6 +106,7 @@ export default function Hero() {
   };
 
   const isMobile = useIsMobile();
+  const t = useTranslations("Hero");
 
   return (
     <section className="relative isolate container mx-auto w-full py-10 md:py-20 lg:py-20  overflow-hidden">
@@ -150,7 +152,7 @@ export default function Hero() {
         viewBox="0 0 200 200"
         className={cn(
           "absolute    w-32 h-32 -z-10 cursor-grab md:z-500",
-          isMobile ? " bottom-1/2 -left-[10%] " : " right-10 bottom-10"
+          isMobile ? " bottom-1/2 -left-[10%] " : " right-10 bottom-10",
         )}
         initial={{ opacity: 0, rotate: 0 }}
         animate={{ opacity: 1, rotate: 360 }}
@@ -247,18 +249,18 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="from-foreground via-foreground/90 to-foreground/70 mb-6 
-             bg-gradient-to-r bg-clip-text 
-             text-balance text-center font-semibold text-4xl tracking-[-0.06em]! sm:text-4xl md:text-xl xl:text-6xl"
+     bg-gradient-to-r bg-clip-text 
+     text-balance text-center font-semibold text-4xl tracking-[-0.06em]! sm:text-4xl md:text-xl xl:text-6xl"
         >
-          Hi, I’m{" "}
+          {t("greeting")}{" "}
           <span className="font-serif text-primary font-light italic inline-flex items-center gap-2">
             <span className={`${lora.className}`}>Ziane</span>
           </span>{" "}
-          — building modern{" "}
+          — {t("building")}{" "}
           <span className=" underline underline-offset-2 decoration-wavy">
-            web
+            {t("web")}
           </span>{" "}
-          apps with{" "}
+          {t("appsWith")}{" "}
           <motion.div
             variants={container}
             initial="hidden"
@@ -289,8 +291,8 @@ export default function Hero() {
         </motion.h1>
 
         <SplitTextReveal
-          className=" max-w-4xl justify-center  "
-          text="Fullstack software engineer passionate about building modern web apps with Next.js and Tailwind on the frontend, and scalable APIs using Node.js or Java Spring Boot on the backend."
+          className="max-w-4xl justify-center"
+          text={t("description")}
         />
 
         <div className="flex flex-row gap-4 mt-8">
@@ -306,8 +308,8 @@ export default function Hero() {
                 size="lg"
                 className="h-12 w-full cursor-pointer rounded-full px-8 text-base shadow-md transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-lg"
               >
-                View My Work
-                <ArrowRight className="size-5 " />
+                {t("viewWork")}
+                <ArrowRight className="size-5" />
               </Button>
             </AnimateIcon>
           </motion.a>
@@ -332,8 +334,8 @@ export default function Hero() {
                 variant="outline"
                 className="border-primary/20 w-full hover:border-primary/50 h-12 cursor-pointer rounded-full px-8 text-base transition-transform duration-300 hover:-translate-y-0.5"
               >
-                <span className=" hidden md:inline">Download CV</span>
-                <Download className="size-5 " />
+                <span className="hidden md:inline">{t("downloadCV")}</span>
+                <Download className="size-5" />
               </Button>
             </AnimateIcon>
           </motion.a>

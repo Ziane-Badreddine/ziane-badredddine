@@ -1,0 +1,223 @@
+{
+  "Nav": {
+    "services": "Services",
+    "projects": "Projects",
+    "education": "Education",
+    "skills": "Skills",
+    "contact": "Contact",
+    "blog": "Blog",
+    "githubStar": "Star on GitHub",
+    "chooseLanguage": "Choose Language"
+  },
+  "Hero": {
+    "greeting": "Hi, I’m",
+    "building": "building modern",
+    "web": "web",
+    "appsWith": "apps with",
+    "description": "Fullstack software engineer passionate about building modern web apps with Next.js and Tailwind on the frontend, and scalable APIs using Node.js or Java Spring Boot on the backend.",
+    "viewWork": "View My Work",
+    "downloadCV": "Download CV"
+  },
+  "Services": {
+    "sectionTitle": "Custom Web Solutions That Fit Your Needs",
+    "sectionDescription": "I offer tailored digital services—from full-stack web development to graphic design and database engineering—designed to help you launch, scale, or improve your online presence.",
+    "badge": "Services",
+    "responsiveDesign": "Responsive Design",
+    "customDevelopment": "Custom Development",
+    "seoOptimization": "SEO Optimization",
+    "startProject": "Do you want to start a project together?",
+    "contactButton": "Contact Me",
+    "websiteDevelopment": {
+      "title": "Website Development",
+      "description": "Modern, responsive websites with custom design and optimized performance."
+    },
+    "flexibleCommunication": {
+      "title": "Flexible Communication",
+      "description": "Smooth collaboration across time zones with clients worldwide."
+    },
+    "graphicDesign": {
+      "title": "Graphic Design",
+      "description": "Creative visuals that match your brand and enhance UX."
+    },
+    "databases": {
+      "title": "SQL/NoSQL Databases",
+      "description": "Secure, high-performance databases tailored to your app."
+    },
+    "javaDevelopment": {
+      "title": "Java Development",
+      "description": "Scalable and maintainable Java applications for various solutions."
+    },
+    "problemSolving": {
+      "title": "Problem Solving",
+      "description": "Efficiently solving complex algorithmic challenges with clean code."
+    },
+    "features": {
+      "responsiveDesign": "Responsive Design",
+      "customDevelopment": "Custom Development",
+      "seoOptimization": "SEO Optimization"
+    },
+    "cta": {
+      "question": "Do you want to start a project together?",
+      "button": "Contact Me"
+    }
+  },
+  "Projects": {
+    "badge": "Projects",
+    "title": "Projects That Showcase My Stack",
+    "description": "These projects demonstrate my experience with technologies like Next.js, Java, SQL/NoSQL, and UI libraries. Each one tackles real use cases—chat apps, dashboards, API integrations, and more.",
+
+    "viewProject": "View Project",
+    "sourceCode": "Source Code",
+    "status": {
+      "completed": "Completed",
+      "comingSoon": "Coming Soon",
+      "planned": "Planned"
+    },
+
+    "ecommerce": {
+      "title": "E-commerce Application",
+      "description": "A modern e-commerce platform with product listing, shopping cart, and payment system."
+    },
+    "storyCareer": {
+      "title": "StoryCareer | Share your stories.",
+      "description": "A creative platform where users can share and explore inspiring personal stories within a supportive community."
+    },
+    "xoGame": {
+      "title": "XO Game – Multiplayer Experience",
+      "description": "A real-time Tic-Tac-Toe game built with Convex, Next.js and Shadcn UI, featuring multiplayer logic and in-game chat."
+    },
+    "chatApp": {
+      "title": "Chat Application",
+      "description": "A real-time messaging app with group chats, file sharing, and notifications support."
+    }
+  },
+  "Education": {
+    "badge": "Education",
+    "title": "My Educational Background",
+    "description": "A summary of my academic achievements and the skills developed throughout my studies, laying the groundwork for my professional journey.",
+
+    "degree": {
+      "badge": "Mathematics · Physics · CS",
+      "title": "Diploma in Mathematics, Physics and Computer Science",
+      "description": "Diploma with honors at the Faculty of Sciences and Technology. In-depth study of applied mathematics, physics, and computer science fundamentals with strong problem-solving focus. Languages studied: C and SQL. Completed academic database projects."
+    },
+
+    "frontend": {
+      "badge": "Front-End Development",
+      "title": "Front-End Specialization",
+      "description": "Specialization in HTML, CSS, JavaScript, React, Next.js and Tailwind CSS. Built modern responsive interfaces, used Shadcn UI and Framer Motion, and developed complete team-based web applications."
+    },
+
+    "backend": {
+      "badge": "Back-End Development",
+      "title": "Back-End Specialization",
+      "description": "Focused on Java, Node.js, Prisma and MongoDB. Designed NoSQL databases, implemented server architectures and collaborated with front-end teams for full-stack integration."
+    }
+  },
+  "skillsSection": {
+    "badge": "Skills",
+    "title": "Clean Code, Real-World Solutions",
+    "subtitle": "A versatile skill set in Front-End and Back-End development to build fast, responsive interfaces and scalable systems."
+  },
+
+  "skills": {
+    "growth": {
+      "title": "Personal Growth",
+      "description": "I constantly strive to improve my mindset and behavior to foster strong relationships and handle challenges better."
+    },
+    "adaptability": {
+      "title": "Adaptability and Learning",
+      "description": "I’m open-minded and quick to learn new technologies to meet evolving needs and contexts."
+    },
+    "teamwork": {
+      "title": "Time Management & Teamwork",
+      "description": "I meet deadlines consistently and excel in collaborative, team-oriented environments."
+    },
+    "communication": {
+      "title": "Multilingual Communication",
+      "description": "Fluent in English and French, I communicate effectively across multicultural teams and environments."
+    }
+  },
+  "contactSection": {
+    "badge": "Contact",
+    "title": "Let’s Build Something Great Together",
+    "subtitle": "Whether you have a project in mind or just want to say hello, feel free to reach out. I’m always open to discussing new opportunities, creative ideas, or potential collaborations."
+  },
+
+  "contactForm": {
+    "title": "Contact Us",
+    "description": "Please fill out the form below and we will get back to you shortly.",
+
+    "fields": {
+      "name": "Name",
+      "namePlaceholder": "John Doe",
+      "email": "Email",
+      "emailPlaceholder": "johndoe@mail.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "Project inquiry, collaboration, etc.",
+      "message": "Message",
+      "messagePlaceholder": "Your message..."
+    },
+
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Your message has been sent successfully!",
+    "error": "Failed to send your message. Please try again."
+  },
+
+  "contactInfo": {
+    "phone": "Phone",
+    "email": "Email",
+    "location": "Location",
+    "responseTimeTitle": "Response Time",
+    "responseTimeDescription": "I typically reply within 24 hours. For urgent projects, feel free to call me directly."
+  },
+  "Footer": {
+    "description": "This portfolio was built with Next.js and Tailwind CSS, inspired by the TweakCN design system, and styled using ShadCN UI.",
+    "copyright": "All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "social": {
+      "GitHub": "GitHub",
+      "LinkedIn": "LinkedIn",
+      "Twitter": "Twitter"
+    }
+  },
+   "PrivacyPolicy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last Updated: 17 Jul 2025",
+    "sections": {
+      "intro": {
+        "title": "1. Introduction",
+        "content": "We take your privacy seriously. This policy explains what data we collect when you use this site, why we collect it, and how we handle it securely."
+      },
+      "analytics": {
+        "title": "2. Analytics",
+        "content": "We use privacy-focused analytics tools like Plausible or Vercel Analytics to understand general usage of this website. These tools do not use cookies and do not track personal data. All data is aggregated and anonymized."
+      },
+      "contactForm": {
+        "title": "3. Contact Form",
+        "content1": "When you fill out the contact form to start a project or get in touch, we collect the information you provide (such as your name, email address, and message). This data is used solely to respond to your inquiry and is not shared or used for marketing purposes.",
+        "content2": "The form data may be temporarily processed by a third-party service (e.g. Formspree, Resend, EmailJS), which adheres to modern data protection standards."
+      },
+      "dataSharing": {
+        "title": "4. Data Sharing",
+        "content": "We do not sell or rent your personal information. We only share data with service providers required to operate this site (such as analytics or form handling), under strict confidentiality agreements."
+      },
+      "rights": {
+        "title": "5. Your Rights",
+        "content": "You have the right to request access, correction, or deletion of your personal data. To do so, please contact us at the email below."
+      },
+      "contact": {
+        "title": "6. Contact",
+        "content": "For any questions or privacy-related concerns, feel free to contact us at",
+        "email": "zianebadredddine2004@gmail.com"
+      }
+    },
+    "agreement": "By using this site, you agree to this privacy policy."
+  },
+    "Blog": {
+    "title": "Latest Updates",
+    "description": "Tutorials and insights on JavaScript, React, Next.js, Tailwind CSS, Node.js, and Spring — from full-stack software engineer Ziane Badreddine.",
+    "banner": "The blog currently supports English only."
+  }
+}

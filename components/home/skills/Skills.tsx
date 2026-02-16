@@ -6,7 +6,18 @@ import { Badge } from "@/components/ui/badge";
 import AnimatedTechIcons from "./AnimatedTechIcons";
 import { skills } from "@/data/data";
 
+import { FaUserAlt, FaLightbulb, FaUsers, FaLanguage } from "react-icons/fa";
+import { useTranslations } from "next-intl";
+
+const iconMap = {
+  user: <FaUserAlt />,
+  idea: <FaLightbulb />,
+  team: <FaUsers />,
+  language: <FaLanguage />,
+};
+
 export default function Skills() {
+  const t = useTranslations();
   return (
     <section
       id="skills"
@@ -39,14 +50,14 @@ export default function Skills() {
             className="rounded-full px-4 py-1.5 text-sm font-medium shadow-sm"
             variant="secondary"
           >
-            <span className="mr-1 text-primary">✦</span> Skills
+            <span className="mr-1 text-primary">✦</span>{" "}
+            {t("skillsSection.badge")}
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">
-            Clean Code, Real-World Solutions
+            {t("skillsSection.title")}
           </h2>
           <p className="max-w-[800px] text-muted-foreground md:text-lg">
-            A versatile skill set in Front-End and Back-End development to build
-            fast, responsive interfaces and scalable systems.
+            {t("skillsSection.subtitle")}
           </p>
         </motion.div>
 
@@ -61,7 +72,7 @@ export default function Skills() {
               className="relative z-10 flex flex-col items-center text-center space-y-4"
             >
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary/70 text-primary-foreground text-2xl shadow-lg relative">
-                {skill.icon}
+                {iconMap[skill.icon as keyof typeof iconMap]}
                 <div
                   className="absolute inset-0 rounded-full bg-primary/20 animate-ping opacity-75"
                   style={{
@@ -70,8 +81,14 @@ export default function Skills() {
                   }}
                 ></div>
               </div>
-              <h3 className="text-xl font-bold">{skill.title}</h3>
-              <p className="text-muted-foreground">{skill.description}</p>
+              <h3 className="text-xl font-bold">
+                {" "}
+                {t(`skills.${skill.key}.title`)}
+              </h3>
+              <p className="text-muted-foreground">
+                {" "}
+                {t(`skills.${skill.key}.description`)}
+              </p>
             </motion.div>
           ))}
         </div>

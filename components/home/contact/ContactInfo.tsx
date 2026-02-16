@@ -2,30 +2,7 @@ import React from "react";
 import { motion } from "motion/react";
 import { Card } from "@/components/ui/card";
 import { Phone, Mail, MapPin } from "lucide-react";
-
-const contactInfo = [
-  {
-    icon: Phone,
-    title: "Phone",
-    description: "+212 707 291 630",
-    href: "tel:+212707291630",
-    color: "text-green-500",
-  },
-  {
-    icon: Mail,
-    title: "Email",
-    description: "zianebadredddine2004@gmail.com",
-    href: "mailto:zianebadredddine2004@gmail.com",
-    color: "text-blue-500",
-  },
-  {
-    icon: MapPin,
-    title: "Location",
-    description: "Settat, Morocco",
-    href: "#contact",
-    color: "text-orange-500",
-  },
-];
+import { useTranslations } from "next-intl";
 
 const container = {
   hidden: { opacity: 0 },
@@ -43,6 +20,32 @@ const item = {
 };
 
 export default function ContactInfo() {
+  const t = useTranslations("contactInfo");
+
+  const contactInfo = [
+    {
+      icon: Phone,
+      title: t("phone"),
+      description: "+212 707 291 630",
+      href: "tel:+212707291630",
+      color: "text-green-500",
+    },
+    {
+      icon: Mail,
+      title: t("email"),
+      description: "zianebadredddine2004@gmail.com",
+      href: "mailto:zianebadredddine2004@gmail.com",
+      color: "text-blue-500",
+    },
+    {
+      icon: MapPin,
+      title: t("location"),
+      description: "Settat, Morocco",
+      href: "#contact",
+      color: "text-orange-500",
+    },
+  ];
+
   return (
     <motion.div
       variants={container}
@@ -84,13 +87,12 @@ export default function ContactInfo() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ delay: 1*0.3 }}
+        transition={{ delay: 1 * 0.3 }}
       >
         <Card className="p-6 gap-2 bg-primary/5 border-primary/20">
-          <h3 className="font-semibold text-lg">Response Time</h3>
+          <h3 className="font-semibold text-lg">{t("responseTimeTitle")}</h3>
           <p className="text-muted-foreground text-sm">
-            I typically reply within 24 hours. For urgent projects, feel free to
-            call me directly.
+            {t("responseTimeDescription")}
           </p>
         </Card>
       </motion.div>

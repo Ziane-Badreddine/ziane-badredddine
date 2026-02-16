@@ -1,24 +1,21 @@
+import Footer from "@/components/home/footer";
+import Header from "@/components/home/Header";
+
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { Analytics } from "@vercel/analytics/next";
-import React from "react";
+import React, { Suspense } from "react";
 import { Banner } from "@/components/banner";
 import { getBanner } from "@/actions/banner";
 import { PortableTextRender } from "@/components/banner/portable-text";
 import { merriweather, playfair } from "@/lib/fonts";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { notFound } from "next/navigation";
+import { routing } from "@/i18n/routing";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
+import {  setRequestLocale } from "next-intl/server";
 const siteUrl = "https://ziane-badreddine.vercel.app";
 
 export const metadata: Metadata = {
@@ -71,14 +68,25 @@ export const viewport: Viewport = {
   ],
 };
 
-export default async function RootLayout({
-  children,
-}: Readonly<{
+type Props = {
   children: React.ReactNode;
-}>) {
+  params: Promise<{ locale: string }>;
+};
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export default async function LocaleLayout({ children, params }: Props) {
+  const { locale } = await params;
   const banner = await getBanner();
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
+  setRequestLocale(locale);
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -114,6 +122,8 @@ export default async function RootLayout({
         suppressHydrationWarning
         className={`${merriweather.className} antialiased `}
       >
+        <Suspense>
+
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -128,10 +138,19 @@ export default async function RootLayout({
               <PortableTextRender value={banner.content} />
             </Banner>
           )}
-          {children}
+          <NextIntlClientProvider locale={locale} >
+            <div className="bg-background text-foreground  flex flex-col items-center justify-center ">
+              <Header />
+              {children}
+              <Suspense>
+                <Footer />
+              </Suspense>
+            </div>
+          </NextIntlClientProvider>
           <Analytics />
           <Toaster richColors />
         </ThemeProvider>
+        </Suspense>
       </body>
     </html>
   );

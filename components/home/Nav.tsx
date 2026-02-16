@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -22,38 +21,14 @@ import { FaGithub } from "react-icons/fa";
 import { cn } from "@/lib/utils";
 import { Menu } from "../animate-ui/icons/menu";
 import { AnimateIcon } from "../animate-ui/icons/icon";
-
-export const navLinks = [
-  {
-    name: "Services",
-    href: "#services",
-    icon: BriefcaseBusiness,
-  },
-  {
-    name: "Projects",
-    href: "#projects",
-    icon: FileCode,
-  },
-  {
-    name: "Education",
-    href: "#education",
-    icon: GraduationCap,
-  },
-  {
-    name: "Skills",
-    href: "#skills",
-    icon: BrainCircuit,
-  },
-  {
-    name: "Contact",
-    href: "#contact",
-    icon: SendHorizonal,
-  },
-];
+import { LanguageToggle } from "../language-toggle";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 export default function Nav() {
   const { totalStars } = useGithubProfileStars("Ziane-Badreddine");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const t = useTranslations("Nav");
 
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -62,6 +37,17 @@ export default function Nav() {
       window.document.body.style.overflow = "auto";
     }
   }, [mobileMenuOpen]);
+
+  const navLinks = [
+    { name: t("services"), href: "#services", icon: BriefcaseBusiness },
+    { name: t("projects"), href: "#projects", icon: FileCode },
+    { name: t("education"), href: "#education", icon: GraduationCap },
+    { name: t("skills"), href: "#skills", icon: BrainCircuit },
+    { name: t("contact"), href: "#contact", icon: SendHorizonal },
+  ];
+
+  // blog link
+  const blogLabel = t("blog");
 
   return (
     <>
@@ -74,14 +60,14 @@ export default function Nav() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.1 + i * 0.05 }}
               className={cn(
-                " font-medium text-sm text-muted-foreground transition-colors hover:text-foreground relative group"
+                " font-medium text-sm text-muted-foreground transition-colors hover:text-foreground relative group",
               )}
             >
               <Link href={`/${link.href}`}>{link.name}</Link>
 
               <span
                 className={cn(
-                  "absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"
+                  "absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full",
                 )}
               ></span>
             </motion.div>
@@ -92,14 +78,14 @@ export default function Nav() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.1 + navLinks.length * 0.05 }}
           className={cn(
-            " font-medium text-muted-foreground transition-colors hover:text-foreground relative group"
+            " font-medium text-muted-foreground transition-colors hover:text-foreground relative group",
           )}
         >
           <Link href="/blog">
-            blog
+            {blogLabel}
             <span
               className={cn(
-                "absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"
+                "absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full",
               )}
             />
           </Link>
@@ -128,10 +114,24 @@ export default function Nav() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.3, delay: 0.4 }}
         >
+          <LanguageToggle />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.3, delay: 0.4 }}
+        >
           <ModeToggle />
         </motion.div>
       </motion.div>
       <div className="flex items-center  md:hidden">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.3, delay: 0.4 }}
+        >
+          <LanguageToggle />
+        </motion.div>
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}

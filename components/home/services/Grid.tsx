@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Check } from "@/components/animate-ui/icons/check";
 import { Send } from "@/components/animate-ui/icons/send";
 import { AnimateIcon } from "@/components/animate-ui/icons/icon";
+import { useTranslations } from "next-intl";
 
 const container = {
   hidden: { opacity: 0 },
@@ -27,6 +28,7 @@ const item = {
 };
 
 export function ServicesGrid() {
+  const t = useTranslations("Services");
   return (
     <motion.div
       variants={container}
@@ -50,10 +52,10 @@ export function ServicesGrid() {
             <div className="flex flex-col gap-2 text-center md:text-start items-center md:items-start">
               <div className="flex items-center justify-start gap-2 ">
                 {service.icon}
-                <h3>{service.title}</h3>
+                <h3>{t(service.titleKey)}</h3>
               </div>
               <p className="text-sm text-muted-foreground">
-                {service.description}
+                {t(service.descriptionKey)}
               </p>
             </div>
             {service.id === 0 && (
@@ -66,7 +68,7 @@ export function ServicesGrid() {
                     delay={1000}
                     className="w-4 h-4"
                   />
-                  Responsive Design
+                   {t("features.responsiveDesign")}
                 </p>
                 <p className="flex items-center gap-2">
                   <Check
@@ -76,7 +78,7 @@ export function ServicesGrid() {
                     delay={1000}
                     className="w-4 h-4 "
                   />
-                  Custom Development
+                   {t("features.customDevelopment")}
                 </p>
                 <p className="flex items-center gap-2">
                   <Check
@@ -86,7 +88,7 @@ export function ServicesGrid() {
                     delay={1000}
                     className="w-4 h-4"
                   />
-                  SEO Optimization
+                  {t("features.seoOptimization")}
                 </p>
               </div>
             )}
@@ -275,7 +277,7 @@ export function ServicesGrid() {
         <BackgroundGradientAnimation>
           <div className="absolute border  z-50 inset-0 flex flex-col items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl">
             <h3 className="text-xl md:text-3xl  font-bold  mb-4  bg-gradient-to-b  from-foreground via-foreground/90 to-muted-foreground/90 bg-clip-text text-transparent ">
-              Do you want to start a project together?
+               {t("cta.question")}
             </h3>
             <AnimateIcon animateOnHover completeOnStop asChild>
               <Button
@@ -283,7 +285,7 @@ export function ServicesGrid() {
                 className="bg-white text-black hover:bg-white/90 transition flex items-center gap-2"
               >
                 <Send animateOnHover className="w-5 h-5" />
-                Contact Me
+                 {t("cta.button")}
               </Button>
             </AnimateIcon>
           </div>

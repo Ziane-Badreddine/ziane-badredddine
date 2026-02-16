@@ -35,7 +35,7 @@ export default function Header() {
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
             <Logo />
-            <span>ZIANE_BADREDDINE__</span>
+            <span className="hidden md:block">ZIANE_BADREDDINE__</span>
           </motion.div>
         </Link>
         <Nav />

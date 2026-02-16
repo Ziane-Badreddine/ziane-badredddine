@@ -37,6 +37,7 @@ import {
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
+import { useTranslations } from "next-intl";
 
 const formSchema = contactFormSchema;
 
@@ -51,6 +52,8 @@ export default function ContactForm() {
       message: "",
     },
   });
+
+  const t = useTranslations("contactForm");
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
@@ -67,14 +70,13 @@ export default function ContactForm() {
         process.env.NEXT_PUBLIC_SERVICE_ID!,
         process.env.NEXT_PUBLIC_TEMPLATE_ID!,
         templateParams,
-        process.env.NEXT_PUBLIC_PUBLIC_KEY!
+        process.env.NEXT_PUBLIC_PUBLIC_KEY!,
       );
 
-      toast.success("Your message has been sent successfully!");
+      toast.success(t("success"));
       form.reset();
     } catch (error) {
-      console.error("Erreur lors de l'envoi du formulaire :", error);
-      toast.error("Failed to send your message. Please try again.");
+      toast.error(t("error"));
     } finally {
       setIsSubmitting(false);
     }
@@ -92,11 +94,9 @@ export default function ContactForm() {
         <CardHeader>
           <CardTitle className="text-2xl flex items-center gap-2">
             <FiSend className="text-primary text-[1.5rem]" />
-            Contact Us
+            {t("title")}
           </CardTitle>
-          <CardDescription>
-            Please fill out the form below and we will get back to you shortly.
-          </CardDescription>
+          <CardDescription>{t("description")}</CardDescription>
           <CardAction
             className={cn(
               "p-2 rounded-full bg-primary border relative",
@@ -104,7 +104,7 @@ export default function ContactForm() {
                 form.formState.submitCount === 0 ||
                 !form.formState.errors
                 ? "bg-green-600"
-                : "bg-destructive"
+                : "bg-destructive",
             )}
           >
             <div
@@ -114,7 +114,7 @@ export default function ContactForm() {
                   form.formState.submitCount === 0 ||
                   !form.formState.errors
                   ? "bg-green-600/50"
-                  : "bg-destructive/50"
+                  : "bg-destructive/50",
               )}
               style={{
                 animationDuration: "3s",
@@ -137,12 +137,12 @@ export default function ContactForm() {
                         className="flex items-center gap-2"
                       >
                         <FiUser className="text-muted-foreground" />
-                        Name
+                        {t("fields.name")}
                       </FormLabel>
                       <FormControl>
                         <Input
                           id="name"
-                          placeholder="John Doe"
+                          placeholder={t("fields.namePlaceholder")}
                           type="text"
                           autoComplete="name"
                           {...field}
@@ -163,12 +163,12 @@ export default function ContactForm() {
                         className="flex items-center gap-2"
                       >
                         <FiMail className="text-muted-foreground" />
-                        Email
+                        {t("fields.email")}
                       </FormLabel>
                       <FormControl>
                         <Input
                           id="email"
-                          placeholder="johndoe@mail.com"
+                          placeholder={t("fields.emailPlaceholder")}
                           type="email"
                           autoComplete="email"
                           {...field}
@@ -189,7 +189,7 @@ export default function ContactForm() {
                         className="flex items-center gap-2"
                       >
                         <FiEdit2 className="text-muted-foreground" />
-                        Subject
+                        {t("fields.subject")}
                       </FormLabel>
                       <FormControl>
                         <Input
@@ -215,12 +215,12 @@ export default function ContactForm() {
                         className="flex items-center gap-2"
                       >
                         <FiMessageCircle className="text-muted-foreground" />
-                        Message
+                        {t("fields.message")}
                       </FormLabel>
                       <FormControl>
                         <Textarea
                           id="message"
-                          placeholder="Your message..."
+                          placeholder={t("fields.messagePlaceholder")}
                           autoComplete="off"
                           className="break-all h-[140px]"
                           {...field}
@@ -244,7 +244,7 @@ export default function ContactForm() {
                       <div className="w-2 h-2 bg-background rounded-full animate-bounce"></div>
                     </>
                   ) : (
-                    "Send Message"
+                    t("send")
                   )}
                 </Button>
               </div>

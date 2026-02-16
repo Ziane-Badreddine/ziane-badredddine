@@ -28,6 +28,7 @@ import {
 import { SplitTextReveal } from "../hero/SplitTextReveal";
 import Autoplay from "embla-carousel-autoplay";
 import { ImageZoom } from "@/components/ui/kibo-ui/image-zoom";
+import { useTranslations } from "next-intl";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -62,6 +63,7 @@ const item = {
 export default function Projects() {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(1);
+  const t = useTranslations("Projects");
 
   const handlePrevious = useCallback(() => {
     api?.scrollPrev();
@@ -114,16 +116,14 @@ export default function Projects() {
               className="rounded-full px-4 py-1.5 text-sm font-medium shadow-sm"
               variant="secondary"
             >
-              <span className="text-primary mr-1">✦</span> Projects
+              <span className="text-primary mr-1">✦</span> {t("badge")}
             </Badge>
           </div>
           <h2 className="from-foreground to-foreground/80 bg-gradient-to-r bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl">
-            Projects That Showcase My Stack
+            {t("title")}
           </h2>
           <p className="text-muted-foreground max-w-[800px] md:text-lg">
-            These projects demonstrate my experience with technologies like
-            Next.js, Java, SQL/NoSQL, and UI libraries. Each one tackles real
-            use cases—chat apps, dashboards, API integrations, and more.
+             {t("description")}
           </p>
         </motion.div>
 
@@ -150,11 +150,11 @@ export default function Projects() {
                         animate={{ opacity: 1, transition: { delay: 0.3 } }}
                         className="from-foreground to-foreground/80 bg-gradient-to-r bg-clip-text text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-transparent"
                       >
-                        {projects[current - 1].title}
+                       {t(projects[current - 1].titleKey)}
                       </motion.h2>
                       <SplitTextReveal
                         className="text-muted-foreground text-base leading-relaxed text-pretty md:text-lg"
-                        text={projects[current - 1].des}
+                        text={t(projects[current - 1].descriptionKey)}
                         delay={0.02}
                       />
                     </div>
@@ -207,7 +207,7 @@ export default function Projects() {
                             >
                               <ExternalLink className="h-4 w-4" />
                               <span className="hidden md:inline">
-                                View Project
+                               {t("viewProject")}
                               </span>
                             </Button>
                           </Link>
@@ -223,7 +223,7 @@ export default function Projects() {
                             >
                               <SiGithub className="h-4 w-4" />
                               <span className="hidden md:inline">
-                                Source Code
+                                {t("sourceCode")}
                               </span>
                             </Button>
                           </Link>
@@ -235,7 +235,7 @@ export default function Projects() {
                           className="border-primary/20 hover:border-primary/50 h-12 w-full sm:w-auto rounded-full px-8 text-base transition-all duration-300 hover:translate-y-[-2px] hover:shadow-lg "
                         >
                           <ScreenShare className="h-4 w-4" />
-                          {projects[current - 1].status}
+                         {t(`status.${projects[current - 1].status}`)}
                         </Button>
                       )}
                     </motion.div>
@@ -280,7 +280,7 @@ export default function Projects() {
                           >
                             <Image
                               src={project.img}
-                              alt={project.title ?? ""}
+                              alt={project.titleKey ?? ""}
                               fill
                               className="object-cover hover:scale-105 transition-transform duration-300"
                               priority
