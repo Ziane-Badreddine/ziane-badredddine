@@ -182,7 +182,7 @@
       "Twitter": "Twitter"
     }
   },
-   "PrivacyPolicy": {
+  "PrivacyPolicy": {
     "title": "Privacy Policy",
     "lastUpdated": "Last Updated: 17 Jul 2025",
     "sections": {
@@ -215,9 +215,17 @@
     },
     "agreement": "By using this site, you agree to this privacy policy."
   },
-    "Blog": {
+  "Blog": {
     "title": "Latest Updates",
     "description": "Tutorials and insights on JavaScript, React, Next.js, Tailwind CSS, Node.js, and Spring — from full-stack software engineer Ziane Badreddine.",
     "banner": "The blog currently supports English only."
+  },
+  "chat": {
+    "title": "Portfolio Assistant",
+    "placeholder": "Ask something...",
+    "empty": "Start a new chat below.",
+    "unknown": "Sorry, I don't understand that yet 🤖",
+    "you": "You",
+    "bot": "Bot"
   }
 }

@@ -38,7 +38,7 @@ export default function Skills() {
         }}
       />
 
-      <div className="container mx-auto px-4 md:px-6 relative">
+      <div className=" mx-auto px-4 md:px-6 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -103,7 +103,7 @@ export default function Projects() {
       id="projects"
       className="w-full py-20 md:py-32 bg-muted/30 overflow-hidden relative isolate"
     >
-      <div className="container mx-auto px-4 md:px-6 relative">
+      <div className=" mx-auto px-4 md:px-6 relative">
         <motion.div
           variants={staggerContainer}
           initial="initial"
@@ -128,7 +128,7 @@ export default function Projects() {
         </motion.div>
 
         <div className="relative isolate">
-          <div className="relative z-10 container mx-auto w-full px-4 md:px-6">
+          <div className="relative z-10  mx-auto w-full ">
             <div className="relative grid items-center gap-4 md:gap-6 lg:gap-12  xl:grid-cols-3">
               <div className="mx-auto max-w-2xl lg:mx-0 xl:order-none order-2 col-span-1">
                 <AnimatePresence mode="wait">

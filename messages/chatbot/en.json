@@ -1,0 +1,38 @@
+[
+  {
+    "keywords": ["hello", "hi", "hey"],
+    "response": "Hello 👋 I'm Ziane's portfolio assistant. How can I help you today?"
+  },
+  {
+    "keywords": ["services", "offer", "what do you do"],
+    "response": "I provide full-stack web development, responsive design, Java development, database architecture (SQL/NoSQL), and graphic design services."
+  },
+  {
+    "keywords": ["project", "projects", "work"],
+    "response": "You can explore my projects section to see real-world applications like chat apps, e-commerce platforms, multiplayer games, and full-stack dashboards."
+  },
+  {
+    "keywords": ["education", "study", "degree"],
+    "response": "I hold a diploma in Mathematics, Physics and Computer Science, along with Front-End and Back-End specializations."
+  },
+  {
+    "keywords": ["skills", "technologies", "stack"],
+    "response": "My stack includes Next.js, React, Tailwind CSS, Java, Node.js, Prisma, MongoDB, SQL, and modern UI libraries like Shadcn UI and Framer Motion."
+  },
+  {
+    "keywords": ["contact", "hire", "collaborate"],
+    "response": "You can contact me using the contact form. I usually reply within 24 hours."
+  },
+  {
+    "keywords": ["blog", "articles"],
+    "response": "The blog contains tutorials and insights about JavaScript, React, Next.js, Tailwind CSS, Node.js, and Spring."
+  },
+  {
+    "keywords": ["cv", "resume"],
+    "response": "You can download my CV directly from the hero section."
+  },
+  {
+    "keywords": ["github"],
+    "response": "You can find my GitHub profile in the footer or navigation bar. Feel free to star the repository ⭐"
+  }
+]

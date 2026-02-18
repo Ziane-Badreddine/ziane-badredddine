@@ -26,7 +26,7 @@ export default function Header() {
         isScrolled && "bg-background/90 shadow-xs border-b border-border"
       )}
     >
-      <div className="container mx-auto flex items-center justify-between h-16 px-4 md:px-6">
+      <div className=" mx-auto flex items-center justify-between h-16 px-4 md:px-6">
         <Link href={"/"}>
           <motion.div
             className="flex items-center gap-2 font-bold text-sm md:text-base "

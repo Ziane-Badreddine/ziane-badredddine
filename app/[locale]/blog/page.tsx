@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default async function BlogPage() {
   const blogs = await getBlogs();
   return (
-    <div className="from-background w-full via-background to-muted/20 relative isolate min-h-screen bg-gradient-to-br pb-10 md:pb-10 lg:pb-20 container">
+    <div className="from-background w-full via-background to-muted/20 relative isolate min-h-screen bg-gradient-to-br pb-10 md:pb-10 lg:pb-20 ">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden -z-10">
         <div className="bg-primary/10 absolute top-0 right-0 size-80 translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl" />

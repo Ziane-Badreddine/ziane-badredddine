@@ -252,7 +252,6 @@ body::before {
   color: var(--foreground); /* texte en blanc */
 }
 
-
 .underline-highlight {
   position: relative;
 
@@ -281,7 +280,7 @@ body::before {
     transform: translateX(-50%) translateY(-10%);
   }
 }
- 
+
 @keyframes moveInCircle {
   0% {
     transform: rotate(0deg);
@@ -293,7 +292,7 @@ body::before {
     transform: rotate(360deg);
   }
 }
- 
+
 @keyframes moveVertical {
   0% {
     transform: translateY(-50%);

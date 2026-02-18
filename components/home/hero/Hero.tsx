@@ -109,7 +109,7 @@ export default function Hero() {
   const t = useTranslations("Hero");
 
   return (
-    <section className="relative isolate container mx-auto w-full py-10 md:py-20 lg:py-20  overflow-hidden">
+    <section className="relative isolate  mx-auto w-full py-10 md:py-20 lg:py-20  overflow-hidden">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.5 }}

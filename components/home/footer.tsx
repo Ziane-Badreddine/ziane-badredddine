@@ -43,7 +43,7 @@ export default function Footer() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
-        className="container mx-auto flex flex-col gap-8 px-4 py-10 md:px-6 lg:py-16"
+        className=" mx-auto flex flex-col gap-8 px-4 py-10 md:px-6 lg:py-16"
       >
         {/* Logo + Description */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0">

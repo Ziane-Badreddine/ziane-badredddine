@@ -1,0 +1,38 @@
+[
+  {
+    "keywords": ["bonjour", "salut", "hello"],
+    "response": "Bonjour 👋 Je suis l’assistant du portfolio de Ziane. Comment puis-je vous aider ?"
+  },
+  {
+    "keywords": ["services", "propose", "offre"],
+    "response": "Je propose du développement web full-stack, du design responsive, du développement Java, des bases de données SQL/NoSQL et du design graphique."
+  },
+  {
+    "keywords": ["projet", "projets", "travaux"],
+    "response": "Vous pouvez consulter la section Projets pour découvrir des applications réelles comme des apps de chat, e-commerce, jeux multijoueurs et dashboards."
+  },
+  {
+    "keywords": ["education", "études", "diplôme"],
+    "response": "Je possède un diplôme en Mathématiques, Physique et Informatique, ainsi que des spécialisations en Front-End et Back-End."
+  },
+  {
+    "keywords": ["competence", "compétence", "technologie", "stack"],
+    "response": "Mon stack inclut Next.js, React, Tailwind CSS, Java, Node.js, Prisma, MongoDB, SQL et des bibliothèques UI modernes comme Shadcn UI et Framer Motion."
+  },
+  {
+    "keywords": ["contact", "embauche", "collaboration"],
+    "response": "Vous pouvez me contacter via le formulaire de contact. Je réponds généralement sous 24 heures."
+  },
+  {
+    "keywords": ["blog", "articles"],
+    "response": "Le blog contient des tutoriels et analyses sur JavaScript, React, Next.js, Tailwind CSS, Node.js et Spring."
+  },
+  {
+    "keywords": ["cv", "resume"],
+    "response": "Vous pouvez télécharger mon CV directement depuis la section principale."
+  },
+  {
+    "keywords": ["github"],
+    "response": "Vous trouverez mon profil GitHub dans le footer ou la barre de navigation. N’hésitez pas à laisser une étoile ⭐"
+  }
+]

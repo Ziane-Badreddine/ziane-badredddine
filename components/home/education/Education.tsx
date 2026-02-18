@@ -15,13 +15,13 @@ export default function Education() {
       className="from-muted/30 relative isolate w-full overflow-hidden bg-linear-180 from-50% to-transparent py-20 md:py-32 border-primary/60! bg-primary/15 group-hover:bg-primary/20 z dark:border-primary/40!  inset-0 h-full border-y border-dashed px-1.5"
     >
       <div className="absolute inset-0 -z-10 "></div>
-      <div className="relative container mx-auto px-4 md:px-6">
+      <div className="relative w-full  mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className=" mb-12 flex flex-col items-center justify-center space-y-4 text-center "
+          className=" mb-12 flex flex-col w-full items-center justify-center space-y-4 text-center "
         >
           <div className="mb-4 flex items-center justify-center gap-4">
             <Badge
@@ -37,7 +37,7 @@ export default function Education() {
           <p className="text-muted-foreground max-w-[800px] md:text-lg">
             {t("description")}
           </p>
-          <TracingBeam>
+          <TracingBeam className="w-full max-w-[90%]! ">
             {education.map((item, index) => (
               <motion.div
                 key={`content-${index}`}

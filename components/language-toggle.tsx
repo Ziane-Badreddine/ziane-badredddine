@@ -53,7 +53,7 @@ export function LanguageToggle(props: LanguageToggleProps) {
         </PopoverTrigger>
       </TooltipWrapper>
 
-      <PopoverContent className="flex flex-col p-0 w-44">
+      <PopoverContent className="flex flex-col p-0 w-32">
         <p className="mb-1 p-2 text-xs font-medium text-muted-foreground">
           {t("chooseLanguage")}
         </p>

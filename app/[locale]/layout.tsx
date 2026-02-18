@@ -15,7 +15,8 @@ import { merriweather, playfair } from "@/lib/fonts";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import {  setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
+import { AIChatModal } from "@/components/chatbot/AIChatModal";
 const siteUrl = "https://ziane-badreddine.vercel.app";
 
 export const metadata: Metadata = {
@@ -123,33 +124,33 @@ export default async function LocaleLayout({ children, params }: Props) {
         className={`${merriweather.className} antialiased `}
       >
         <Suspense>
-
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {banner && (
-            <Banner
-              variant="rainbow"
-              className="bg-primary/5 text-foreground container mx-auto"
-            >
-              <PortableTextRender value={banner.content} />
-            </Banner>
-          )}
-          <NextIntlClientProvider locale={locale} >
-            <div className="bg-background text-foreground  flex flex-col items-center justify-center ">
-              <Header />
-              {children}
-              <Suspense>
-                <Footer />
-              </Suspense>
-            </div>
-          </NextIntlClientProvider>
-          <Analytics />
-          <Toaster richColors />
-        </ThemeProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {banner && (
+              <Banner
+                variant="rainbow"
+                className="bg-primary/5 text-foreground container mx-auto"
+              >
+                <PortableTextRender value={banner.content} />
+              </Banner>
+            )}
+            <NextIntlClientProvider locale={locale}>
+                <div className="bg-background text-foreground  flex flex-col items-center justify-center ">
+                  <Header />
+                  {children}
+                  <AIChatModal  />
+                  <Suspense>
+                    <Footer />
+                  </Suspense>
+                </div>
+            </NextIntlClientProvider>
+            <Analytics />
+            <Toaster richColors />
+          </ThemeProvider>
         </Suspense>
       </body>
     </html>

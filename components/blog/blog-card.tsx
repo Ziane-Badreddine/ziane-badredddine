@@ -30,7 +30,7 @@ export default function BlogCard({ blog }: BlogCardProps) {
     <Card
       className={cn(
         "group ring-primary/50  from-card to-primary/5 relative border-2 bg-gradient-to-b ring-2 transition-all duration-300 overflow-hidden h-full",
-        blog.mainImage && "pt-0"
+        blog.mainImage && "pt-0",
       )}
     >
       {blog.mainImage && (
@@ -85,12 +85,14 @@ export default function BlogCard({ blog }: BlogCardProps) {
         <h4
           className={cn(
             "text-xl md:text-2xl mt-4 font-semibold",
-            lora.className
+            lora.className,
           )}
         >
           {blog.title}
         </h4>
-        <div>{blog.description && <BlogBody body={blog.description} />}</div>
+        <div className="line-clamp-5 ">
+          {blog.description && <BlogBody body={blog.description} />}
+        </div>
       </CardContent>
       <CardFooter className="px-4">
         <Link className="w-full" href={`/blog/${blog.slug.current}`}>

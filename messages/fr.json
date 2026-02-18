@@ -219,5 +219,13 @@
     "title": "Dernières Actualités",
     "description": "Tutoriels et analyses sur JavaScript, React, Next.js, Tailwind CSS, Node.js et Spring — par l’ingénieur full-stack Ziane Badreddine.",
     "banner": "Le blog ne supporte actuellement que l’anglais."
+  },
+  "chat": {
+    "title": "Assistant du Portfolio",
+    "placeholder": "Posez votre question...",
+    "empty": "Commencez une nouvelle conversation ci-dessous.",
+    "unknown": "Désolé, je ne comprends pas encore cela 🤖",
+    "you": "Vous",
+    "bot": "Assistant"
   }
 }

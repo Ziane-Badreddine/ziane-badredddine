@@ -1,0 +1,18 @@
+[
+  {
+    "keywords": ["hello", "hi"],
+    "response": "Hello 👋 I'm your AI assistant. How can I help you?"
+  },
+  {
+    "keywords": ["nextjs"],
+    "response": "Next.js is a powerful React framework for building full-stack applications."
+  },
+  {
+    "keywords": ["portfolio"],
+    "response": "Your portfolio should highlight your projects, tech stack, and problem-solving skills."
+  },
+  {
+    "keywords": ["i18n", "internationalization"],
+    "response": "You can use next-intl to handle internationalization in Next.js App Router."
+  }
+]
