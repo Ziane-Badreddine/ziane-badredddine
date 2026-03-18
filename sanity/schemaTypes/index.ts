@@ -9,6 +9,8 @@ import { dividerType } from "./dividerType";
 import { bannerType } from "./bannerType";
 import { descriptionContentType } from "./descriptionContentType";
 import { stepsType } from "./stepsType";
+import { conversationType } from "./conversationType";
+import { messageType } from "./messageType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -20,6 +22,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     youTubeType,
     bannerType,
     descriptionContentType,
-    stepsType
+    stepsType,
+    conversationType,
+    messageType
   ],
 };

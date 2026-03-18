@@ -221,8 +221,9 @@
     "banner": "The blog currently supports English only."
   },
   "chat": {
-    "title": "Portfolio Assistant",
+   "title": "Ziane AI Assistant",
     "placeholder": "Ask something...",
+     "description": "Ask me about projects, stack, experience...",
     "empty": "Start a new chat below.",
     "unknown": "Sorry, I don't understand that yet 🤖",
     "you": "You",

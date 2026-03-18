@@ -250,7 +250,7 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="from-foreground via-foreground/90 to-foreground/70 mb-6 
      bg-gradient-to-r bg-clip-text 
-     text-balance text-center font-semibold text-4xl tracking-[-0.06em]! sm:text-4xl md:text-xl xl:text-6xl"
+     text-balance text-center font-semibold text-4xl tracking-[-0.06em]! sm:text-4xl md:text-5xl xl:text-6xl"
         >
           {t("greeting")}{" "}
           <span className="font-serif text-primary font-light italic inline-flex items-center gap-2">

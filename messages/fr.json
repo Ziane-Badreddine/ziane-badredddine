@@ -221,8 +221,9 @@
     "banner": "Le blog ne supporte actuellement que l’anglais."
   },
   "chat": {
-    "title": "Assistant du Portfolio",
+     "title": "Assistant IA Ziane",
     "placeholder": "Posez votre question...",
+     "description": "Posez-moi des questions sur les projets, la stack, l'expérience...",
     "empty": "Commencez une nouvelle conversation ci-dessous.",
     "unknown": "Désolé, je ne comprends pas encore cela 🤖",
     "you": "Vous",

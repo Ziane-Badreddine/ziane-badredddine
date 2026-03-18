@@ -295,7 +295,7 @@ const highlight = (
     ],
   });
 
-type CodeBlockData = {
+export type CodeBlockData = {
   language: string;
   filename: string;
   code: string;
