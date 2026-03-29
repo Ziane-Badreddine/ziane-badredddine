@@ -17,23 +17,49 @@ import { routing } from "@/i18n/routing";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { AIChatModal } from "@/components/chatbot/AIChatModal";
-const siteUrl = "https://ziane-badreddine.vercel.app";
+import { personSchema, organizationSchema } from "@/lib/structured-data";
+
+const siteUrl = "https://www.zianebadreddine.me";
 
 export const metadata: Metadata = {
-  title: "Ziane Badreddine | Software Engineer & Full-Stack Developer",
+  title: "Ziane Badreddine | Full-Stack Developer & Engineering Student",
   description:
-    "Full-stack software engineer based in Settat, Morocco. Passionate about building modern web applications with Next.js, Tailwind, Node.js, and Java Spring Boot.",
+    "Full-stack developer and Computer Science engineering student from Settat, Morocco. Specializing in modern web applications with Next.js, React, TypeScript, Tailwind CSS, Node.js, and Prisma. Building scalable, responsive applications with expertise in frontend, backend, and databases.",
   keywords:
-    "full-stack developer, software engineer, Next.js, Tailwind, Node.js, Spring Boot, Ziane Badreddine, Settat, Morocco",
+    "full-stack developer, software engineer, Next.js, React, TypeScript, Tailwind CSS, Node.js, Prisma, Stripe, PostgreSQL, MongoDB, GraphQL, REST APIs, Ziane Badreddine, Settat, Morocco, web development, computer science",
+  applicationName: "Ziane Badreddine | Full-Stack Developer Portfolio",
   authors: [{ name: "Ziane Badreddine", url: siteUrl }],
   creator: "Ziane Badreddine",
   publisher: "Ziane Badreddine",
-  robots: "index, follow",
-  alternates: { canonical: siteUrl },
+  formatDetection: {
+    telephone: true,
+    email: true,
+    address: true,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
+  alternates: {
+    canonical: siteUrl,
+    languages: {
+      en: "https://www.zianebadreddine.me/en",
+      fr: "https://www.zianebadreddine.me/fr",
+      "x-default": "https://www.zianebadreddine.me",
+    },
+  },
   openGraph: {
-    title: "Ziane Badreddine | Software Engineer & Full-Stack Developer",
+    title: "Ziane Badreddine | Full-Stack Developer & Engineering Student",
     description:
-      "Full-stack software engineer based in Settat, Morocco, specializing in scalable web apps with Next.js, Tailwind, Node.js & Spring Boot.",
+      "Full-stack developer specializing in Next.js, React, TypeScript, and modern web technologies. Building scalable web applications | Based in Settat, Morocco",
     url: siteUrl,
     siteName: "Ziane Badreddine Portfolio",
     images: [
@@ -41,23 +67,33 @@ export const metadata: Metadata = {
         url: `${siteUrl}/icons/favicon-black.svg`,
         width: 1200,
         height: 630,
-        alt: "Ziane Badreddine – Software Engineer Portfolio",
+        alt: "Ziane Badreddine – Full-Stack Developer Portfolio",
+        type: "image/svg+xml",
       },
     ],
     locale: "en_US",
+    alternateLocale: ["fr_FR"],
     type: "profile",
     firstName: "Ziane",
     lastName: "Badreddine",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ziane Badreddine | Software Engineer & Full-Stack Developer",
-    description:
-      "Full-stack developer from Settat, Morocco. Building modern, scalable web apps with cutting-edge technologies.",
-    images: [`${siteUrl}/icons/favicon-black.svg`],
+    site: "@EddineZian27143",
     creator: "@EddineZian27143",
+    title: "Ziane Badreddine | Full-Stack Developer & Engineering Student",
+    description:
+      "Full-stack developer from Settat, Morocco. Expertise in Next.js, React, TypeScript, Tailwind CSS, Node.js, Prisma, and modern web technologies.",
+    images: [`${siteUrl}/icons/favicon-black.svg`],
   },
+  category: "technology",
   metadataBase: new URL(siteUrl),
+  verification: {
+    google: "N96hFj63L0-t_m0y87-eK7sPq1mVyE0IWKvKcYms3-s",
+    other: {
+      microsoft: "94E242833A0A876AAB7FAEB2554E9AD0",
+    },
+  },
 };
 
 export const viewport: Viewport = {
@@ -89,6 +125,18 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+          suppressHydrationWarning
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+          suppressHydrationWarning
+        />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link
@@ -139,14 +187,14 @@ export default async function LocaleLayout({ children, params }: Props) {
               </Banner>
             )}
             <NextIntlClientProvider locale={locale}>
-                <div className="bg-background text-foreground  flex flex-col items-center justify-center ">
-                  <Header />
-                  {children}
-                  <AIChatModal  />
-                  <Suspense>
-                    <Footer />
-                  </Suspense>
-                </div>
+              <div className="bg-background text-foreground  flex flex-col items-center justify-center ">
+                <Header />
+                {children}
+                <AIChatModal />
+                <Suspense>
+                  <Footer />
+                </Suspense>
+              </div>
             </NextIntlClientProvider>
             <Analytics />
             <Toaster richColors />
