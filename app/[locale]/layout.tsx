@@ -166,6 +166,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           crossOrigin="anonymous"
         />
         <meta name="darkreader-lock" />
+        <meta name="msvalidate.01" content="94E242833A0A876AAB7FAEB2554E9AD0" />
       </head>
       <body
         suppressHydrationWarning
