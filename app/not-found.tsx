@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { MoveLeft } from "lucide-react";
+import "./globals.css";
 
 export default function NotFound() {
   return (
@@ -15,7 +16,6 @@ export default function NotFound() {
         transition={{ duration: 1 }}
         className="container mx-auto w-full flex flex-col items-center justify-center text-center space-y-6"
       >
-
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -23,7 +23,7 @@ export default function NotFound() {
           className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px]"
         >
           <Image
-            src="/not-found.svg" 
+            src="/not-found.svg"
             alt="404 Not Found"
             fill
             className="object-contain"
@@ -39,8 +39,8 @@ export default function NotFound() {
         </div>
 
         <Link href="/">
-          <Button  className="text-base px-6 py-2">
-           <MoveLeft /> Go back home
+          <Button className="text-base px-6 py-2">
+            <MoveLeft /> Go back home
           </Button>
         </Link>
       </motion.div>
