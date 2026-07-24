@@ -18,6 +18,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { AIChatModal } from "@/components/chatbot/AIChatModal";
 import { personSchema, organizationSchema } from "@/lib/structured-data";
+import NextTopLoader from "nextjs-toploader";
 
 const siteUrl = "https://www.zianebadreddine.me";
 
@@ -172,6 +173,16 @@ export default async function LocaleLayout({ children, params }: Props) {
         suppressHydrationWarning
         className={`${merriweather.className} antialiased `}
       >
+        <NextTopLoader
+          color="var(--primary)"
+          crawlSpeed={200}
+          height={3}
+          crawl={true}
+          showSpinner={false}
+          easing="ease"
+          speed={200}
+          shadow="0 0 10px var(--primary), 0 0 5px var(--primary)"
+        />
         <Suspense>
           <ThemeProvider
             attribute="class"
