@@ -1,4 +1,4 @@
-export const baseUrl = "https://www.zianebadreddine.me";
+export const baseUrl = "https://www.v1.zianebadreddine.me";
 
 export const personSchema = {
   "@context": "https://schema.org",

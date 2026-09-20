@@ -20,7 +20,7 @@ import { AIChatModal } from "@/components/chatbot/AIChatModal";
 import { personSchema, organizationSchema } from "@/lib/structured-data";
 import NextTopLoader from "nextjs-toploader";
 
-const siteUrl = "https://www.zianebadreddine.me";
+const siteUrl = "https://www.v1.v1.zianebadreddine.me";
 
 export const metadata: Metadata = {
   title: "Ziane Badreddine | Full-Stack Developer & Engineering Student",
@@ -52,9 +52,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteUrl,
     languages: {
-      en: "https://www.zianebadreddine.me/en",
-      fr: "https://www.zianebadreddine.me/fr",
-      "x-default": "https://www.zianebadreddine.me",
+      en: "https://www.v1.zianebadreddine.me/en",
+      fr: "https://www.v1.zianebadreddine.me/fr",
+      "x-default": "https://www.v1.zianebadreddine.me",
     },
   },
   openGraph: {

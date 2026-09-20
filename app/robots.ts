@@ -21,7 +21,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: "/",
       },
     ],
-    sitemap: "https://www.zianebadreddine.me/sitemap.xml",
-    host: "https://www.zianebadreddine.me",
+    sitemap: "https://www.v1.v1.zianebadreddine.me/sitemap.xml",
+    host: "https://www.v1.v1.zianebadreddine.me",
   };
 }
